@@ -1,0 +1,126 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "page/jww/jww",
+          "pathName": "page/jww/jww",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "page/cjcx/cjcx",
+          "pathName": "page/cjcx/cjcx",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "page/compus/compus",
+          "pathName": "page/compus/compus",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "page/login/login",
+          "pathName": "page/login/login",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "page/kscx/kscx",
+          "pathName": "page/kscx/kscx",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "page/kjscx/kjscx",
+          "pathName": "page/kjscx/kjscx",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "page/Consdetail/Consdetail",
+          "pathName": "page/Consdetail/Consdetail",
+          "query": "pwd=057135&Sno=193020081",
+          "scene": null
+        },
+        {
+          "name": "page/ykt/ykt",
+          "pathName": "page/ykt/ykt",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "page/tsg/tsg",
+          "pathName": "page/tsg/tsg",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "page/porfile/porfile",
+          "pathName": "page/porfile/porfile",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "page/setting/setting",
+          "pathName": "page/setting/setting",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "page/first/first",
+          "pathName": "page/first/first",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "page/schedule/schedule",
+          "pathName": "page/schedule/schedule",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "page/swzl/swzl",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "page/addLost/addLost",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "page/photoframe/photoframe",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "page/LostAndFont/LostAndFont",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "page/compusBaseService/compusBaseService",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,56 @@
+<!-- 显示区域 -->
+<import src="../../template/topshow/topshow"></import>
+<template is="topshow" data="{{...info}}"></template>
+<!-- 第二部分 图表部分-->
+<view class="chart_view">
+    <view class="chart_head">
+        <image src="../../static/public/bianzhu3.png"></image>
+        <text>历史消费记录</text>
+    </view>
+    <view class="chart_ec">
+        <ec-canvas id="mychart-dom" cavnvas-id="mychart" ec="{{ec}}"></ec-canvas>
+    </view>
+</view>
+
+<!-- 第三部分查询消费记录 -->
+
+<view class="time">
+    <view class="image">
+        <image src="../../static/public/chaxun.png"></image>
+    </view>
+    <view>
+        <picker mode="date" value="{{startdate}}" start="2018-09-01" end="{{enddate}}" bindchange="bindDateChange" data-index="0">
+            <view class="picker">
+                {{startdate}}
+            </view>
+        </picker>
+    </view> 至
+    <view><picker mode="date" value="{{enddate}}" start="{{startdate}}" end="{{enddate}}" bindchange="bindDateChange" data-index="1">
+            <view class="picker">
+                {{enddate}}
+            </view>
+        </picker></view>
+</view>
+
+
+<!-- 第四部分显示消费记录 -->
+<view class="data_container">
+    <view class="head">
+        <view class="image">
+            <image src="../../static/public/shijian.png"></image>
+        </view>
+        <text>今日消费记录</text>
+    </view>
+    <view class="item" wx:for="{{data_list}}" wx:key="item">
+        <view class="image">
+            <image src="{{item.shopImage}}"></image>
+        </view>
+        <view class="merchant">
+            <view class="merchant_name">{{item.machine[3]?item.machine[3]+"-"+item.shop:"同名字"}}</view>
+            <view class="merchant_time">{{item.time}}</view>
+        </view>
+        <view class="merchant_price">-{{item.spentMoney}}</view>
+    </view>
+    <view class="tip">没有更多记录了~~</view>
+</view>
+

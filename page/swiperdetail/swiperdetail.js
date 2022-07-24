@@ -1,0 +1,33 @@
+Page({
+    data:{
+        url:[
+            {
+                name:'小程序操作指南',
+                url:"https://www.microjc.top/images/b1.png",
+                height:"1900px"
+            },
+            {
+                name:'反馈指南',
+                url:"https://www.microjc.top/images/b3.png",
+                height:"860rpx"
+            },{
+                name:'教务网查询说明',
+                url:"https://www.microjc.top/images/b2.png",
+                height:"2108rpx"
+            }
+        ],
+        imageUrl:"",
+        height:""
+    },
+    onLoad(e){
+        console.log("e",e)
+        this.setData({
+            imageUrl:this.data.url[e.index].url,
+            height:this.data.url[e.index].height
+        })
+        console.log(this.data.height)
+        wx.setNavigationBarTitle({
+          title: this.data.url[e.index].name,
+        })
+    }
+})

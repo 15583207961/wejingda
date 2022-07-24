@@ -1,0 +1,25 @@
+page{
+  background-color: #F5F5F5 ;
+}
+.swzl-sreach{
+  width: 702rpx;
+  height: 84rpx;
+  border:6rpx solid #2F9DFF ;
+  border-radius: 16rpx;
+  margin:0 auto;
+  margin-top: 48rpx;
+  display: flex;
+}
+.swzl-sreach-icon{
+  width: 48rpx;
+  height: 36rpx;
+  object-fit: fill;
+  margin-top: 24rpx;
+  margin-left: 20rpx;
+}
+
+.swzl-input{
+  height: 100%;
+  flex: 1;
+}
+

@@ -1,0 +1,33 @@
+page{
+  background-color: #F5F5F5;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.nav-bar{
+  width: 100vw;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+}
+.query,.area{
+  flex: 1;
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: normal;
+}
+.spilte{
+  width: 1rpx;
+  height: 54rpx;
+  background-color: #9797974f;
+  /* border: 1rpx solid #9797974f; */
+}
+.selected{
+  color: #3B8DF6;
+}
+.web-view{
+  width: 100vw;
+  padding: 48rpx;
+  box-sizing: border-box;
+}

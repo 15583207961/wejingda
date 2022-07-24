@@ -1,0 +1,49 @@
+<!-- 成绩查询 -->
+<!-- 成绩查询 -->
+
+<picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" bindcancel="onCancel"
+    value="{{multiIndex}}" range="{{multiArray}}" >
+
+    <view class="semester" bindtap="showPicker">{{showdata[0]}} 学年 {{showdata[1]}}</view>
+</picker>
+<!-- 成绩展示模块 -->
+
+<view class="gradeList" wx:if="{{grade_list.length>0}}">
+    <view class="{{item.isshow?'grade_item grade_item1':'grade_item grade_item2'}}" bindtap="touchhanlde"
+        data-index="{{index}}" wx:for="{{grade_list}}" wx:key="item">
+        <text class="item_title">{{item.name}}</text>
+        <text class="item_grade">{{item.score}}</text>
+        <view class="course_info">
+            <text class="course_type">课程性质：{{item.type}}</text>
+            <text class="course_credit">学分：{{item.credit}}</text>
+            <text class="course_GPA">绩点：{{item.gpa}}</text>
+        </view>
+    </view>
+</view>
+
+<!-- 展示考试信息模块 -->
+<view class="exam_list" wx:if="{{exam_list.length>0}}">
+    <view class="exam_item" wx:for="{{exam_list}}" wx:key="item">
+        <view class="row_1">
+            <view class="name">{{item.name}}</view>
+            <view class="place">{{item.place}}</view>
+        </view>
+        <view class="studentName">姓名 {{item.studentName}} 座位号： {{item.number}}</view>
+        <view class="where">校区： {{item.where}} 考试形式：{{item.how}}</view>
+        <view class="time">{{item.time}}</view>
+    </view>
+</view>
+
+<!-- 展示不考信息模块 -->
+
+<view class="exam_list" wx:if="{{MakeUpExamList.length>0}}">
+    <view class="exam_item" wx:for="{{MakeUpExamList}}" wx:key="item">
+        <view class="row_1">
+            <view class="name">{{item.name}}</view>
+            <view class="place">{{item.place}}</view>
+        </view>
+        <view class="studentName">姓名 {{item.studentName}} 座位号： {{item.number}}</view>
+        <view class="where">校区： {{item.where=="null"?item.where:""}} 考试形式：{{item.how}}</view>
+        <view class="time">{{item.time}}</view>
+    </view>
+</view>

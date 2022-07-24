@@ -1,0 +1,5 @@
+{
+  "usingComponents": { "ec-canvas":"../../ec-canvas/ec-canvas"},
+  "navigationBarTitleText": "消费记录",
+  "navigationBarBackgroundColor": "#8CD1FF"
+}

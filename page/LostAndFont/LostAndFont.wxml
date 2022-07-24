@@ -1,0 +1,12 @@
+<!-- 搜索框 -->
+<view class="swzl-sreach" bindtap="goSreachPage">
+  <image src= "" class="swzl-sreach-icon"></image>
+</view>
+
+
+<!--  瀑布流 -->
+<waterfall-flow ></waterfall-flow>
+
+
+<!-- 发布失物招领 -->
+ <view class="swzl-add" bindtap="goAddPage">+</view>

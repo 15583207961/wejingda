@@ -1,0 +1,36 @@
+<!-- 图片 -->
+<view class="swzl-add-image">
+    <view class="swzl-center-icon">+</view>
+</view>
+
+<!-- 下拉框 位置 -->
+<view class="swzl-add-where">
+  <image class="swzl-where-icon" src=""></image>
+  <input type="text" class="swzl-where-input" placeholder="A教 可输入，可以滑动选择"/>
+
+</view>
+<!-- 下拉框 日期 -->
+<view class="swzl-add-where">
+  <image class="swzl-where-icon" src=""></image>
+  <input type="text" class="swzl-where-input" placeholder="A教 可输入，可以滑动选择"/>
+  
+</view>
+<!-- 下拉框 关键字 -->
+<view class="swzl-add-where">
+  <image class="swzl-where-icon" src=""></image>
+  <input type="text" class="swzl-where-input" placeholder="A教 可输入，可以滑动选择"/>
+  
+</view>
+<!-- 下拉框 类型 -->
+<view class="swzl-add-where">
+  <image class="swzl-where-icon" src=""></image>
+  <input type="text" class="swzl-where-input" placeholder="A教 可输入，可以滑动选择"/>
+  
+</view>
+
+<!--详情 -->
+<textarea name="" class="swzl-add-textarea" id="" cols="30" rows="10" placeholder="在这里添加描述…"></textarea>
+
+
+<!-- 提交按钮 -->
+<button class="swzl-send" type="primary" >发布</button>

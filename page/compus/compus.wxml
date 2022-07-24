@@ -1,0 +1,46 @@
+
+<!-- 校园页面头部模块 -->
+<view class="compus_head" style="{{headThemebgc}}">
+        <view class="head_image">
+            <image src="../../static/public/3D.png"></image>
+        </view>
+</view>
+<!-- 导航栏模块 -->
+<view class="compus_nav">
+    <view class="compus_item" wx:for="{{nav_list}}" wx:key="item" bindtap="goDetail" data-index="{{index}}">
+        <image src="{{item.imgUrl}}"></image>
+        <view class="title">{{item.title}}</view>
+    </view>
+</view>    
+
+<!-- 轮播图模块 -->
+
+<swiper class="swiper" autoplay="true" circular="true">
+    <swiper-item class="swiper_item" wx:for="{{swiper_list}}" wx:key="item" bindtap="swiperTap" data-index="{{index}}">
+    <image src="{{item.imageUrl}}"></image>
+    </swiper-item>
+</swiper>
+
+<!-- 数据可视区域 -->
+<view class="data_visualization">
+    <view class="data_vis_item" bindtap="goDetail" data-index="{{2}}">
+        <view class="data_vis_icon">
+        <image src="../../static/public/bianzhu3.png"></image>
+        </view>
+        <view class="data_vis_title">一卡通余额</view>
+        <view class="data_vis_time">{{balanceInfo.time}}</view>
+        <view class="value">{{balanceInfo.money}}</view>
+    </view>
+    <view class="data_vis_item" bindtap="goDetail" data-index="{{1}}">
+        <view class="data_vis_icon">
+        <image src="../../static/public/bianzhu2.png"></image>
+        </view>
+        <view class="data_vis_title">我的借阅</view>
+        <view class="data_vis_time">{{borrowInfo.time}}</view>
+        <view class="value">{{borrowInfo.borrowed}}</view>
+    </view>
+</view>
+
+
+
+

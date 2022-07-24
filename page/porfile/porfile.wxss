@@ -1,0 +1,94 @@
+page{
+background-color: #FAFAFA;
+}
+.image{
+    margin: 0 auto;
+    width: 954rpx;
+    height: 540rpx;
+    text-align: center;
+    margin-top: -18rpx;
+    margin-left: -100rpx;
+}
+.image image{
+    position: relative;
+    z-index: 9;
+    width: 924rpx;
+    height: 100%;
+    border-radius: 50% / 10%;
+}
+/* 第二部分 */
+.info_Bar_back{
+    width: 100%;
+    height: 100rpx;
+    
+    position: relative;
+
+    top: -22rpx;
+}
+.card{
+    position: absolute;
+    top: -20rpx;
+    height: 200rpx;
+    width: 696rpx;
+    margin:0 auto;
+    left:0;
+    right: 0;
+    background-color: rgba(255, 255, 255);
+    border-radius:24rpx;
+    z-index: 11;
+   
+}
+.userAvatarUrl{
+    width: 106rpx;
+    height: 106rpx;
+    border-radius: 106rpx;
+    overflow: hidden;
+    margin: 0 auto;
+    margin-top: -53rpx;
+}
+.userNickName{
+    text-align: center;
+    margin-top: 12rpx;
+    font-size: 36rpx;
+    font-weight: 550;
+}
+
+/* 第三部分 */
+.function{
+
+    width: 696rpx;
+    margin: 0 auto;
+    margin-top: 100rpx;
+    background-color: #fff;
+    border-radius: 24rpx;
+    
+}
+.function_item{
+    width: 100%;
+    height: 120rpx;
+    line-height: 120rpx;
+    position: relative;
+    padding-left: 108rpx;
+    display: flex;
+}
+.funtuion_iamge{
+    position: absolute;
+    top: 32rpx;
+    left: 22rpx;
+    width: 64rpx;
+    height: 64rpx;
+    border-radius: 30rpx;
+    overflow: hidden;
+}
+.funtuion_iamge image{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.right_tip{
+    width: 40rpx;
+    height: 40rpx;
+    position: absolute;
+    top: 50rpx;
+   right: 150rpx;
+}

@@ -1,0 +1,16 @@
+<!-- 第一部分 -->
+
+<view class="student_name">
+        你好：<text>{{studentName}}</text> 同学
+</view>
+<!-- 第二部分 -->
+
+<view class="jww_function">
+    <view class="function_item" wx:for="{{function_list}}" wx:key="item" bindtap="godetail" data-index="{{index}}">
+        <view class="image">
+            <image src="{{item.imgurl}}"></image>    
+        </view>
+        <text class="fn_item_title">{{item.title}}</text>
+        <image class="right_tip" src="../../static/public/xiangyou.png"></image>
+    </view>
+</view>

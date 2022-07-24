@@ -1,0 +1,73 @@
+
+
+<!-- <view id="container"> -->
+
+<!-- <view class="back-contain" style="height: {{menuHeight}}rpx;top: {{menuTop}}rpx;" bindtap="back">
+  <!-- <image class="back" src="../../static/public/back.png"></image> -->
+<!-- </view>  -->
+<!-- 头像选择框 -->
+ <view class="top-bg">
+ <image src="https://www.microjc.top/images/bgimg.jpg" class="bg-img"></image>
+  <view id="imagediv" bindtap="bindchooseimage">
+  <!-- 点击选择图片 -->
+  <image src="../../static/public/add.png" class="add-img"></image>
+      <view class="click-tip" > 点击上传图片</view>
+    <!-- 截取的图片 -->
+    <image class="avatarimg" id="useravatar" wx:if="{{useravatar}}" src="{{useravatar}}" />
+      <!-- 选取的相框 -->
+    <image class="avatarimg" id="activeborder" wx:if="{{useravatar && activeborder}}" src="{{activeborder}}" />
+
+  </view>
+  <!-- <view class="author-wishes">    
+  <view class="author">猪小屁</view>  
+  <view class="wish">雨天因彩虹而多彩,红花因绿叶而美丽</view>
+
+</view> -->
+ </view>
+
+<!--  相框-->
+<scroll-view class="borders-outer" scroll-y="true">
+  <!-- <image class="option-img" src="../../static/public/optionPhotoframe.png"></image> -->
+  <view id="borders" class="{{platform}}">
+      <view class="border" wx:for="{{borders}}" wx:key="url" bindtap="bindSelectBorder" data-index="{{index}}">
+        <image class="borderimg {{item === activeborder ? 'active':''}}" src="{{item}}"/>
+      </view>
+    </view>
+    <view class="border-bottom"></view>
+
+</scroll-view>
+
+<!-- 保存分享按钮 -->
+
+  <view id="export-and-share">
+    <view class="export">
+      <button wx:if="{{exportbtnMode===1}}" disabled="{{!useravatar || !activeborder}}" bindtap='bindExport' type="primary" style="width: 100%;" >保存</button>
+      <button wx:if="{{exportbtnMode===2}}" disabled="true" type="primary" bindtap='bindExport' style="width: 100%;">保存</button>
+      <button wx:if="{{exportbtnMode===3}}" open-type="openSetting" bindtap='openSetting' type="primary" style="width: 100%;">请授权</button>
+    </view>
+    <view class="share">
+   
+      <button class="share-btn" disabled="{{!useravatar || !activeborder}}" open-type="share" type="primary" style="width: 100%;">分享</button>
+      
+    </view>
+  </view>
+
+
+<view wx:if="{{copperload}}" class="{{cropperhidden}}">
+  <image-cropper id="image-cropper"
+    limit_move="{{true}}" disable_rotate="{{true}}" 
+    width="{{300}}" height="{{300}}" pixelRatio="{{pixelRatio}}"
+    disable_ratio="{{true}}"
+    templateSrc = "{{activeborder}}"
+    bindload="bindcropperload" bindimageload="bindcropperloadimage"
+  />
+  <view class="cropper-button">
+      <button bindtap="bindCrop"  class="comfrim">确认</button>
+      <button  bindtap="bindCancelCrop" type="default" class="cancel" >取消</button>
+  </view>
+</view>
+
+
+<!-- 保存分享 -->
+<painter palette="{{savetemplate}}" pixelRatio="{{pixelRatio}}" bind:imgOK="bindSaveImageOk"/>
+<painter palette="{{sharetemplate}}" pixelRatio="{{pixelRatio}}" bind:imgOK="bindShareImageOk"/>

@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "ec-canvas":"../../ec-canvas/ec-canvas"
+  },
+  "navigationBarBackgroundColor": "#8AF081",
+  "navigationBarTitleText": " "
+}

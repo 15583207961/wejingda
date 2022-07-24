@@ -1,0 +1,48 @@
+<view class="nav">
+    <view class="time" bindtap="onDisplayTime">
+      <picker mode="date" value="{{date}}" start="{{currentTime}}" bindchange="bindDateChange">
+    <view class="picker">
+      {{date!=""?date:"2020-2021学年"}}
+    </view>
+  </picker>
+    </view>
+    <view>
+      <picker  class="period" bindchange="bindPickerChange1" value="{{index1}}" range="{{columnsperiod}}">
+    <view class="picker">
+      {{when==""?'第几节课':when}}
+
+    </view>
+  </picker>
+    </view>
+ <view>
+  <picker  class="period" bindchange="bindPickerChange2" value="{{index2}}" range="{{columnwhere}}">
+    <view class="picker">
+      {{where==""?'教学楼':where}}
+    </view>
+  </picker>
+ </view>
+</view>
+
+
+
+<!-- 弹框 -->
+
+<van-calendar show="{{ show }}" bind:close="onCloseTime" bind:confirm="onConfirmTime"  color="rgb(100, 207, 11)" />
+
+
+
+
+<!-- <van-picker wx:if="{{isshowwhere}}" 
+    style="position: fixed; bottom: 0; width: 100%;z-index: 10;"
+  show-toolbar="true"
+  title="教学楼"
+  columns="{{ columnwhere }}"
+  bind:cancel="onCancelwhere"
+  bind:confirm="onConfirmwhere"
+  confirm-button-text="确认并查询"
+/> -->
+
+<view class="KJS_item" wx:for="{{roomsInfoArrayList}}" wx:key="item">
+    <view class="place">{{item.roomName}}</view>
+    <view class="number">{{item.roomSize}} <text>个位置</text> </view>
+</view>

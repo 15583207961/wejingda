@@ -1,0 +1,50 @@
+{
+  "pages":[
+    "page/compus/compus",
+    "page/first/first",
+    "page/jww/jww",
+    "page/tsg/tsg",
+    "page/ykt/ykt",
+    "page/login/login",
+    "page/map/map",
+    "page/photoframe/photoframe",
+    "page/Consdetail/Consdetail",
+    "page/calendar/calendar",
+    "page/mySend/mySend",
+    "page/setting/setting",
+    "page/swiperdetail/swiperdetail",
+    "page/xxcx/xxcx",
+    "page/kjscx/kjscx",
+    "page/porfile/porfile",
+    "page/LostAndFont/LostAndFont",
+    "page/swzlSreach/swzlSreach",
+    "page/swzlAdd/swzlAdd",
+    "page/compusBaseService/compusBaseService",
+    "page/swzlItemDetail/swzlItemDetail",
+    "page/about/about"
+
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle":"black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "selectedColor":"#FFC300",
+    "color":"#A8A8A8",
+    "list": [{
+      "pagePath": "page/compus/compus",
+      "text": "校园",
+      "selectedIconPath":"./static/public/compus1.png",
+      "iconPath": "./static/public/compus.png"
+    
+    },{
+      "pagePath": "page/porfile/porfile",
+      "text": "我的",
+      "selectedIconPath":"./static/public/porfile1.png",
+      "iconPath": "./static/public/porfile.png"
+    }]
+  }
+}

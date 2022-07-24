@@ -1,0 +1,9 @@
+<image class="swzl-detail-headImg" src="{{itemData.headImg}}"></image>
+<view class="swzl-detail-useName">{{itemData.useName}}</view>
+<view class="swzl-detail-sendtime">发布时间： {{itemData.sendTime}}</view>
+<view class="swzl-detail-where">拾取地点： {{itemData.where}}</view>
+<view class="swzl-detail-gettime">拾取时间： {{itemData.getTime}}</view>
+<view class="swzl-detail-descript">拾取时间： {{itemData.descript}}</view>
+
+<image class="swzl-detail-thingImg" src="{{itemData.thingImg}}"></image>
+<button type="primary" class="swzl-deatil-btn" bindtap="connect">练习他</button>

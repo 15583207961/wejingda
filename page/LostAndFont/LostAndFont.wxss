@@ -1,0 +1,38 @@
+page{
+  background-color: #F5F5F5 ;
+}
+.swzl-sreach{
+  width: 702rpx;
+  height: 84rpx;
+  border:6rpx solid #2F9DFF ;
+  border-radius: 16rpx;
+  margin:0 auto;
+  margin-top: 48rpx;
+}
+.swzl-sreach-icon{
+  width: 48rpx;
+  height: 36rpx;
+  object-fit: fill;
+  margin-top: 24rpx;
+  margin-left: 20rpx;
+}
+
+.swzl-add{
+  position: fixed;
+  bottom: 60rpx;
+  right: 60rpx;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 128rpx;
+  background-color: #0E78FF;
+  /* box-shadow: 10rpx 10rpx 20rpx #e0dede,
+              -10rpx 10rpx 20rpx #e0dede,
+              10rpx -10rpx 20rpx #e0dede,
+              -10rpx -10rpx 20rpx #e0dede; */
+ display: flex;
+ align-items: center;
+ justify-content: center;
+  font-size: 80rpx;
+  font-weight: 700;
+  color: #fff;
+}

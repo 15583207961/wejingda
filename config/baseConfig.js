@@ -1,0 +1,1 @@
+export const BaseRequestUrl = "https://81.71.5.8/wejinda/";

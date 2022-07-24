@@ -1,0 +1,13 @@
+<template name="topshow">
+    <view class="topshow" style="background-image: {{linear_gradiebt}};">
+    <view class="col_1">
+        <view class="one">{{title1}}</view>
+        <view> <text class="price">{{number1}}</text> {{text1}}</view>
+    </view>
+
+    <view class="col_2">
+        <view class="one">{{title2}}</view>
+        <view><text class="price">{{number2}}</text>{{text2}}</view>
+    </view>
+   </view>
+</template>

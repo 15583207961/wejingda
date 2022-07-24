@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "waterfall-flow":"../../components/waterfall-flow/waterfall-flow"
+  },
+  "navigationBarTitleText": "失物招领"
+}

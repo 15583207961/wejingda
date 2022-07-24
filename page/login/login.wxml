@@ -1,0 +1,19 @@
+<!-- 图标部分 -->
+
+<view class="icon">
+    <image src="../../static/public/jww.png"></image>
+</view>
+
+<!-- 表单数据 -->
+
+    <input type="number" name="sno" class="sno" data-index="sno" bindinput="getinfo" placeholder="输入账号" bindblur="inputblur"/>
+  
+    <input type="password" name="pwd" class="pwd" data-index="pwd" bindinput="getinfo" placeholder="输入密码（默认身份证后六位）"/>
+
+    <checkbox-group  bindchange="bindChageck">
+        <checkbox class="ckbox" value="cked" checked="{{isSave}}" disabled="{{isSave?false:true}}">{{isSave||dataInfo.sno.length<=0?'记住密码':'不是本地账户，只能临时登录'}}</checkbox>
+    </checkbox-group>
+
+<!-- 页面跳转 -->
+
+<image src="../../static/public/xyb.png" class="go" bindtap="goDetail"></image>

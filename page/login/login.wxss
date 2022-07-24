@@ -1,0 +1,35 @@
+page{
+    padding: 0;
+    margin: 0;
+    box-sizing: content-box;
+}
+
+/* 图标 */
+.icon{
+
+}
+.icon image{
+    width: 124rpx;
+    height: 105rpx;
+    margin-top: 53rpx;
+    margin-left: 307rpx;
+    margin-bottom: 84rpx;
+}
+.sno,.pwd{
+    margin: 0 auto;
+    width: 626rpx;
+    height: 91rpx;
+    background: #F9F9F9;
+    border-radius: 46px;
+    margin-bottom: 21rpx;
+    text-align: center;
+} 
+.ckbox{
+    margin-left: 80rpx;
+    
+}
+.go{
+    width: 98rpx;
+    height: 98rpx;
+    margin: 84rpx 326rpx;
+}

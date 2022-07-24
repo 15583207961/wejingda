@@ -1,0 +1,155 @@
+page{
+    background-color: #FAFAFA;
+}
+
+
+.semester{
+    text-align: center;
+    width: 100%;
+    height: 120rpx;
+    line-height: 120rpx;
+    background-color: #dfdfdfc4;
+    color: #afafaf;
+}
+
+.semester::after{
+    content: "";
+    display: inline-block;
+    height: 0rpx;
+    width: 0rpx;
+    border: 15rpx solid transparent;
+    border-top: 15rpx solid #afafaf;
+   position: relative; 
+    top: 8rpx;
+    left: 20rpx;
+}
+
+.show_van_picker{
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    z-index: 10;
+    animation: showpicker 0.5s linear;
+    animation-fill-mode: forwards;
+}
+.hide_van_picker{
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    animation: hidepicker 0.5s linear;
+    animation-fill-mode: forwards;
+}
+
+@keyframes showpicker{
+    0%{
+        height: 0;
+    }
+    100%{
+        height: 616rpx;
+    }
+}
+@keyframes hidepicker{
+    0%{
+        height: 616rpx;
+    }
+    100%{
+        height: 0;
+    }
+}
+
+.gradeList{
+    width: 100%;
+    margin-top: 21rpx;
+    margin-bottom: 100rpx;
+}
+.grade_item{
+    position: relative;
+    width: 100%;
+    /* height: 77rpx; */
+    overflow: hidden;
+    line-height: 77rpx;
+    font-size: 32rpx;
+    color: #333333 ;
+    padding: 10rpx 28rpx;
+   
+}
+.grade_item2{
+    animation: heightlow 0.5s linear; 
+    animation-fill-mode: forwards;
+}
+@keyframes heightlow{
+    0%{
+        height: 184rpx;
+    }
+    100%{
+        height: 77rpx;
+    }
+}
+.grade_item1{
+    animation: heightlong 0.5s linear;
+    animation-fill-mode: forwards;
+}
+@keyframes heightlong{
+    0%{
+        height: 77rpx;
+    }
+    100%{
+        height: 184rpx;
+    }
+}
+.item_grade{
+    position: absolute;
+    right: 139rpx;
+}
+.item_grade::after{
+    content: "";
+    position: absolute;
+    top: 25rpx;
+    right: -35rpx;
+    width: 15rpx;
+    height: 15rpx;
+    transform: rotate(45deg);
+    border: 4rpx solid #b4b4b4;
+    border-top:0 ;
+    border-left: 0;
+}
+
+.course_info{
+
+  margin-left: -28rpx;
+    width: 100%;
+    height: 120rpx;
+    line-height: 140rpx;
+    padding-left:28rpx ;
+}
+.course_info text{
+    margin-right: 20rpx;
+}
+
+
+/* 考试查询模块 */
+.exam_list{
+    margin-bottom: 30rpx;
+}
+.exam_item{
+    width: 95%;
+    background-color: rgb(67, 231, 136);
+    margin: 0 auto;
+    border-radius: 21rpx;
+    color: #fff;
+    padding: 28rpx;
+    box-sizing: border-box;
+    margin-top: 21rpx;
+}
+.row_1{
+    display: flex;
+    font-size: 40rpx;
+    font-weight: 600rpx;
+}
+.place{
+    text-align: right;
+    flex: 1;
+}
+.studentName,.where,.time{
+    margin:20rpx;
+}

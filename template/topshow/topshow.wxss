@@ -1,0 +1,25 @@
+page{
+    background-color:  #FAFAFA;
+}
+
+.topshow{
+    width: 100%;
+    height: 455rpx;
+    box-sizing: border-box;
+    padding: 49rpx;
+    color: #333333 ;
+    font-size: 28rpx;
+}
+.col_1{
+    margin-bottom: 24rpx;
+}
+
+.topshow .price{
+    font-weight:550 ;
+    font-size: 42rpx;
+    margin-right: 10rpx;
+}
+
+.one{
+    margin-bottom: 10rpx;
+}
