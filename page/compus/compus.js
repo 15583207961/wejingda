@@ -12,7 +12,8 @@ import {
   myToast,
   mySetStorage,
   myRemoveStorage
-} from "../../utils/usePackegeSysFun.js"
+} from "../../utils/usePackegeSysFun.js";
+import {storagename} from "../../config/storageNameconfig.js";
 Page({
   data: {
     headThemebgc: "background-image: linear-gradient(#edf1f7,#edf1f7,#edf1f7,#edf1f7,#fafafa);", //头部背景颜色
@@ -102,8 +103,8 @@ Page({
     new Promise((resolve, rej) => {
       myRequest(path, data, "POST").then(
         res => {
-          if (res.loginStatus !== "登录正常") {
-            myToast(res.loginStatus)
+          console.log("%%%$$$$$$$$$$$$$$$$%,res",res)
+          if (res.msg !== "登录正常") {
             return;
           }
           resolve(res);
@@ -117,7 +118,6 @@ Page({
   // 第一次获取余额
   getBalance(time) {
     myGetStorger("yktInfo").then(res => {
-      console.log("myGetStorgeasasr", res)
       let data = {
         password: res.data.yktpwd,
         username: res.data.yktSno
@@ -131,10 +131,9 @@ Page({
           this.setData({
             balanceInfo: item
           })
-          console.log("------>----->")
           mySetStorage("balanceInfo", item)
         }).catch(err => {
-          console.log("失败了")
+          console.log("失败了",err)
         })
 
     }).catch(err=>{
@@ -144,12 +143,13 @@ Page({
   },
   // 第一次获取借阅
   getBorrow(time) {
-    myGetStorger("tsgInfo").then(res => {
+    myGetStorger(storagename.tsgInfo).then(res => {
       let data = {
         name: res.data.tsgSno,
-        password: res.data.tsgPwd
+        pass: res.data.tsgPwd
       }
-      this.getFirstDate("librarylogin", data).then(res => {
+      this.getFirstDate("librarylogin", data,"POST").then(res => {
+        console.log("res98817718171",res)
         var item = {
           borrowed: res.borrowed,
           time: time
@@ -157,7 +157,9 @@ Page({
         this.setData({
           borrowInfo: item
         })
-        mySetStorage("borrowInfo", item)
+        mySetStorage(storagename.borrowInfo, item)
+      }).catch(err=>{
+        console.log("是啊比了",err)
       })
     }).catch(err=>{
       console.log(err)
@@ -165,21 +167,50 @@ Page({
   },
   onShow() {
     var time = getNowTime()
-    myGetStorger("balanceInfo").then(res => {
+    myGetStorger(storagename.balanceInfo).then(res => {
       console.log("balanceInfo", res)
     }).catch(err => {
       console.log(err)
       this.getBalance(time);
     })
-    myGetStorger("borrowInfo").then(res => {
+    myGetStorger(storagename.borrowInfo).then(res => {
       console.log("borrowInfo", res)
     }).catch(err => {
       this.getBorrow(time)
     })
 
   },
+//启动小程程序，获去openid，请求云端数据。
+getUserInfoFromOpenid(){
+  myGetStorger("openId").then(res=>{
+    console.log("获取openid成功",res);
+    myRequest("getwechatuserinfo?openID="+res.data,{},"POST").then(res=>{
+      console.log("获取成功",res);
+      const {chatID,jwwPass,studentID,tsgPass,yktPass} = res;
+      yktPass&&mySetStorage(storagename.yktInfo,{
+        yktpwd: yktPass,
+        yktSno: studentID
+      });
+      tsgPass&&mySetStorage(storagename.tsgInfo,{
+        tsgSno: studentID,
+        tsgPwd: tsgPass
+      });
+      jwwPass&&mySetStorage(storagename.jwwInfo,{
+        jwwSno:studentID,
+        jwwPwd:jwwPass
+      })
+
+    }).catch(err=>{
+      console.log("获取数据是失败了",err);
+    })
+  }).catch(err=>{
+    console.log("获取本地的openid失败了",err);
+  })
+},
+
   // 获取手机型号
   onLoad(ee) {
+    this.getUserInfoFromOpenid();
     myGetStorger("balanceInfo").then(res => {
       this.setData({
         balanceInfo: res

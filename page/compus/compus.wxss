@@ -10,12 +10,7 @@ page{
     height: 100vh;
     overflow: hidden;
 }
-.scroll-view{
-    /* background-color: red; */
-    /* height: 1460rpx;
-    width: 100%; */
 
-}
 /* 校园页面头部模块 */
 .compus_head{
     width: 100%;
