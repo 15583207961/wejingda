@@ -1,5 +1,4 @@
 import * as echarts from '../../ec-canvas/echarts.js';
-import { InfoGetStroage } from '../../utils/OInfoStroage.js'
 import {
   myNavigatorTo,
   myGetStorger,

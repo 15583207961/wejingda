@@ -79,6 +79,7 @@ Page({
     let openid = this.data.openid
     !openid ? getUserInfos().then(res => {
       mySetStorage(storagename.openId, res.openid).then(res => {
+        console.log("res=====>&",res)
         this.getUserInfoFromOpenid().then(res => this.isHaveLoaclInfo(key, path))
       })
     }).catch(err => {
@@ -114,11 +115,6 @@ Page({
       console.log("huahuahu", path, data)
       myRequest(path, data, "POST").then(
         res => {
-          console.log("huauhahu==================>", path, res)
-          if (res?.msg != "登录正常") {  // 
-            console.log("res" + path, res)
-            return;
-          }
           resolve(res);
         }
       ).catch(err => {
@@ -147,9 +143,6 @@ Page({
             balanceInfo: item
           })
           mySetStorage("balanceInfo", item)
-        }).catch(err => {
-          console.log("***&&&&", res)
-          console.log("失败了", err)
         })
 
     }).catch(err => {
@@ -159,6 +152,8 @@ Page({
   },
   // 第一次获取借阅
   getBorrow(time) {
+
+    console.log("------------------------------1111111111111111111111111-----------------------")
     myGetStorger(storagename.tsgInfo).then(res => {
       let data = {
         name: res.data.tsgSno,
@@ -175,11 +170,9 @@ Page({
           borrowInfo: item
         })
         mySetStorage(storagename.borrowInfo, item)
-      }).catch(err => {
-        console.log("是啊比了-------------------", err)
       })
     }).catch(err => {
-      console.log(err)
+      console.log("errr====>::",err)
     })
   },
   onShow() {
@@ -223,7 +216,7 @@ Page({
           });
           jwwPass && mySetStorage(storagename.jwwInfo, {
             jwwSno: studentID,
-            jwwPwd: jwwPass
+            jwwPwd: jwwPass,
           })
           resolve("ok");
         }).catch(err => {

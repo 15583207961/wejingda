@@ -1,4 +1,4 @@
-import { InfoGetStroage } from '../../utils/OInfoStroage.js';
+
 
 const app = getApp();
 const baseUrl = app.globalData.BaseURL;

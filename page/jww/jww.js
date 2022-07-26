@@ -1,4 +1,5 @@
 
+import { storagename } from "../../config/storageNameconfig.js";
 import {
     myNavigatorTo,
     myGetStorger,
@@ -77,7 +78,7 @@ jwwlogin(sessionId,__VIEWSTATE,sno,pwd){
     }
     console.log("data====>",data)
     myRequest("jwlogin",data,"POST").then(res=>{
-        console.log("登录成功8888187171878=========？》",res)
+        mySetStorage(storagename.jwwInfo,{jwwPwd:pwd,jwwSno:sno,studentName:res.studentName})
         this.setData({
             studentName:res.studentName
         })

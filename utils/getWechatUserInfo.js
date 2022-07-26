@@ -8,9 +8,7 @@ import {
   mySetStorage,
   myRemoveStorage
 } from "./usePackegeSysFun.js"
-import {
-  InfoSetStorage
-} from './OInfoStroage'
+
 const getWechatUserInfo = (charId) => {
   var date = new Date()
   var time = date.getMonth() + 1 + "年" + date.getDate() + "日 " + date.getHours() + ":" + date.getMinutes()

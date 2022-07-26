@@ -44,13 +44,12 @@ Page({
       id: e.currentTarget.dataset.id
     })
     if(e.currentTarget.dataset.id == 1){
-      myShowLoading("查询中...")
-      myRequest("enrollinfo").then(res=>{
+      myRequest("getenroll").then(res=>{
         console.log("res",res)
         this.setData({
-          infoList:res.infoList
+          infoList:res.enrollInfo
         })
-        console.log(this.data.infoList)
+        console.log(this.data.enrollInfo)
       }).catch(err=>{
         myToast("网络异常，请稍后尝试~")
         console.log("err",err)
@@ -83,7 +82,6 @@ Page({
       name: examValue,
       pass: idValue
     }
-    myShowLoading("查询中...")
     myRequest("loginenroll", data,"POST").then(res => {
       console.log("promise", res)
       if (res?.msg) {

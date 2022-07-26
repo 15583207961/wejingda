@@ -4,5 +4,6 @@ export const storagename = {
   borrowInfo:"borrowInfo",//借阅信息
   balanceInfo:"balanceInfo",//一卡通账单详情
   jwwInfo:"jwwInfo",
-  openId:"openId"
+  openId:"openId",
+  chatInfo:"chatInfo"
 }

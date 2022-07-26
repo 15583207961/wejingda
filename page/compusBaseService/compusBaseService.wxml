@@ -56,7 +56,7 @@
  </view>
  <view class="area-content" style="height:{{leftHeight}}rpx">
   <view class="area-column" wx:for="{{infoList}}" wx:key="item">
-      <view wx:for="{{item.typeInfo}}" wx:for-item="item2" wx:key="item">{{item2}}</view>
+      <view wx:for="{{item.name}}" wx:for-item="item2" wx:key="item">{{item2}}</view>
   </view>
  </view>
 </view>

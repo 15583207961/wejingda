@@ -3,15 +3,13 @@
 <view class="icon">
     <image src="../../static/public/jww.png"></image>
 </view>
-
-<!-- 表单数据 -->
-
+<!-- 表单数据 -->   
     <input type="number" name="sno" class="sno" data-index="sno" bindinput="getinfo" placeholder="输入账号" bindblur="inputblur"/>
   
     <input type="password" name="pwd" class="pwd" data-index="pwd" bindinput="getinfo" placeholder="输入密码（默认身份证后六位）"/>
 
     <checkbox-group  bindchange="bindChageck">
-        <checkbox class="ckbox" value="cked" checked="{{isSave}}" disabled="{{choosablle}}">{{isSave||dataInfo.sno.length<=0?'记住密码':'只能临时登录'}}</checkbox>
+        <checkbox class="ckbox" value="cked" checked="{{isSave}}" disabled="{{choosablle}}">{{choosablle?'只能临时登录':'记住密码'}}</checkbox>
     </checkbox-group>
 
 <!-- 页面跳转 -->

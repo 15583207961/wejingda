@@ -1,4 +1,4 @@
-import {InfoGetStroage} from './utils/OInfoStroage'
+
 // app.js
 App({
   onLaunch() {

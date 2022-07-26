@@ -31,15 +31,15 @@ Page({
         hasOpendId: false, //是否有openid
         firstvalue: '', //存储第一的账号
         iscommon: ' ',//判断输入的账号是否是相同
-        choosablle:true
+        choosablle:false
     },
     // 页面加载
     onLoad(e) {
         this.setData({
-            Index: e.index
+            Index: e?.index
         })
         wx.setNavigationBarTitle({
-            title: e.title,
+            title: e?.title,
         })
         this.getlocalInfo();
     },
@@ -75,13 +75,16 @@ Page({
         }).catch(err => {
             console.log(err)
         })
-        myGetStorger("openId").then(res => {
+        myGetStorger(storagename.openId).then(res => {
             console.log("用openid", res)
             this.setData({
                 hasOpendId: res.data?.length > 0,
                 openId: res.data
             })
         }).catch(err => {
+          this.setData({
+            choosablle:true
+          })
             console.log("err", err)
         })
     },
@@ -128,12 +131,24 @@ Page({
         let sno = this.data.dataInfo.sno;
         console.log("openid****************&&&&&======>",openid)
        if(openid&&(jwwInfo||yktInfo||tsgInfo)){
-        if(jwwInfo?.jwwSno==sno||yktInfo?.yktSno==sno||tsgInfo?.tsgSno == sno){
+         console.log("@1")
+         console.log("jwwInfo?.jwwSno",jwwInfo?.jwwSno)
+         console.log("sno",sno)
+          if(jwwInfo?.jwwSno==sno||yktInfo?.yktSno==sno||tsgInfo?.tsgSno == sno){
+              this.setData({
+                    choosablle:false,
+                    isSave:false
+              })
+          return;
+          }
+          wx.showModal({
+            title:"账号提醒",
+            content:"本账号和本微信绑定的账号不是同一个账号！只能做临时登录！如果想改变本微信绑定的账号，请前往 我的->设置->清空云端数据"
+          })
             this.setData({
-                choosablle:false,
-                isSave:true
+                choosablle:true,
+                isSave:false
             })
-        }
        } else if(openid){
            console.log("huahuh=============>111@@")
         this.setData({

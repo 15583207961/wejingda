@@ -46,6 +46,11 @@ background-color: #FAFAFA;
     margin: 0 auto;
     margin-top: -53rpx;
 }
+.userAvatarUrl image{
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
 .userNickName{
     text-align: center;
     margin-top: 12rpx;

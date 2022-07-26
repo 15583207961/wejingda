@@ -1,4 +1,4 @@
-const { InfoGetStroage,InfoSetStorage } = require("../../utils/OInfoStroage")
+
 
 Page({
     data:{

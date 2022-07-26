@@ -157,7 +157,7 @@ page{
 .area-content{
   margin-top: 24rpx;
   display: flex;
-  flex: 1;
+  /* flex: 1; */
   overflow: scroll;
 }
 

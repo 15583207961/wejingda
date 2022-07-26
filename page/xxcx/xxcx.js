@@ -3,8 +3,9 @@ import {
   myGetStorger,
   myRequest,
   myToast,
-} from "../../utils/usePackegeSysFun.js"
-const BaseUrl = getApp().globalData.BaseURL;
+} from "../../utils/usePackegeSysFun.js";
+import { storagename } from "../../config/storageNameconfig.js";
+
 Page({
   data: {
  
@@ -89,6 +90,17 @@ Page({
   },
   // 发送请求获取学期成绩
   getGradeInfo(xn, xq) {
+    let data = {
+      "sessionId": this.data.sessionId,
+      "__VIEWSTATE": this.data.__VIEWSTATE,
+      "studentName": this.data.studentName, //用户真实姓名 
+      "username": this.data.jwwSno,
+      "password": this.data.jwwPwd,
+      "checkCode": "",
+      "xn": xn,
+      "xq": xq
+    }
+    console.log("data===>",data)
     myRequest("getscrodinfo",{
       "sessionId": this.data.sessionId,
       "__VIEWSTATE": this.data.__VIEWSTATE,
@@ -185,11 +197,12 @@ Page({
      })
     })
 
-    myGetStorger("jwwInfo").then(res=>{
+    myGetStorger(storagename.jwwInfo).then(res=>{
+      console.log(res)
         this.setData({
-          studentName: data.studentName,
-          jwwPwd: data.jwwPwd,
-          jwwSno: data.jwwSno
+          jwwPwd: res.data.jwwPwd,
+          jwwSno: res.data.jwwSno,
+          studentName: res.data.studentName,
         })
     }).catch(err=>{
       console.log("err",err);

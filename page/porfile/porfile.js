@@ -1,33 +1,49 @@
-import {InfoGetStroage, InfoSetStorage} from '../../utils/OInfoStroage'
+
 const baseUrl = getApp().globalData.BaseURL
-import {getWechatUserInfo} from '../../utils//getWechatUserInfo'
+import {
+  myNavigatorTo,
+  myGetStorger,
+  myRequest,
+  myToast,
+  mySetStorage,
+  myRemoveStorage
+} from "../../utils/usePackegeSysFun.js";
+import { storagename } from "../../config/storageNameconfig.js";
+import {getUserInfos}  from "../../utils/getUserInfo.js"
 Page({
     data:{
         userInfo:'',
-        hasopenid:false
+        openid:null,
+        appId: "wx8abaf00ee8c3202e",
+        extraData : {
+            id : "419686",
+            customData : {
+                clientInfo: `iPhone OS 10.3.1 / 3.2.0.43 / 0`,
+            }
+        },
+        chatInfo:{}
     },
     // 页面加载
    onShow(){
-    this.hasOpenId()
+    this.getlocalInfo()
    },
-    // 页面加载查看是否有openId
-    hasOpenId(){
-      InfoGetStroage("openId",data=>{
-        console.log("花花胡",data)
-        if(data == -1){
-          this.setData({
-            hasopenid:false
-          })
-        }else{
-          this.setData({
-            hasopenid:true
-          })
-        }
+    // 页面加载查看是否有openId,获取本地数据
+    getlocalInfo(){
+      myGetStorger(storagename.openId).then(res=>{
+        this.setData({
+          openid:res.data
+        })
+      })
+      myGetStorger(storagename.chatInfo).then(res=>{
+        console.log("数据",res);
+        this.setData({
+          chatInfo :res.data
+        })
       })
     },
     // 或本地是否授权过
     isGetOpenId(){
-      if(!this.data.hasopenid){
+      if(!this.data.openid){
         this.getUserProfile()
       }
       else{
@@ -39,61 +55,7 @@ Page({
     },
     //获取用户授权
     getUserProfile(cb){
-      wx.showLoading({
-        title:"加载中."
-      })
-      setTimeout(()=>{
-        wx.hideLoading()
-      },500)
-      wx.getUserProfile({
-          desc: 'MrcoJc完善资料',
-          success:res=>{
-            console.log("头像",res)
-            wx.showLoading({
-              title: '授权登录中...',
-            })
-          
-              wx.login({
-                success:res=>{
-                    var {code} = res
-                    console.log("hellhuahuahuuqgiia>>",res)
-                    console.log("这个是code:",code)
-                    wx.request({
-                      url: baseUrl+'/getopenid?code='+code,
-                      success:res=>{
-                        console.log("获取到的数据",res)
-                        if(res.data?.openid){
-                          wx.hideLoading()
-                          wx.showToast({
-                            title: '登录成功',
-                            icon:"none"
-                          })
-                          InfoSetStorage("openId",res.data.openid)
-                          getWechatUserInfo(res.data.openid)
-                          this.setData({
-                            hasopenid:true
-                          })
-                        }
-                      },
-                      fail:err=>{
-                        wx.hideLoading()
-                        wx.showToast({
-                          title: '登录异常',
-                          icon:'error'
-                        })
-                      }
-                    })
-                },
-                fail:err=>{
-                  wx.hideLoading()
-                  wx.showToast({
-                    title: '登录异常',
-                    icon:"error"
-                  })
-                }
-              })
-          }
-        })
+      
   },
     // 点击复制
     handle_copy(){
@@ -111,18 +73,24 @@ Page({
     },
     // 点击跳转到详情页面
     to_detail(){
-      InfoGetStroage("openId",data=>{
-        if(data == -1){
-          wx.showToast({
-            title: '请先登录账号',
-            icon:"none"
+      if(!this.data.openid){
+        getUserInfos().then(res=>{
+          console.log("res",res)
+          this.setData({
+            openId:res.openid
           })
-          return ;
-        }
+          mySetStorage(storagename.openId,res.openid)
+          wx.navigateTo({
+            url: '../../page/setting/setting',
+          })
+        })
+      }
+      else{
         wx.navigateTo({
           url: '../../page/setting/setting',
         })
-      })
+      }
+
     },
     // 
     
