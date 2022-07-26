@@ -48,7 +48,7 @@ Page({
 // 等待获取__VIEWSTAT和sessionId
 getSessionInfo(){
     myRequest("jwloginbefore").then(res=>{
-        console.log(res=>{
+        
             console.log("res",res)
             this.setData({
                 sessionId: res.sessionId,
@@ -56,27 +56,28 @@ getSessionInfo(){
             })
             mySetStorage("sessionId",res.sessionId);
             mySetStorage("__VIEWSTATE",res.__VIEWSTATE);
-            myGetStorger("jwwInfo").then(res=>{
-                const {jwwSno,jwwPwd} = res.data
-                this.jwwlogin(res.sessionId,this.__VIEWSTATE,jwwSno,jwwPwd)
+            myGetStorger("jwwInfo").then(res2=>{
+                const {jwwSno,jwwPwd} = res2.data
+                this.jwwlogin(res.sessionId,res.__VIEWSTATE,jwwSno,jwwPwd)
             })
         })
-    })
    
 },
 //登录教务网,函数将被第二次登入时调用
 jwwlogin(sessionId,__VIEWSTATE,sno,pwd){
-    myRequest("jwlogin",{
-        "sessionId": sessionId, 
-        "__VIEWSTATE": __VIEWSTATE, 
+    let data ={
         "studentName": "",
         "username": sno, 
         "password": pwd, 
         "checkCode": "",
         "xn": "",
-        "xq": ""
-    },"POST").then(res=>{
-        console.log("登录成功",res)
+        "xq": "", 
+        "sessionId": sessionId, 
+        "__VIEWSTATE": __VIEWSTATE, 
+    }
+    console.log("data====>",data)
+    myRequest("jwlogin",data,"POST").then(res=>{
+        console.log("登录成功8888187171878=========？》",res)
         this.setData({
             studentName:res.studentName
         })

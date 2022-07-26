@@ -3,5 +3,6 @@ export const storagename = {
   tsgInfo:"tsgInfo",//图书馆
   borrowInfo:"borrowInfo",//借阅信息
   balanceInfo:"balanceInfo",//一卡通账单详情
-  jwwInfo:"jwwInfo"
+  jwwInfo:"jwwInfo",
+  openId:"openId"
 }

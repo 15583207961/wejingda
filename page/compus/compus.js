@@ -13,7 +13,8 @@ import {
   mySetStorage,
   myRemoveStorage
 } from "../../utils/usePackegeSysFun.js";
-import {storagename} from "../../config/storageNameconfig.js";
+import { storagename } from "../../config/storageNameconfig.js";
+import { getUserInfos } from "../../utils/getUserInfo.js";
 Page({
   data: {
     headThemebgc: "background-image: linear-gradient(#edf1f7,#edf1f7,#edf1f7,#edf1f7,#fafafa);", //头部背景颜色
@@ -30,7 +31,7 @@ Page({
       borrowed: "",
       time: ''
     },
-
+    openid: null
   },
   // 点击导航栏跳转到对应的详情页面
   goDetail(e) {
@@ -39,22 +40,19 @@ Page({
     })
     this.switchLink(); //选择不同的业务链路
   },
-  // switch 选择跳转
-  switchNarBar(url) {
-    
-  },
+
   //函数跳转到对应的业务链路
   switchLink() {
     switch (this.data.index) { //通过switch选择对应的业务链路
       case 0:
-        this.isHaveLoaclInfo("jwwInfo", this.data.nav_list[0].path);
+        this.hadOpenid("jwwInfo", this.data.nav_list[0].path);
         break;
       //检查是否登录过教务网
       case 1:
-        this.isHaveLoaclInfo("tsgInfo", this.data.nav_list[1].path);
+        this.hadOpenid("tsgInfo", this.data.nav_list[1].path);
         break; //检查是否登录过图书馆账号
       case 2:
-        this.isHaveLoaclInfo("yktInfo", this.data.nav_list[2].path);
+        this.hadOpenid("yktInfo", this.data.nav_list[2].path);
         break; //检查是否登录过一卡通账号
       case 4:
         myNavigatorTo(this.data.nav_list[4].path);
@@ -76,17 +74,29 @@ Page({
     }
   },
 
-
+  // 判断是否有openid，如果没有拉起授权
+  hadOpenid(key, path) {
+    let openid = this.data.openid
+    !openid ? getUserInfos().then(res => {
+      mySetStorage(storagename.openId, res.openid).then(res => {
+        this.getUserInfoFromOpenid().then(res => this.isHaveLoaclInfo(key, path))
+      })
+    }).catch(err => {
+      this.isHaveLoaclInfo(key, path)
+      console.log("获取失败", err)
+    }) : this.isHaveLoaclInfo(key, path)
+  },
 
   // 获取本地数据例如：fwwInfo，YKTInfo，判断是否登录过教务网、一卡通
   isHaveLoaclInfo(key, path) {
+
     myGetStorger(key).then(res => {
       switch (this.data.index) {
         case 0:
-          myNavigatorTo(path+"?index=0");
+          myNavigatorTo(path + "?index=0");
           break;
         case 1:
-          myNavigatorTo(path + "?index=1" );
+          myNavigatorTo(path + "?index=1");
           break;
         case 2:
           myNavigatorTo(`${path}?title=账户详情`);
@@ -100,11 +110,13 @@ Page({
   },
   // 获取一卡通余额，我的借阅
   getFirstDate(path, data) {
-    new Promise((resolve, rej) => {
+    return new Promise((resolve, rej) => {
+      console.log("huahuahu", path, data)
       myRequest(path, data, "POST").then(
         res => {
-          console.log("%%%$$$$$$$$$$$$$$$$%,res",res)
-          if (res.msg !== "登录正常") {
+          console.log("huauhahu==================>", path, res)
+          if (res?.msg != "登录正常") {  // 
+            console.log("res" + path, res)
             return;
           }
           resolve(res);
@@ -117,6 +129,7 @@ Page({
   },
   // 第一次获取余额
   getBalance(time) {
+    console.log("---------")
     myGetStorger("yktInfo").then(res => {
       let data = {
         password: res.data.yktpwd,
@@ -124,20 +137,23 @@ Page({
       }
       this.getFirstDate("yktlogin", data)
         .then(res => {
+          console.log("***&&&&", res)
           var item = {
-            money: res.money,
+            money: res.dadta.money,
             time: time
           }
+          console.log("*****res", res)
           this.setData({
             balanceInfo: item
           })
           mySetStorage("balanceInfo", item)
         }).catch(err => {
-          console.log("失败了",err)
+          console.log("***&&&&", res)
+          console.log("失败了", err)
         })
 
-    }).catch(err=>{
-      console.log("err",err)
+    }).catch(err => {
+      console.log("err", err)
     })
 
   },
@@ -148,8 +164,9 @@ Page({
         name: res.data.tsgSno,
         pass: res.data.tsgPwd
       }
-      this.getFirstDate("librarylogin", data,"POST").then(res => {
-        console.log("res98817718171",res)
+      console.log("data=>====》", data)
+      this.getFirstDate("librarylogin", data, "POST").then(res => {
+        console.log("res98817718171-------------------------------------------", res)
         var item = {
           borrowed: res.borrowed,
           time: time
@@ -158,10 +175,10 @@ Page({
           borrowInfo: item
         })
         mySetStorage(storagename.borrowInfo, item)
-      }).catch(err=>{
-        console.log("是啊比了",err)
+      }).catch(err => {
+        console.log("是啊比了-------------------", err)
       })
-    }).catch(err=>{
+    }).catch(err => {
       console.log(err)
     })
   },
@@ -169,44 +186,56 @@ Page({
     var time = getNowTime()
     myGetStorger(storagename.balanceInfo).then(res => {
       console.log("balanceInfo", res)
+      this.setData({
+        balanceInfo: res.data
+      })
     }).catch(err => {
-      console.log(err)
+      console.log("**&!&!^^!&&!!", err)
       this.getBalance(time);
     })
     myGetStorger(storagename.borrowInfo).then(res => {
       console.log("borrowInfo", res)
+      this.setData({
+        borrowInfo: res.data
+      })
     }).catch(err => {
       this.getBorrow(time)
     })
 
   },
-//启动小程程序，获去openid，请求云端数据。
-getUserInfoFromOpenid(){
-  myGetStorger("openId").then(res=>{
-    console.log("获取openid成功",res);
-    myRequest("getwechatuserinfo?openID="+res.data,{},"POST").then(res=>{
-      console.log("获取成功",res);
-      const {chatID,jwwPass,studentID,tsgPass,yktPass} = res;
-      yktPass&&mySetStorage(storagename.yktInfo,{
-        yktpwd: yktPass,
-        yktSno: studentID
-      });
-      tsgPass&&mySetStorage(storagename.tsgInfo,{
-        tsgSno: studentID,
-        tsgPwd: tsgPass
-      });
-      jwwPass&&mySetStorage(storagename.jwwInfo,{
-        jwwSno:studentID,
-        jwwPwd:jwwPass
+  //启动小程程序，获去openid，请求云端数据。
+  getUserInfoFromOpenid() {
+    return new Promise((resolve, rej) => {
+      myGetStorger("openId").then(res => {
+        console.log("获取openid成功", res);
+        this.setData({
+          openid: res.data
+        })
+        myRequest("getwechatuserinfo?openID=" + res.data, {}, "POST").then(res => {
+          const { chatID, jwwPass, studentID, tsgPass, yktPass } = res;
+          yktPass && mySetStorage(storagename.yktInfo, {
+            yktpwd: yktPass,
+            yktSno: studentID
+          });
+          tsgPass && mySetStorage(storagename.tsgInfo, {
+            tsgSno: studentID,
+            tsgPwd: tsgPass
+          });
+          jwwPass && mySetStorage(storagename.jwwInfo, {
+            jwwSno: studentID,
+            jwwPwd: jwwPass
+          })
+          resolve("ok");
+        }).catch(err => {
+          console.log("获取数据是失败了", err);
+          rej("fail");
+        })
+      }).catch(err => {
+        rej("fail");
+        console.log("获取本地的openid失败了", err);
       })
-
-    }).catch(err=>{
-      console.log("获取数据是失败了",err);
     })
-  }).catch(err=>{
-    console.log("获取本地的openid失败了",err);
-  })
-},
+  },
 
   // 获取手机型号
   onLoad(ee) {
@@ -215,15 +244,15 @@ getUserInfoFromOpenid(){
       this.setData({
         balanceInfo: res
       })
-    }).catch(err=>{
-      console.log("err",err)
+    }).catch(err => {
+      console.log("err", err)
     })
     myGetStorger("borrowInfo").then(res => {
       this.setData({
         borrowInfo: res
       })
-    }).catch(err=>{
-      console.log("err",err)
+    }).catch(err => {
+      console.log("err", err)
     })
   },
   // 点击轮播图跳转详情

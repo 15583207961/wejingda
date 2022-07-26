@@ -52,7 +52,7 @@ Page({
     var info = this.data.info
     info.number1 = borrowed;
     info.number2 = available - borrowed
-    var booksData1 = booksData.map(item => {
+    var booksData1 = booksData?.map(item => {
       item.borrowingTime = item.borrowingTime.split(" ")[0];
       var date = new Date();
       var RTArr = item.returnTime.split("-")
@@ -66,9 +66,6 @@ Page({
   },
   // 获取本地数据，并登录
   tsgLogin() {
-    wx.showLoading({
-      title: '数据加载...',
-    })
     myGetStorger("tsgInfo").then(res => {
       console.log("res", res);
       var { tsgSno, tsgPwd } = res.data;
@@ -77,7 +74,7 @@ Page({
         "pass": tsgPwd
       },"POST").then(res1=>{
         console.log("res1",res1);
-        this.hanleDate(res)
+        this.hanleDate(res1)
       })
     }).catch(err=>{
       console.log("err",err);
