@@ -15,7 +15,8 @@ App({
       },
       yktInfo:{
         yktpwd:"",
-        yktSno:""
+        yktSno:"",
+        state:""
       }
     }
   }

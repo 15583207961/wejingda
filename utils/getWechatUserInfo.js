@@ -1,12 +1,8 @@
-const baseUrl = getApp().globalData.BaseURL
+
 
 import {
-  myNavigatorTo,
-  myGetStorger,
   myRequest,
-  myToast,
   mySetStorage,
-  myRemoveStorage
 } from "./usePackegeSysFun.js"
 
 const getWechatUserInfo = (charId) => {

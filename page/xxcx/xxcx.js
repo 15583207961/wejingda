@@ -112,12 +112,13 @@ Page({
       "xq": xq
     },"POSt").then(res=>{
       console.log("获取成功",res);
-      if(res.scoreInfoArrayList.length==0){
+      const  scoreInfoArrayList = res.data.scoreInfoArrayList
+      if(scoreInfoArrayList.length==0){
         myToast("暂无成绩信息");
         return;
       }
       this.setData({
-        grade_list: res.scoreInfoArrayList
+        grade_list: scoreInfoArrayList
       })
     }).catch(err=>{
       console.log("获取失败",err);
@@ -138,9 +139,10 @@ Page({
       "xq": xq
     },"POST").then(res=>{
       console.log("获取成功",res)
-      if(res.exameinfoArrayList.length){
+      const  exameinfoArrayList = res.data.exameinfoArrayList
+      if(exameinfoArrayList.length){
         this.setData({
-          exam_list: res.exameinfoArrayList
+          exam_list: exameinfoArrayList
         })
         return;
       }
@@ -162,10 +164,11 @@ Page({
       "xn": xn,
       "xq": xq
     },"POST").then(res=>{
+      const exameinfoArrayList = res.data.exameinfoArrayList
       console.log("获取到的参数为",res)
-      if(res.exameinfoArrayList.length){
+      if(exameinfoArrayList.length){
         this.setData({
-          MakeUpExamList: res.exameinfoArrayList
+          MakeUpExamList: exameinfoArrayList
         })
       }
       else{
@@ -207,6 +210,7 @@ Page({
     }).catch(err=>{
       console.log("err",err);
       var jwwInfo = getApp().globalData.UserInfo;
+      console.log("jwwInfo======>3",jwwInfo)
       this.setData({
         studentName: jwwInfo.studentName,
         jwwPwd: jwwInfo.jwwPwd,

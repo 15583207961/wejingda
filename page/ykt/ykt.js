@@ -1,8 +1,6 @@
 
 
 const app = getApp();
-const baseUrl = app.globalData.BaseURL;
-const UserInfo = app.globalData.UserInfo;
 import {
   myNavigatorTo,
   myGetStorger,
@@ -47,6 +45,16 @@ Page({
         limitMoney: limitMoney,
         money: money,
       })
+    }).catch(err=>{
+      const { userName, state, userClass, money, limitMoney } =e;
+      console.log()
+      this.setData({
+        userName: userName,
+        state: state,
+        limitMoney: limitMoney,
+        money: money,
+      })
+      console.log("获取失败了========>4",err)
     })
     myGetStorger("yktInfo").then(res => {
       const { yktpwd, yktSno, state } = res.data;
@@ -56,7 +64,15 @@ Page({
         islose:state == 0
       })
       this.yktlogin(yktpwd, yktSno);
-
+    }).catch(err=>{
+      console.log("err",err);
+      const { yktpwd, yktSno, state } =  getApp().globalData.UserInfo.yktInfo;
+      
+      this.setData({
+        Sno: yktSno,
+        pwd: yktpwd,
+        islose:state == 0
+      })
     })
     wx.setNavigationBarTitle({
       title: "用户详情",
@@ -70,7 +86,7 @@ Page({
     }, "POST").then(
       res => {
         mySetStorage("balanceInfo", res)
-        const { limitMoney, state, userName, money, pwd, Sno } = res;
+        const { limitMoney, state, userName, money, pwd, Sno } = res.data;
         this.setData({
           userName: userName,
           state: state,
@@ -157,7 +173,7 @@ Page({
     },"POST").then(res=>{
       console.log("res",res);
       myToast(res)
-      if (res == "设置成功") {
+      if (res.data == "设置成功") {
         this.setData({
           limitMoney: value,
           ishowpupor: false
@@ -191,8 +207,9 @@ Page({
       state:state
     },"POST").then(res=>{
       console.log("res",res)
-      myToast(res.msg)
-      if(res.state=="successful!"){
+      const {message} = res
+      message&&myToast(message);
+      if(!message){
         let islose = this.data.islose;
         this.setData({
                   islose: !islose,

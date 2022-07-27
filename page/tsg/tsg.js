@@ -73,7 +73,7 @@ Page({
         "pass": tsgPwd
       },"POST").then(res1=>{
         console.log("res1",res1);
-        this.hanleDate(res1)
+        this.hanleDate(res1.data)
       })
     }).catch(err=>{
       console.log("err",err);

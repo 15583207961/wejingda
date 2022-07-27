@@ -16,8 +16,9 @@ export const getUserInfos = () =>{
         mySetStorage(storagename.chatInfo,chatInfo)
           wx.login({
               success: res => {
+                console.log("res===>",res)
                  myRequest("getopenid?code="+res.code,{},"POST").then(res=>{
-                   console.log("成功了",res)
+                   console.log("成功了---------------》2",res)
                      resolve(res)
                  }).catch(err=>{
                    rej(err)

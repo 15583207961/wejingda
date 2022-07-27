@@ -1,5 +1,4 @@
 
-import { getWechatUserInfo } from '../../utils/getWechatUserInfo'
 var app = getApp();
 import {
     myNavigatorTo,
@@ -93,12 +92,13 @@ Page({
     getSessionInfo() {
         myRequest('jwloginbefore').then(res => {
             console.log("data", res)
+            const {sessionId,__VIEWSTATE} = res.data
             this.setData({
-                sessionId: res.sessionId,
-                __VIEWSTATE: res.__VIEWSTATE
+                sessionId: sessionId,
+                __VIEWSTATE: __VIEWSTATE
             })
-            mySetStorage('sessionId', res.sessionId)
-            mySetStorage("__VIEWSTATE", res.__VIEWSTATE)
+            mySetStorage('sessionId', sessionId)
+            mySetStorage("__VIEWSTATE", __VIEWSTATE)
 
         }).catch(err => {
             console.log("fail", err)
@@ -202,15 +202,17 @@ Page({
             "xq": ""
         }, "POST").then(res => {
             console.log("登录成功", res)
-            if (res?.state == "error") {
-                myToast("错误还有" + res.msg.replace(/[^0-9]/g, '') + "机会", "error")
+            if (res.code != 200) {
+                myToast("错误还有" + res.message.replace(/[^0-9]/g, '') + "机会", "error")
                 return;
             }
+            const studentName = res.data.studentName;
             var jwwInfo = {
-                studentName: res.studentName,
+                studentName: studentName,
                 jwwSno: this.data.dataInfo.sno,
                 jwwPwd: this.data.dataInfo.pwd
             }
+            console.log("jwwInfo====>2",jwwInfo)
             if (this.data.isSave) {
                 mySetStorage("jwwInfo", jwwInfo)
                 this.setDataToDB("", this.data.dataInfo.sno, this.data.dataInfo.pwd, "", "", this.data.openId)
@@ -219,10 +221,10 @@ Page({
                 var UserInfo = getApp().globalData.UserInfo;
                 UserInfo.jwwPwd = this.data.dataInfo.pwd;
                 UserInfo.jwwSno = this.data.dataInfo.sno;
-                UserInfo.studentName = res.studentName;
+                UserInfo.studentName = studentName;
                 app.globalData.UserInfo = UserInfo;
             }
-            myRedirectTo(`jww/jww?name=${res.studentName}`)
+            myRedirectTo(`jww/jww?name=${studentName}`)
         }).catch(err => {
             console.log("err", err)
             myToast("网络错误，请稍后尝试")
@@ -235,8 +237,8 @@ Page({
             pass: tsgPwd
         }, "POST").then((res) => {
             console.log("图书馆登录成功", res)
-            if (res?.state == "error") {
-                myToast(res.msg);
+            if (res?.code != 200) {
+                myToast(res.message);
                 return;
             }
             var tsgInfo = {
@@ -247,7 +249,7 @@ Page({
                 mySetStorage("tsgInfo", tsgInfo)
                 this.setDataToDB("", this.data.dataInfo.sno, "", this.data.dataInfo.pwd, "", this.data.openId)
             }
-            var data1 = JSON.stringify(res)
+            var data1 = JSON.stringify(res.data)
             console.log("data1", data1)
             wx.redirectTo({
                 url: "../../page/tsg/tsg?data=" + data1
@@ -260,19 +262,21 @@ Page({
     yktlogin(pwd, Sno) {
         console.log(pwd, Sno)
         myRequest("yktlogin", {
-            password: pwd,
-            username: Sno
-        }).then(res => {
-            if (res.loginStatus != "登录正常") {
-                myToast(res.loginStatus);
+            pass: pwd,
+            name: Sno
+        },"POST").then(res => {
+            if (res?.code != 200) {
+                myToast(res?.message);
                 return;
             }
+            
+            const { limitMoney, state, name, money } = res.data;
+            console.log("limitMoney, state, name, money=====>1",limitMoney, state, name, money)
             const yktInfo = {
                 yktpwd: pwd,
                 yktSno: Sno,
-                state: res.state
+                state: state
             }
-            const { limitMoney, state, userName, money } = res;
             if (this.data.isSave) {
                 this.setDataToDB("", this.data.dataInfo.sno, "", "", this.data.dataInfo.pwd, this.data.openId)
                 mySetStorage("yktInfo", yktInfo)
@@ -282,7 +286,7 @@ Page({
                 UserInfo.yktInfo = yktInfo;
                 app.globalData.UserInfo = UserInfo;
             }
-            myRedirectTo(`ykt/ykt?title=账户详情&limitMoney=${limitMoney}&state=${state}&userName=${userName}&money=${money}&pwd=${pwd}&Sno=${Sno}`)
+            myRedirectTo(`ykt/ykt?title=账户详情&limitMoney=${limitMoney}&state=${state}&userName=${name}&money=${money}&pwd=${pwd}&Sno=${Sno}`)
 
 
         }).catch(err => {

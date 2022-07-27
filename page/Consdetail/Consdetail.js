@@ -132,7 +132,8 @@ Page({
         "start": startdate, 
         "end": enddate 
       },"POST").then(res=>{
-        var recordsInfoArrayList = res.recordsInfoArrayList;
+        console.log("res,res====>1",res)
+        var recordsInfoArrayList = res.data?.recordsInfoArrayList||[];
         this.setData({
           data_list:recordsInfoArrayList?.map(item=>{
             var i = item;
@@ -143,13 +144,14 @@ Page({
 
         if(num == 1 && recordsInfoArrayList?.length>=1){ 
           var info =this.data.info;
-          info.number1=res.spendMoney;
+          info.number1=res.data.spendMoney;
           this.setData({
             info:info,
             data_list:recordsInfoArrayList
           })
         }
       }).catch(err=>{
+        console.log(err)
         myToast("数据查询失败","error")
       })
      
@@ -160,7 +162,7 @@ Page({
         "name": pwd, 
         "pass": sno 
         },"POST").then(res=>{
-          const sevenRecordsInfoArrayList =res.sevenRecordsInfoArrayList
+          const sevenRecordsInfoArrayList =res.data.sevenRecordsInfoArrayList
           let spendMoneyArr = sevenRecordsInfoArrayList.map(item=>{
             return item.spendMoney
           }).reverse()

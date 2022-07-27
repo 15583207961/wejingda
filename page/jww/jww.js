@@ -51,12 +51,13 @@ getSessionInfo(){
     myRequest("jwloginbefore").then(res=>{
         
             console.log("res",res)
+            const {sessionId,__VIEWSTATE} = res.data;
             this.setData({
-                sessionId: res.sessionId,
-                 __VIEWSTATE: res.__VIEWSTATE
+                sessionId: sessionId,
+                 __VIEWSTATE: __VIEWSTATE
             })
-            mySetStorage("sessionId",res.sessionId);
-            mySetStorage("__VIEWSTATE",res.__VIEWSTATE);
+            mySetStorage("sessionId",sessionId);
+            mySetStorage("__VIEWSTATE",__VIEWSTATE);
             myGetStorger("jwwInfo").then(res2=>{
                 const {jwwSno,jwwPwd} = res2.data
                 this.jwwlogin(res.sessionId,res.__VIEWSTATE,jwwSno,jwwPwd)
@@ -78,9 +79,10 @@ jwwlogin(sessionId,__VIEWSTATE,sno,pwd){
     }
     console.log("data====>",data)
     myRequest("jwlogin",data,"POST").then(res=>{
-        mySetStorage(storagename.jwwInfo,{jwwPwd:pwd,jwwSno:sno,studentName:res.studentName})
+        const studentName = res.data.studentName;
+        mySetStorage(storagename.jwwInfo,{jwwPwd:pwd,jwwSno:sno,studentName:studentName})
         this.setData({
-            studentName:res.studentName
+            studentName:studentName
         })
     }).catch(err=>{
         console.log("登录失败了",err)

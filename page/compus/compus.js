@@ -78,7 +78,7 @@ Page({
   hadOpenid(key, path) {
     let openid = this.data.openid
     !openid ? getUserInfos().then(res => {
-      mySetStorage(storagename.openId, res.openid).then(res => {
+      mySetStorage(storagename.openId, res.data.openid).then(res => {
         console.log("res=====>&",res)
         this.getUserInfoFromOpenid().then(res => this.isHaveLoaclInfo(key, path))
       })
@@ -115,7 +115,7 @@ Page({
       console.log("huahuahu", path, data)
       myRequest(path, data, "POST").then(
         res => {
-          resolve(res);
+          resolve(res.data);
         }
       ).catch(err => {
         rej(err)
@@ -133,9 +133,9 @@ Page({
       }
       this.getFirstDate("yktlogin", data)
         .then(res => {
-          console.log("***&&&&", res)
+          console.log("***&&&&----------", res)
           var item = {
-            money: res.dadta.money,
+            money: res.data.money,
             time: time
           }
           console.log("*****res", res)
@@ -204,25 +204,26 @@ Page({
         this.setData({
           openid: res.data
         })
-        myRequest("getwechatuserinfo?openID=" + res.data, {}, "POST").then(res => {
-          const { chatID, jwwPass, studentID, tsgPass, yktPass } = res;
-          yktPass && mySetStorage(storagename.yktInfo, {
-            yktpwd: yktPass,
-            yktSno: studentID
-          });
-          tsgPass && mySetStorage(storagename.tsgInfo, {
-            tsgSno: studentID,
-            tsgPwd: tsgPass
-          });
-          jwwPass && mySetStorage(storagename.jwwInfo, {
-            jwwSno: studentID,
-            jwwPwd: jwwPass,
-          })
-          resolve("ok");
-        }).catch(err => {
-          console.log("获取数据是失败了", err);
-          rej("fail");
-        })
+        // myRequest("getwechatuserinfo?openID=" + res.data, {}, "POST").then(res => {
+        //   console.log("----------------------------1=>",res)
+        //   const { chatID, jwwPass, studentID, tsgPass, yktPass } = res.data;
+        //   yktPass && mySetStorage(storagename.yktInfo, {
+        //     yktpwd: yktPass,
+        //     yktSno: studentID
+        //   });
+        //   tsgPass && mySetStorage(storagename.tsgInfo, {
+        //     tsgSno: studentID,
+        //     tsgPwd: tsgPass
+        //   });
+        //   jwwPass && mySetStorage(storagename.jwwInfo, {
+        //     jwwSno: studentID,
+        //     jwwPwd: jwwPass,
+        //   })
+        //   resolve("ok");
+        // }).catch(err => {
+        //   console.log("获取数据是失败了", err);
+        //   rej("fail");
+        // })
       }).catch(err => {
         rej("fail");
         console.log("获取本地的openid失败了", err);
