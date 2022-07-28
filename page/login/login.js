@@ -130,10 +130,15 @@ Page({
         let openid = this.data.openId;
         let sno = this.data.dataInfo.sno;
         console.log("openid****************&&&&&======>",openid)
-       if(openid&&(jwwInfo||yktInfo||tsgInfo)){
+       if(openid&&(jwwInfo?.jwwSno||yktInfo?.yktSno||tsgInfo?.tsgSno)){
+           console.log(jwwInfo)
+           console.log(yktInfo)
+           console.log(tsgInfo)
          console.log("@1")
          console.log("jwwInfo?.jwwSno",jwwInfo?.jwwSno)
          console.log("sno",sno)
+         console.log("======>###@@",jwwInfo?.jwwSno==sno||yktInfo?.yktSno==sno||tsgInfo?.tsgSno == sno)
+// 
           if(jwwInfo?.jwwSno==sno||yktInfo?.yktSno==sno||tsgInfo?.tsgSno == sno){
               this.setData({
                     choosablle:false,

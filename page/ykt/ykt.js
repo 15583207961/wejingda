@@ -86,14 +86,16 @@ Page({
     }, "POST").then(
       res => {
         mySetStorage("balanceInfo", res)
-        const { limitMoney, state, userName, money, pwd, Sno } = res.data;
+        const { limitMoney, state, name, money, pwd, Sno } = res.data;
         this.setData({
-          userName: userName,
+          userName: name,
           state: state,
           limitMoney: limitMoney,
           money: money,
           islose: state == 0
         })
+        console.log("state",this.data.state)
+        console.log("islose",this.data.islose)
       }
     ).catch(err => {
       console.log("失败了");
@@ -204,7 +206,7 @@ Page({
     myRequest("yktgs",{
       pass:this.data.pwd,
       name:this.data.Sno,
-      state:state
+      state:state==0?1:0
     },"POST").then(res=>{
       console.log("res",res)
       const {message} = res
@@ -213,7 +215,7 @@ Page({
         let islose = this.data.islose;
         this.setData({
                   islose: !islose,
-                  state: !islose?0:1,
+                  state: this.data.state==0?1:0,
                   ishowpupor: false
                 })
       }

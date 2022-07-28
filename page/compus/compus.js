@@ -80,7 +80,7 @@ Page({
     !openid ? getUserInfos().then(res => {
       mySetStorage(storagename.openId, res.data.openid).then(res => {
         console.log("res=====>&",res)
-        this.getUserInfoFromOpenid().then(res => this.isHaveLoaclInfo(key, path))
+        this.getUserInfoFromOpenid().then(res => this.isHaveLoaclInfo(key, path)).catch(err=>this.isHaveLoaclInfo(key, path))
       })
     }).catch(err => {
       this.isHaveLoaclInfo(key, path)
@@ -133,7 +133,7 @@ Page({
       }
       this.getFirstDate("yktlogin", data)
         .then(res => {
-          console.log("***&&&&----------", res)
+          console.log("***&&&&---------->>>>>>>>>>", res)
           var item = {
             money: res.data.money,
             time: time
@@ -152,8 +152,6 @@ Page({
   },
   // 第一次获取借阅
   getBorrow(time) {
-
-    console.log("------------------------------1111111111111111111111111-----------------------")
     myGetStorger(storagename.tsgInfo).then(res => {
       let data = {
         name: res.data.tsgSno,
@@ -177,10 +175,17 @@ Page({
   },
   onShow() {
     var time = getNowTime()
-    myGetStorger(storagename.balanceInfo).then(res => {
-      console.log("balanceInfo", res)
+    myGetStorger(storagename.openId).then(res=>{
       this.setData({
-        balanceInfo: res.data
+        openid:res.data
+      })
+    })
+    myGetStorger(storagename.balanceInfo).then(res => {
+      this.setData({
+        balanceInfo: {
+          money:res.data.data.money,
+          time:time
+        }
       })
     }).catch(err => {
       console.log("**&!&!^^!&&!!", err)
@@ -204,26 +209,30 @@ Page({
         this.setData({
           openid: res.data
         })
-        // myRequest("getwechatuserinfo?openID=" + res.data, {}, "POST").then(res => {
-        //   console.log("----------------------------1=>",res)
-        //   const { chatID, jwwPass, studentID, tsgPass, yktPass } = res.data;
-        //   yktPass && mySetStorage(storagename.yktInfo, {
-        //     yktpwd: yktPass,
-        //     yktSno: studentID
-        //   });
-        //   tsgPass && mySetStorage(storagename.tsgInfo, {
-        //     tsgSno: studentID,
-        //     tsgPwd: tsgPass
-        //   });
-        //   jwwPass && mySetStorage(storagename.jwwInfo, {
-        //     jwwSno: studentID,
-        //     jwwPwd: jwwPass,
-        //   })
-        //   resolve("ok");
-        // }).catch(err => {
-        //   console.log("获取数据是失败了", err);
-        //   rej("fail");
-        // })
+        myRequest("getwechatuserinfo?openID=" + res.data, {}, "POST").then(res => {
+          console.log("----------------------------1=>",res)
+          resolve("ok");
+          if(!res?.data){
+            return ;
+          }
+           const { chatID, jwwPass, studentID, tsgPass, yktPass } = res.data;
+          yktPass && mySetStorage(storagename.yktInfo, {
+            yktpwd: yktPass,
+            yktSno: studentID
+          });
+          tsgPass && mySetStorage(storagename.tsgInfo, {
+            tsgSno: studentID,
+            tsgPwd: tsgPass
+          });
+          jwwPass && mySetStorage(storagename.jwwInfo, {
+            jwwSno: studentID,
+            jwwPwd: jwwPass,
+          })
+          
+        }).catch(err => {
+          console.log("获取数据是失败了", err);
+          rej("fail");
+        })
       }).catch(err => {
         rej("fail");
         console.log("获取本地的openid失败了", err);

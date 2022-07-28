@@ -31,13 +31,13 @@
   </navigator>
 
 
-  <view class="function_item" bindtap="isGetOpenId">
+  <!-- <view class="function_item" bindtap="isGetOpenId">
     <view class="funtuion_iamge">
       <image src="../../static/public/bianzu15.png"></image>
     </view>
     <view class="title">登录账号</view>
     <image class="right_tip" src="../../static/public/xiangyou.png"></image>
-  </view>
+  </view> -->
   <view class="function_item" bindtap="to_detail">
     <view class="funtuion_iamge">
       <image src="../../static/public/bianzu14.png"></image>

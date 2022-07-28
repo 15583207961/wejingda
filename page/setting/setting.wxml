@@ -1,29 +1,15 @@
 <!-- 第一部分 -->
-<view class="item">
-    <view class="title">将数据备份到云端</view>
-    <view class="{{isSave?'switch':'switch switch2'}}" bindtap="handle_switch">
-    <view class=" {{isSave?'clc':'clc clc2'}}"></view>
-    </view> 
+<view class="item" bindtap="clearData">
+    <view class="title">清空云端数据</view>
 </view>
 
 
-<view class="item account" bindtap="handle_update">
-    <view class="title">本地绑定账号：{{firstvalue}}</view>
-</view>
-<view class="firstPage" wx:if="{{isshow}}">
-    <view class="inputfrom">
-        <view class="first_page_title">修改本地账号</view>
-        <view class="input">
-            <input type="text" bindinput="getdata" cursor-spacing="400rpx"/>
-        </view>
-        <view class="bottom">
-            <view class="btn" bindtap="tap_no" style="background-color: rgba(105, 102, 102, 0.61);">取消</view>
-            <view class="btn" bindtap="tap_ok">提交</view>
-        </view>
+
+
+<view class="item about">
+   <view   bindtap="handleAbout">关于</view>
+    <view class="subItem" wx:if="{{showAboutsubItem}}">
+        <view class="clause" bindtap="goDetail" data-type="clause">《We锦大服务条款》</view>
+        <view class="policy"  bindtap="goDetail" data-type="policy">《We锦大隐私政策》</view>
     </view>
-</view>
-
-
-<view class="item about" bindtap="handleAbout">
-    关于
 </view>

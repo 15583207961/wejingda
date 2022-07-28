@@ -47,7 +47,7 @@ Page({
       myRequest("getenroll").then(res=>{
         console.log("res",res)
         this.setData({
-          infoList:res.enrollInfo
+          infoList:res.data.enrollInfo
         })
         console.log(this.data.enrollInfo)
       }).catch(err=>{
@@ -84,14 +84,14 @@ Page({
     }
     myRequest("loginenroll", data,"POST").then(res => {
       console.log("promise", res)
-      if (res?.msg) {
-       myToast(res.msg, "error");
+      if (res?.message) {
+       myToast(res.message, "error");
         return;
       }
       this.setData({
-        enrollInfo: res
+        enrollInfo: res.data
       })
-      mySetStorage("enrollInfo",res)
+      mySetStorage("enrollInfo",res.data)
 
     }).catch(err => {
       console.log("err", err)

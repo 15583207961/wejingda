@@ -46,7 +46,7 @@
             <image src="{{item.shopImage}}"></image>
         </view>
         <view class="merchant">
-            <view class="merchant_name">{{item.machine[3]?item.machine[3]+"-"+item.shop:"同名字"}}</view>
+            <view class="merchant_name">{{item.machine[3]?item.machine[3]+"-"+item.shop:item.type}}</view>
             <view class="merchant_time">{{item.time}}</view>
         </view>
         <view class="merchant_price">-{{item.spentMoney}}</view>

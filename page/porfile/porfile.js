@@ -75,11 +75,11 @@ Page({
     to_detail(){
       if(!this.data.openid){
         getUserInfos().then(res=>{
-          console.log("res",res)
+          console.log("res===>1",res)
           this.setData({
-            openId:res.openid
+            openId:res.data.openid
           })
-          mySetStorage(storagename.openId,res.openid)
+          mySetStorage(storagename.openId,res.data.openid)
           wx.navigateTo({
             url: '../../page/setting/setting',
           })

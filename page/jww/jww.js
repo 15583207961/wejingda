@@ -50,7 +50,7 @@ Page({
 getSessionInfo(){
     myRequest("jwloginbefore").then(res=>{
         
-            console.log("res",res)
+            console.log("res====>***&&&&====>",res)
             const {sessionId,__VIEWSTATE} = res.data;
             this.setData({
                 sessionId: sessionId,
@@ -60,13 +60,14 @@ getSessionInfo(){
             mySetStorage("__VIEWSTATE",__VIEWSTATE);
             myGetStorger("jwwInfo").then(res2=>{
                 const {jwwSno,jwwPwd} = res2.data
-                this.jwwlogin(res.sessionId,res.__VIEWSTATE,jwwSno,jwwPwd)
+                this.jwwlogin(sessionId,__VIEWSTATE,jwwSno,jwwPwd)
             })
         })
    
 },
 //登录教务网,函数将被第二次登入时调用
 jwwlogin(sessionId,__VIEWSTATE,sno,pwd){
+    console.log("****====>1,",sessionId,__VIEWSTATE)
     let data ={
         "studentName": "",
         "username": sno, 
