@@ -1,15 +1,37 @@
 <!-- 第一部分 -->
-<view class="item" bindtap="clearData">
-    <view class="title">清空云端数据</view>
+
+
+<view class="setting-item clear" bindtap="clearData">
+    清除账号信息
 </view>
 
 
-
-
-<view class="item about">
-   <view   bindtap="handleAbout">关于</view>
-    <view class="subItem" wx:if="{{showAboutsubItem}}">
-        <view class="clause" bindtap="goDetail" data-type="clause">《We锦大服务条款》</view>
-        <view class="policy"  bindtap="goDetail" data-type="policy">《We锦大隐私政策》</view>
+<view class="quit-login">
+    <view class="setting-item " bindtap="quitLogin" data-type="jww">
+        退出教务网
     </view>
+    <view class="setting-item " bindtap="quitLogin" data-type="tsg">
+        退出图书馆
+    </view>
+    <view class="setting-item " bindtap="quitLogin" data-type="ykt">
+        退出一卡通
+    </view> 
 </view>
+
+
+<view class="setting-item about" bindtap="goAbout">
+    关于We锦大
+</view>
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,27 +1,20 @@
-import {BaseRequestUrl} from "../../config/baseConfig.js"
+
+import { BaseRequestUrl } from "../../config/baseConfig.js";
+import {
+  myNavigatorTo,
+  myGetStorger,
+  myRequest,
+  myToast,
+  mySetStorage,
+  myRemoveStorage
+} from "../../utils/usePackegeSysFun.js";
 Page({
   data:{
     src:"",
   },
-onLoad(e){
-  console.log(e)
- if(e.type=="clause"){
-   this.setData({
-    src:BaseRequestUrl+"resource/privacy/service.html"
-   })
- } else if(e.type =="policy"){
-    this.setData({
-      src:BaseRequestUrl+"resource/privacy/private.html"
-    })
- }
- wx.setNavigationBarTitle({
-   title: e.type=="clause"?"《We锦大服务条款》":"《We锦大隐私政策》",
- })
-},
-  hanlde(e) {
-    this.setData({
-      id: e.currentTarget.dataset.id
-    })
-   
-  },
+  goWebView(e){
+    var src =e.currentTarget.dataset.type ==="policy"? BaseRequestUrl+"resource/privacy/service.html": BaseRequestUrl+"/resource/privacy/private.html"
+    console.log(src)
+    myNavigatorTo(`/webview/webview?src=${src}`)
+  }
 })

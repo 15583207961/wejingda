@@ -4,7 +4,8 @@ import {
   myRequest,
   myToast,
   mySetStorage,
-  myRemoveStorage
+  myRemoveStorage,
+  myModal
 } from "../../utils/usePackegeSysFun.js";
 import {storagename} from "../../config/storageNameconfig.js"
 
@@ -46,21 +47,39 @@ Page({
         })
       })
   },
-  // 点击取消
 
 
-  // 
-  handleAbout(){
-    this.setData({
-      showAboutsubItem:!this.data.showAboutsubItem
-    })
-    // wx.navigateTo({
-    //   url: "../../page/about/about",
-    // })
-  },
   
-  goDetail(e){
-    console.log("datat",e)
-    myNavigatorTo(`/about/about?type=${e.currentTarget.dataset.type}`)
+  goAbout(){
+    myNavigatorTo(`/about/about`)
+  },
+
+  // 退出登录
+  quitLogin(e){
+   var quitLoginFlag =  getApp().globalData.quitLoginFlag;
+    let typeName = {
+      jww:"教务网",
+      tsg:"图书馆",
+      ykt:"一卡通"
+    }
+    let type = e.currentTarget.dataset.type
+    myModal("警告",`确认退出${typeName[type]}账号登录`).then(res=>{
+      if(res.confirm){
+        switch(type){
+          case "jww":
+            quitLoginFlag.jww =true;
+            myRemoveStorage(storagename.jwwInfo)
+            break;
+          case "ykt":
+            quitLoginFlag.ykt= true;
+            myRemoveStorage(storagename.yktInfo)
+            break;
+          case "tsg":
+            quitLoginFlag.tsg = true;
+            myRemoveStorage(storagename.tsgInfo);
+            break;
+        }
+      }
+    })
   }
 })

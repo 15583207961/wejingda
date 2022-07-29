@@ -129,6 +129,12 @@
           "pathName": "page/setting/setting",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "page/about/about",
+          "query": "",
+          "scene": null
         }
       ]
     }

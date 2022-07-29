@@ -1,0 +1,11 @@
+Page({
+  data:{
+    src:null
+  },
+  onLoad(e){
+    console.log(e)
+    this.setData({
+      src:e.src
+    })
+  }
+})

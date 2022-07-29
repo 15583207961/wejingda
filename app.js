@@ -5,8 +5,7 @@ App({
 
   },
   globalData: {
-    userInfo: null,
-    BaseURL:"https://www.microjc.top/microjc/",
+    // userInfo: null,
     UserInfo:{
       jwwInfo:{
         jwwPwd:"",
@@ -18,6 +17,11 @@ App({
         yktSno:"",
         state:""
       }
+    },
+    quitLoginFlag:{
+      jww:false,
+      ykt:false,
+      tsg:false
     }
   }
 })

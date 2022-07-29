@@ -19,8 +19,11 @@
     "page/LostAndFont/LostAndFont",
     "page/swzlSreach/swzlSreach",
     "page/swzlAdd/swzlAdd",
+    "page/compusSservicecall/compusSservicecall",
     "page/compusBaseService/compusBaseService",
     "page/swzlItemDetail/swzlItemDetail",
+    "page/webview/webview",
+    "page/enroll/enroll",
     "page/about/about"
 
   ],

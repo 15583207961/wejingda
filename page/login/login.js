@@ -10,6 +10,7 @@ import {
     myRedirectTo
 } from "../../utils/usePackegeSysFun.js";
 import { storagename } from "../../config/storageNameconfig.js";
+const quitLoginFlag = getApp().globalData.quitLoginFlag;
 Page({
     data: {
         dataInfo: {
@@ -34,6 +35,7 @@ Page({
     },
     // 页面加载
     onLoad(e) {
+        console.log("res==================>***&&&12,2221====-------------->",e?.index)
         this.setData({
             Index: e?.index
         })
@@ -46,33 +48,42 @@ Page({
         if (this.data.Index == 0) {
             this.getSessionInfo();//页面加载等待获取会话id
         }
+      
     },
     //页面加载获取本地数据一卡通，图书馆，教务网
     getlocalInfo() {
-        myGetStorger(storagename.jwwInfo).then(res => {
+        !quitLoginFlag.jww ? myGetStorger(storagename.jwwInfo).then(res => {
             console.log("resjwwInfo===>", res)
             this.setData({
                 jwwInfo:res.data
             })
         }).catch(err => {
             console.log("jwwInfo", err)
-            
+        }):this.setData({
+            choosablle:true,
+            isSave:false
         })
-        myGetStorger(storagename.yktInfo).then(res => {
+        !quitLoginFlag.ykt?myGetStorger(storagename.yktInfo).then(res => {
             console.log("resyktinfo==>", res)
             this.setData({
                 yktInfo:res.data
             })
         }).catch(err => {
                 console.log("err", err)
+        }):this.setData({
+            choosablle:true,
+            isSave:false
         })
-        myGetStorger(storagename.tsgInfo).then(res => {
+        !quitLoginFlag.tsg?myGetStorger(storagename.tsgInfo).then(res => {
             console.log("restsg===>", res)
             this.setData({
                 tsgInfo:res.data
             })
         }).catch(err => {
             console.log(err)
+        }):this.setData({
+            choosablle:true,
+            isSave:false
         })
         myGetStorger(storagename.openId).then(res => {
             console.log("用openid", res)
@@ -131,14 +142,6 @@ Page({
         let sno = this.data.dataInfo.sno;
         console.log("openid****************&&&&&======>",openid)
        if(openid&&(jwwInfo?.jwwSno||yktInfo?.yktSno||tsgInfo?.tsgSno)){
-           console.log(jwwInfo)
-           console.log(yktInfo)
-           console.log(tsgInfo)
-         console.log("@1")
-         console.log("jwwInfo?.jwwSno",jwwInfo?.jwwSno)
-         console.log("sno",sno)
-         console.log("======>###@@",jwwInfo?.jwwSno==sno||yktInfo?.yktSno==sno||tsgInfo?.tsgSno == sno)
-// 
           if(jwwInfo?.jwwSno==sno||yktInfo?.yktSno==sno||tsgInfo?.tsgSno == sno){
               this.setData({
                     choosablle:false,
@@ -155,8 +158,12 @@ Page({
                 isSave:false
             })
        } else if(openid){
-           console.log("huahuh=============>111@@")
-        this.setData({
+        let name = ["jww","tsg","ykt"]
+        console.log("!quitLoginFlag[name[this.data.index]]",!quitLoginFlag[name[this.data.Index]])
+        console.log("name[this.data.index]",name[this.data.Index])
+        console.log("this.data.index",this.data.Index)
+        console.log("quitLoginFlag",quitLoginFlag)
+        !quitLoginFlag[name[this.data.Index]] &&this.setData({
             choosablle:false,
             isSave:true
         })
@@ -168,7 +175,16 @@ Page({
     },
     // 跳转到下一个页面
     goDetail() {
-        this.to()
+        console.log(this.data.sessionId)
+        if(this.data.index==0){
+            !this.data.sessionId||!this.data.__VIEWSTATE?this.getSessionInfo()?.then(res=>{
+                console.log("------>res1",res)
+                this.to()
+            }):this.to()
+            return;
+        }
+        this.to();
+       
     },
 
     // 页面跳转

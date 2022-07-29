@@ -51,7 +51,11 @@
   "compileType": "miniprogram",
   "libVersion": "2.19.4",
   "projectname": "MicroJc",
-  "appid": "wxd611dcaed8d0a48d",
+  "appid": "wx04b548d5403df6a3",
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 2
+  },
   "condition": {
     "search": {
       "list": []
@@ -71,9 +75,5 @@
     "miniprogram": {
       "list": []
     }
-  },
-  "editorSetting": {
-    "tabIndent": "insertSpaces",
-    "tabSize": 2
   }
 }

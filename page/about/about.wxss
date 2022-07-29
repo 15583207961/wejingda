@@ -1,33 +1,79 @@
 page{
   background-color: #F5F5F5;
   height: 100vh;
-  display: flex;
-  flex-direction: column;
 }
-.nav-bar{
-  width: 100vw;
-  height: 80rpx;
-  display: flex;
-  align-items: center;
-  background-color: #fff;
+
+.about-logo{
+  width: 240rpx;
+  height: 240rpx;
+  display: block;
+  margin: 0 auto;
+  margin-top: 106rpx;
+  margin-bottom: 24rpx;
 }
-.query,.area{
-  flex: 1;
-  text-align: center;
+.company-name{
   font-size: 32rpx;
   font-weight: normal;
+ text-align: center;
+  color: #333333;
+  margin-bottom: 30rpx;
 }
-.spilte{
-  width: 1rpx;
-  height: 54rpx;
-  background-color: #9797974f;
-  /* border: 1rpx solid #9797974f; */
+.version{
+  text-align: center;
+  font-size: 28rpx;
+ font-weight: normal;
+ color: #333333;
+ margin-bottom: 54rpx;
 }
-.selected{
-  color: #3B8DF6;
-}
-.web-view{
-  width: 100vw;
-  padding: 48rpx;
+
+.info-item{
+  width: 686rpx;
+  height: 108rpx;
+  background-color: #fff;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 32rpx;
   box-sizing: border-box;
+  
+}
+.about-info{
+  display: inline-block;
+  border-radius: 16rpx;
+  overflow: hidden;
+  margin-left: 32rpx;
+}
+.info-item::after{
+  position: absolute;
+  right: 32rpx;
+  top: 44rpx;
+  content: "";
+  display: block;
+  width: 20rpx;
+  height: 20rpx;
+  border: 4rpx rgb(178,178,178) solid;
+  border-radius: 5rpx  ;
+  border-left: 0;
+  border-bottom: 0;
+  transform: rotate(45deg);
+}
+.policy{
+  display: flex;
+  position: fixed;
+  bottom: 76rpx;
+  justify-content: center;
+  width: 100%;
+  font-size: 28rpx;
+  color: #0A7AFF;
+}
+.policy view {
+  color: #004BAC;
+}
+.copy{
+  position: fixed;
+  bottom: 26rpx;
+  text-align: center;
+  color: #333;
+  width: 100%;
+  font-size: 16rpx;
 }

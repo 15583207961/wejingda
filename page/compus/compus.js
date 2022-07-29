@@ -15,6 +15,7 @@ import {
 } from "../../utils/usePackegeSysFun.js";
 import { storagename } from "../../config/storageNameconfig.js";
 import { getUserInfos } from "../../utils/getUserInfo.js";
+const quitLoginFlag = getApp().globalData.quitLoginFlag;
 Page({
   data: {
     headThemebgc: "background-image: linear-gradient(#edf1f7,#edf1f7,#edf1f7,#edf1f7,#fafafa);", //头部背景颜色
@@ -45,14 +46,16 @@ Page({
   switchLink() {
     switch (this.data.index) { //通过switch选择对应的业务链路
       case 0:
-        this.hadOpenid("jwwInfo", this.data.nav_list[0].path);
+      
+        console.log("quitLoginFlag.jww",quitLoginFlag.jww,quitLoginFlag)
+        quitLoginFlag.jww? myNavigatorTo(`/login/login?index=${this.data.index}&title=${this.data.nav_list[this.data.index].title}登录`):this.hadOpenid("jwwInfo", this.data.nav_list[0].path);
         break;
       //检查是否登录过教务网
       case 1:
-        this.hadOpenid("tsgInfo", this.data.nav_list[1].path);
+        quitLoginFlag.tsg?myNavigatorTo(`/login/login?index=${this.data.index}&title=${this.data.nav_list[this.data.index].title}登录`):this.hadOpenid("tsgInfo", this.data.nav_list[1].path);
         break; //检查是否登录过图书馆账号
       case 2:
-        this.hadOpenid("yktInfo", this.data.nav_list[2].path);
+        quitLoginFlag.ykt?myNavigatorTo(`/login/login?index=${this.data.index}&title=${this.data.nav_list[this.data.index].title}登录`):this.hadOpenid("yktInfo", this.data.nav_list[2].path)
         break; //检查是否登录过一卡通账号
       case 4:
         myNavigatorTo(this.data.nav_list[4].path);
@@ -78,10 +81,11 @@ Page({
   hadOpenid(key, path) {
     let openid = this.data.openid
     !openid ? getUserInfos().then(res => {
-      mySetStorage(storagename.openId, res.data.openid).then(res => {
+      console.log("res======>#",res)
+      res.data?.openid?mySetStorage(storagename.openId, res.data?.openid).then(res => {
         console.log("res=====>&",res)
         this.getUserInfoFromOpenid().then(res => this.isHaveLoaclInfo(key, path)).catch(err=>this.isHaveLoaclInfo(key, path))
-      })
+      }): this.isHaveLoaclInfo(key, path)
     }).catch(err => {
       this.isHaveLoaclInfo(key, path)
       console.log("获取失败", err)

@@ -26,35 +26,17 @@ const navBars =  [{
   path:"/ykt/ykt",
   title: "一卡通"
 },{
-  imgUrl: "../../static/public/rili.png",
-  path:"/calendar/calendar",
-  title: "校历"
-},  {
-  imgUrl: "../../static/public/map.png",
-  path:"/map/map",
-  title: "地图"
-},
-{
   imgUrl: "../../static/public/photo.png",
-  path:"/photoframe/photoframe",
-  title: "校庆头像"
-},
-{
-  imgUrl: "../../static/public/swzl.png",
-  path:"/LostAndFont/LostAndFont",
-  title: "失物招领"
+  path:"/compusBaseService/compusBaseService",
+  title: "掌上服务"
 }, {
   imgUrl: "../../static/public/xzcs.png",
-  path:"/compusBaseService/compusBaseService",
+  path:"/enroll/enroll",
   title: "录取查询"
 }, {
-  imgUrl: "../../static/public/ykt.png",
-  path:"/jww/jww",
-  title: "饮水卡"
-}, {
   imgUrl: "../../static/public/kd.png",
-  path:"/jww/jww",
-  title: "代取快递"
+  path:"/LostAndFont/LostAndFont",
+  title: "失物招领"
 }
 ]
 

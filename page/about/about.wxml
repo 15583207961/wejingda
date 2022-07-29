@@ -1,3 +1,28 @@
-<view>
-<web-view class="web-view" src="{{src}}"></web-view>
+
+<!-- 图标 logo-->
+<image src="../../static/public/wejinda.png" alt="logo" class="about-logo"></image>
+<view class="company-name">We锦大</view>
+<view class="version">V 1.0</view>
+
+<view class="about-info">
+    <view class="info-item ">
+      版本更新
+    </view>
+    <view class="info-item ">
+      功能介绍
+    </view>
+    <view class="info-item ">
+      官网
+    </view>
+    <view class="info-item ">
+      反馈
+    </view>
 </view>
+
+
+<view class="policy">
+   <view bindtap="goWebView" data-type="policy"> 《服务协议》 </view> | 
+   <view  bindtap="goWebView" data-type="private"> 《隐私政策》</view>
+</view>
+
+<view class="copy">Copyright @ 2022-2022 青白江游同学网络工作室 All Rights Reserved.</view>

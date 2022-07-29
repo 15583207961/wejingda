@@ -108,7 +108,22 @@ import {getResourceUrl} from "./useHandle.js"
       })
     })
   }
+// 封装Modal
+  const myModal = (title,content)=>{
+    return new Promise((resovle,rej)=>{
+      wx.showModal({
+        title:title,
+        content:content,
+        success:res=>{
+          resovle(res)
+        },
+        fail:err=>{
+          rej(err)
+        }
+      })
+    })
+  }
 
 module.exports = {
-  myGetStorger,mySetStorage,myRequest,myShowLoading,myToast,myNavigatorTo,myRemoveStorage,myRedirectTo
+  myGetStorger,mySetStorage,myRequest,myShowLoading,myToast,myNavigatorTo,myRemoveStorage,myRedirectTo,myModal
 }

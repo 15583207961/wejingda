@@ -1,0 +1,39 @@
+<view class = "nav-bar">
+  <view class="{{id==0?'query selected':'query'}}" bindtap="hanlde" data-id="0">学院</view>
+  <view class="spilte"></view>
+  <view class="{{id==1?'area selected':'area'}}"  bindtap="hanlde" data-id="1">部门</view>
+</view>
+
+<view class="container">
+ <view class="item" bindtap="call" data-phone="15583207961">
+  <image src="../../static/public/headpic.png" class="headpic" alt="头像"></image>
+  <view class="name">计算机与软件学院</view>
+  <view class="phone">15583207961</view>
+ </view>
+ <view class="item">
+  <image src="../../static/public/headpic.png" class="headpic" alt="头像"></image>
+  <view class="name">计算机与软件学院</view>
+  <view class="phone">028-87580272</view>
+ </view>
+ <view class="item">
+  <image src="../../static/public/headpic.png" class="headpic" alt="头像"></image>
+  <view class="name">计算机与软件学院</view>
+  <view class="phone">028-87580272</view>
+ </view>
+ <view class="item">
+  <image src="../../static/public/headpic.png" class="headpic" alt="头像"></image>
+  <view class="name">计算机与软件学院</view>
+  <view class="phone">028-87580272</view>
+ </view>
+ <view class="item">
+  <image src="../../static/public/headpic.png" class="headpic" alt="头像"></image>
+  <view class="name">计算机与软件学院</view>
+  <view class="phone">028-87580272</view>
+ </view>
+ <view class="item">
+  <image src="../../static/public/headpic.png" class="headpic" alt="头像"></image>
+  <view class="name">计算机与软件学院</view>
+  <view class="phone">028-87580272</view>
+ </view>
+ 
+</view>

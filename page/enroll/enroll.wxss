@@ -1,0 +1,167 @@
+page{
+  background-color: #F5F5F5;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.nav-bar{
+  width: 100vw;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+}
+.query,.area{
+  flex: 1;
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: normal;
+}
+.spilte{
+  width: 1rpx;
+  height: 54rpx;
+  background-color: #9797974f;
+  /* border: 1rpx solid #9797974f; */
+}
+.selected{
+  color: #3B8DF6;
+}
+
+
+
+/* 查询模块 */
+
+.query-module{
+  width: 100vw;
+  padding: 32rpx;
+  box-sizing: border-box;
+  font-size: 32rpx;
+  color: #333;
+}
+.exam-num,.Id-num{
+  margin: 23rpx 0 68rpx 0;
+  width: 686rpx;
+  border-radius: 16rpx;
+  border: 3rpx solid #006FFF;
+  background-color: #fff;
+  height: 88rpx;
+  padding-left: 29rpx;
+  box-sizing: border-box;
+}
+.Id-num{
+  margin-bottom: 30rpx;
+}
+.hint-item{
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  font-weight: normal;
+  color: rgb(129, 129, 129);
+  margin-bottom: 16rpx;
+}
+.hint-item::before{
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: 6rpx solid rgb(129, 129, 129);
+  border-radius: 10rpx;
+  margin-right: 14rpx;
+}
+
+.query-btn{
+  color: #fff;
+  background-color: #006FFF;
+  font-size: 40rpx;
+  margin-top: 60rpx;
+}
+
+/* 登录成功模块 */
+
+.enroll{
+  width: 100vw;
+  padding: 32rpx;
+  box-sizing: border-box;
+}
+.enroll-top{
+  display: flex;
+  align-items: center;
+}
+.enroll-top-left{
+  width: 156rpx;
+  font-size: 52rpx;
+  color: #333333;
+  margin-right: 288rpx;
+  line-height: 80rpx;
+}
+.right-icon{
+  width: 241rpx;
+  height: 328rpx;
+  object-fit: fill;
+}
+.enroll-info{
+  width: 100%;
+  background-color: #fff;
+  height: 344rpx;
+  padding: 48rpx;
+  box-sizing: border-box;
+  border-radius: 16rpx;
+  color: #333;
+  font-size: 36rpx;
+}
+.enroll-info view{
+  margin-bottom: 48rpx;
+}
+.enroll-info text{
+ margin-left: 32rpx;
+ font-size: 32rpx;
+}
+
+/* 地区查询 */
+.area-module{
+  width: 100vw;
+  flex: 1;
+  background-color: #fff;
+  margin-top: 8rpx;
+  padding: 32rpx;
+  padding-top: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.area-title{
+  width: 100%;
+  height: 108rpx;
+  display: flex;
+  border-bottom: 1rpx solid #9797973d;
+}
+.area-title view{
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.area-column{
+  flex: 1;
+  align-items:flex-start;
+  display: flex;
+  flex-direction:column ;
+  align-items: center;
+}
+.area-column view{
+  font-size: 32rpx;
+  font-weight: normal;
+  color: #333333;
+  margin-bottom: 32rpx;
+}
+.area-content{
+  margin-top: 24rpx;
+  display: flex;
+  /* flex: 1; */
+  overflow: scroll;
+}
+
+.padding-bottom{
+  width: 100%;
+  height: 60rpx;
+}

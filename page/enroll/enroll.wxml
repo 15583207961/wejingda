@@ -1,0 +1,62 @@
+<!--  -->
+<view class = "nav-bar">
+  <view class="{{id==0?'query selected':'query'}}" bindtap="hanlde" data-id="0">查询</view>
+  <view class="spilte"></view>
+  <view class="{{id==1?'area selected':'area'}}"  bindtap="hanlde" data-id="1">地区</view>
+</view>
+
+
+<!-- 查询模块代码 -->
+
+<view class="query-module" wx:if="{{!enrollInfo && id==0}}">
+    考生号
+    <input class="exam-num" bindinput="hanldeInputValue" data-type="exam"/>
+    身份证号
+    <input class="Id-num" bindinput="hanldeInputValue" data-type="id"/>
+    <view class="hints">
+      <view class="hint-item">
+       广东考生请在考生号前面加上2244
+      </view>
+      <view class="hint-item">
+        最终录取结果以当地招生办为准
+      </view>
+      <view class="hint-item">
+        身份证尾号为大写X
+      </view>
+    </view>
+
+    <button class="query-btn" bindtap="handleQuery">查询</button>
+</view>
+
+
+<!-- 录取成功模块 -->
+
+<view class="enroll" wx:if="{{enrollInfo && id==0}}">
+    <view class="enroll-top">
+      <view class="enroll-top-left">
+      恭喜！{{enrollInfo.name[0]}}同学
+      </view>
+      <image src="https://81.71.5.8/app/img/enroll.png" class="right-icon" alt="图片"/>
+    </view>
+
+    <view class="enroll-info">
+      <view class="name">姓名<text>{{enrollInfo.name}}</text></view>
+      <view class="zy">专业名称<text>{{enrollInfo.zy}}</text></view>
+      <view class="xz">层次/学制<text>{{enrollInfo.xz}}</text></view>
+    </view>
+    <button class="query-btn" open-type="share">分享</button>
+</view>
+
+
+<!-- 地区查询 -->
+
+<view class="area-module" wx:if="{{id==1}}">
+ <view class="area-title">
+  <view wx:for="{{infoList}}" wx:key="item">{{item.type}}</view>
+ </view>
+ <view class="area-content" style="height:{{leftHeight}}rpx">
+  <view class="area-column" wx:for="{{infoList}}" wx:key="item">
+      <view wx:for="{{item.name}}" wx:for-item="item2" wx:key="item">{{item2}}</view>
+  </view>
+ </view>
+</view>
