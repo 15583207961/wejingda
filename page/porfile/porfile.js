@@ -14,13 +14,6 @@ Page({
     data:{
         userInfo:'',
         openid:null,
-        appId: "wx8abaf00ee8c3202e",
-        extraData : {
-            id : "419686",
-            customData : {
-                clientInfo: `iPhone OS 10.3.1 / 3.2.0.43 / 0`,
-            }
-        },
         chatInfo:{}
     },
     // 页面加载

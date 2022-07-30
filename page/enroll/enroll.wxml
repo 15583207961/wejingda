@@ -4,7 +4,7 @@
   <view class="spilte"></view>
   <view class="{{id==1?'area selected':'area'}}"  bindtap="hanlde" data-id="1">地区</view>
 </view>
-
+<view class="splite-line"></view>
 
 <!-- 查询模块代码 -->
 

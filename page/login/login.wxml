@@ -1,17 +1,32 @@
 <!-- 图标部分 -->
 
-<view class="icon">
-    <image src="../../static/public/jww.png"></image>
+<view class="icon-top">
+<view class="titleTop" style="height: {{titleHeight}}rpx;top: {{titleTop}}rpx;">
+    <image class="backImage" src="../../static/public/icon_back(1).png" bindtap="goback"></image>
+    {{pageTitle}}
 </view>
-<!-- 表单数据 -->   
-    <input type="number" name="sno" class="sno" data-index="sno" bindinput="getinfo" placeholder="输入账号" bindblur="inputblur"/>
-  
-    <input type="password" name="pwd" class="pwd" data-index="pwd" bindinput="getinfo" placeholder="输入密码（默认身份证后六位）"/>
+    <image src="../../static/public/headpicLogin.png" class="login-headpic"></image>
+</view>
+<!-- 表单数据 -->
+<view class="content">
 
-    <checkbox-group  bindchange="bindChageck">
-        <checkbox class="ckbox" value="cked" checked="{{isSave}}" disabled="{{choosablle}}">{{choosablle?'只能临时登录':'记住密码'}}</checkbox>
-    </checkbox-group>
+    <input type="number" name="sno" class="sno" data-index="sno" bindinput="getinfo" placeholder="输入账号" bindblur="inputblur" />
 
-<!-- 页面跳转 -->
+    <input type="password" name="pwd" class="pwd" data-index="pwd" bindinput="getinfo" placeholder="密码" />
 
-<image src="../../static/public/xyb.png" class="go" bindtap="goDetail"></image>
+
+
+    <!-- 页面跳转 -->
+
+    <view class="protocol">
+        <image src="{{argeeProtol?selectedIcon:icon}}" class="protocol-src" bindtap="bindProtocol"></image>
+        已同意
+        <view bindtap="goWebview" data-type="protocol">《服务协议》</view>
+        及<view bindtap="goWebview" data-type="private">《隐私政策》</view>
+    </view>
+    <view class="autoLogin" bindtap="bindChageck">
+        <image src="{{isSave?selectedIcon:icon}}" class="protocol-src"></image>
+        自动登陆
+    </view>
+    <button class="goBtn" bindtap="goDetail">登录</button>
+</view>

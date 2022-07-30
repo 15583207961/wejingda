@@ -10,19 +10,19 @@ import {
 Page({
     data:{
         function_list:[{
-            imgurl:"../../static/public/bianzu7.png",
+            imgurl:"cj",
             color:"#fdc021",
             title:"成绩查询"
         },{
-            imgurl:"../../static/public/bianzu8.png",
+            imgurl:"ks",
             color:"#1296db",
             title:"考试查询"
         },{
-            imgurl:"../../static/public/bianzu9.png",
+            imgurl:"bk",
             color:"#ffda44",
             title:"补考查询"
         },{
-            imgurl:"../../static/public/bianzu10.png",
+            imgurl:"kjs",
             color:"#1296db",
             title:"空教室查询"
         }

@@ -8,8 +8,6 @@ const swiperList = [{
 }, {
   imageUrl: getResourceUrl("resource/img/swapper_3.png")
 }]
-
-
 //导航bar配置
 
 const navBars =  [{

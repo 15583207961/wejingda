@@ -14,9 +14,11 @@
     <view class="info-item ">
       官网
     </view>
+  <navigator target="miniProgram" open-type="navigate" app-id="{{ appId }}" extra-data="{{ extraData }}" version="release">
     <view class="info-item ">
       反馈
     </view>
+  </navigator>
 </view>
 
 

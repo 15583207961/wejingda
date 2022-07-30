@@ -2,34 +2,89 @@ page{
     padding: 0;
     margin: 0;
     box-sizing: content-box;
+    background-color: #f5f5f5;
 }
 
 /* 图标 */
-.icon{
-
+.icon-top{
+height: 570rpx;
+width: 100vw;
+background-image: url("https://singlestep.cn/wejinda/resource/img/bg_jwlogin_top.png");
+background-size: 100%;
+background-repeat: no-repeat;
+position: absolute;
+z-index: -1;
 }
-.icon image{
-    width: 124rpx;
-    height: 105rpx;
-    margin-top: 53rpx;
-    margin-left: 307rpx;
-    margin-bottom: 84rpx;
+.backImage{
+    width: 52rpx;
+    height: 52rpx;
+    object-fit: fill;
+    margin-left: 22rpx;
+    margin-right: 223rpx; 
+}
+.titleTop{
+ position: absolute;
+ width: 100vw;
+ display: flex;
+ align-items: center;  
+z-index: 100;
+}
+.login-headpic{
+    position: absolute;
+    width: 118rpx;
+    height: 118rpx;
+    left: 307rpx;
+    top: 334rpx;
+}
+.content{
+    position: absolute;
+    top: 500rpx;
+    margin-left: 32rpx;
 }
 .sno,.pwd{
     margin: 0 auto;
-    width: 626rpx;
-    height: 91rpx;
-    background: #F9F9F9;
+    width: 686rpx;
+    height: 102rpx;
+    background: #fff;
     border-radius: 46px;
     margin-bottom: 21rpx;
-    text-align: center;
+    border-radius: 16rpx;
+    padding-left: 32rpx;
+    box-sizing: border-box;
+    color: #333333;
 } 
 .ckbox{
     margin-left: 80rpx;
     
+} 
+.goBtn{
+    margin-top: 72rpx;
+    color: #fff;
+    background-color: #0099FF;
+    width: 686rpx;
+    height: 92rpx;
 }
-.go{
-    width: 98rpx;
-    height: 98rpx;
-    margin: 84rpx 326rpx;
+.protocol{
+    display: flex;
+    align-items: center;
+    padding-left: 32rpx;
+  color: #333333;
+  font-size: 24rpx;
+  margin-top:32rpx;
+}
+.protocol-src{
+    width: 32rpx;
+    height: 32rpx;
+    margin-right: 16rpx;
+    object-fit: fill;
+}
+.protocol view{
+    color: #0793F3;
+}
+.autoLogin{
+    margin-top: 30rpx;
+    display: flex;
+    align-items: center;
+    padding-left: 32rpx;
+    font-size: 24rpx;
 }

@@ -85,7 +85,7 @@ Page({
       "pass": pwd
     }, "POST").then(
       res => {
-        mySetStorage("balanceInfo", res)
+        mySetStorage("balanceInfo", res.data)
         const { limitMoney, state, name, money, pwd, Sno } = res.data;
         this.setData({
           userName: name,

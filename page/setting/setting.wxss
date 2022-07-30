@@ -5,7 +5,6 @@ page{
 .setting-item{
     width: 686rpx;
     height: 108rpx;
-    background-color: #fff;
     position: relative;
     display: flex;
     align-items: center;
@@ -17,13 +16,15 @@ page{
     border-radius: 16rpx;
     margin-top: 24rpx;
     margin-left: 32rpx;
+    background-color: #fff;
+
 }
 .quit-login{
     display: inline-block;
     margin-top: 24rpx;
     margin-left: 32rpx;
-
     border-radius: 16rpx;
+    background-color: #fff;
 }
 .setting-item::after{
     position: absolute;

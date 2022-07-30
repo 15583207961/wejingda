@@ -6,10 +6,17 @@ page{
 .semester{
     text-align: center;
     width: 100%;
-    height: 120rpx;
-    line-height: 120rpx;
-    background-color: #dfdfdfc4;
-    color: #afafaf;
+    height: 112rpx;
+    display: flex;
+    font-size: 34rpx; 
+    color:#0099FF;
+    justify-content: center;
+    align-items: center;
+    background: #FFFFFF;
+    box-shadow: 0rpx 4rpx 8rpx 0rpx rgba(231, 231, 231, 0.5);  
+    position: fixed;
+    z-index: 10;
+    top: 0;
 }
 
 .semester::after{
@@ -18,9 +25,10 @@ page{
     height: 0rpx;
     width: 0rpx;
     border: 15rpx solid transparent;
-    border-top: 15rpx solid #afafaf;
+    border-left: 15rpx solid #afafaf;
+    border-radius: 1rpx;
    position: relative; 
-    top: 8rpx;
+    top: 2rpx;
     left: 20rpx;
 }
 
@@ -102,16 +110,16 @@ page{
     right: 139rpx;
 }
 .item_grade::after{
-    content: "";
     position: absolute;
     top: 25rpx;
-    right: -35rpx;
-    width: 15rpx;
-    height: 15rpx;
-    transform: rotate(45deg);
-    border: 4rpx solid #b4b4b4;
-    border-top:0 ;
-    border-left: 0;
+    right: -55rpx;
+    content: "";
+    border-radius: 1rpx;
+    display: inline-block;
+    height: 0rpx;
+    width: 0rpx;
+    border: 15rpx solid transparent;
+    border-left: 15rpx solid #afafaf;
 }
 
 .course_info{
@@ -152,4 +160,96 @@ page{
 }
 .studentName,.where,.time{
     margin:20rpx;
+}
+
+/* 成绩查询修改 */
+.grade-container,.exam-container{
+    width: 100vw;
+    box-sizing: border-box;
+    padding: 32rpx;
+}
+.grade-item,.exam-item{
+    width: 686rpx;
+    height: 184rpx;
+    background: #fff;
+    border-radius: 16rpx;
+    position: relative;
+    margin-bottom: 32rpx;
+}
+.name-item{
+    position: absolute;
+    top: 32rpx;
+    left: 32rpx;
+    font-size: 34rpx;
+    font-weight: normal;
+    color: #000000;
+}
+.item-bottom{
+    position: absolute;
+    top: 122rpx;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.type-item,.xuefen-item,.jidian-item{
+    font-size: 28rpx;
+    font-weight: normal;
+    color: #B5B5B5;
+    margin-left: 32rpx;
+}
+.score{
+    position: absolute;
+    top: 62rpx;
+    right:  20rpx;
+    font-size: 60rpx;
+    font-weight: normal;
+    color: #0099FF;
+}
+    
+/* 考试信息 */
+.start-time,.exam-name,.exam-where{
+    position: absolute;
+    top: 32rpx;
+    font-size: 34rpx;
+    font-weight: normal;
+    color: #000000;
+}
+.start-time{
+    left: 32rpx;
+}
+.exam-name{
+    left: 150rpx;
+}
+.exam-where{
+    right: 30rpx;
+    color: #0099FF;
+}
+.exam-item-bottom{
+    position: absolute;
+    top: 112rpx;
+    display: flex;
+    align-items: center;    
+}
+.end-time{
+    font-size: 30rpx;
+    margin-left: 32rpx;
+    color: #5D5D5D;
+}
+.username,.exam-when{
+    margin-left: 36rpx;
+    font-size: 28rpx;
+    color: #191919;
+}
+.seat-no{
+    position: absolute;
+    top: 112rpx;
+    font-size: 20rpx;
+    font-weight: normal;
+    color: #B5B5B5;
+    right: 34rpx;
+}
+.seat-no text{
+    font-size: 28rpx;
+    margin-left: 16rpx;
+    color: #191919;
 }

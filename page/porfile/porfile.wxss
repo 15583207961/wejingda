@@ -1,20 +1,23 @@
 page{
-background-color: #FAFAFA;
+background-color: #f5f5f5;
 }
 .image{
     margin: 0 auto;
-    width: 954rpx;
+    width: 750rpx;
     height: 540rpx;
     text-align: center;
     margin-top: -18rpx;
     margin-left: -100rpx;
-}
-.image image{
     position: relative;
-    z-index: 9;
-    width: 924rpx;
-    height: 100%;
-    border-radius: 50% / 10%;
+}
+.top-image{
+   position: absolute;
+    width: 450rpx;
+    bottom: 40rpx;
+    right: -40rpx;
+    height: 375rpx;
+    object-fit: fill;
+    /* border-radius: 50% / 10%; */
 }
 /* 第二部分 */
 .info_Bar_back{

@@ -1,8 +1,7 @@
 <!-- 授权 -->
 <!-- <button bindtap="getUserProfile">授权</button> -->
 <view class="image">
-  <image src="https://81.71.5.8/wejinda/resource/img/swapper_1.png"></image>
-
+  <image src="../../static/public/3D.png"class="top-image"></image>
 </view>
 <!-- 第二部分 -->
 <view class="info_Bar_back">
@@ -19,25 +18,6 @@
 <!-- 第三部分 -->
 
 <view class="function">
-  <navigator target="miniProgram" open-type="navigate" app-id="{{ appId }}" extra-data="{{ extraData }}" version="release">
-    <!-- <view class="function_item" bindtap="handle_copy"> -->
-    <view class="function_item">
-      <view class="funtuion_iamge">
-        <image src="../../static/public/bianzu13.png"></image>
-      </view>
-      <view class="title">反馈与建议</view>
-      <image class="right_tip" src="../../static/public/xiangyou.png"></image>
-    </view>
-  </navigator>
-
-
-  <!-- <view class="function_item" bindtap="isGetOpenId">
-    <view class="funtuion_iamge">
-      <image src="../../static/public/bianzu15.png"></image>
-    </view>
-    <view class="title">登录账号</view>
-    <image class="right_tip" src="../../static/public/xiangyou.png"></image>
-  </view> -->
   <view class="function_item" bindtap="to_detail">
     <view class="funtuion_iamge">
       <image src="../../static/public/bianzu14.png"></image>

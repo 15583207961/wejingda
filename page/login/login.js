@@ -7,9 +7,11 @@ import {
     myToast,
     mySetStorage,
     myRemoveStorage,
-    myRedirectTo
+    myRedirectTo,
+    myNavBarHieght
 } from "../../utils/usePackegeSysFun.js";
 import { storagename } from "../../config/storageNameconfig.js";
+import { BaseRequestUrl } from "../../config/baseConfig.js";
 const quitLoginFlag = getApp().globalData.quitLoginFlag;
 Page({
     data: {
@@ -19,6 +21,7 @@ Page({
             // openId: ""
         }, //存储通入信息
         isSave: false, //是否保存
+        argeeProtol:false,//是否统一协议
         Index: '', //存储跳转的下标
         openId: '', //用户的openID
         jwwInfo: {},
@@ -31,16 +34,24 @@ Page({
         hasOpendId: false, //是否有openid
         firstvalue: '', //存储第一的账号
         iscommon: ' ',//判断输入的账号是否是相同
-        choosablle:false
+        disabel:false,
+        pageTitle:"",
+        icon:"../../static/public/login_uncheck.png",
+        selectedIcon:"../../static/public/login_check.png",
+        titleTop:0,
+        titleHeight:0,
+        localNo:null,
     },
     // 页面加载
     onLoad(e) {
+        var custom  = wx.getMenuButtonBoundingClientRect()
         console.log("res==================>***&&&12,2221====-------------->",e?.index)
+        console.log("======>",e)
         this.setData({
-            Index: e?.index
-        })
-        wx.setNavigationBarTitle({
-            title: e?.title,
+            Index: e?.index,
+            pageTitle: e?.title,
+            titleTop:custom.top*2,
+            titleHeight:custom.height*2
         })
         this.getlocalInfo();
     },
@@ -48,7 +59,19 @@ Page({
         if (this.data.Index == 0) {
             this.getSessionInfo();//页面加载等待获取会话id
         }
-      
+        myGetStorger(storagename.localNo).then(res=>{
+            this.setData({
+                localNo:res.data
+            })
+        }).catch(err=>{
+            console.log("没有err",err);
+        })
+    },
+    goback(){
+        console.log("hehhiihhihihi")
+        wx.navigateBack({
+          delta: 1,
+        })
     },
     //页面加载获取本地数据一卡通，图书馆，教务网
     getlocalInfo() {
@@ -60,7 +83,7 @@ Page({
         }).catch(err => {
             console.log("jwwInfo", err)
         }):this.setData({
-            choosablle:true,
+            disabel:true,
             isSave:false
         })
         !quitLoginFlag.ykt?myGetStorger(storagename.yktInfo).then(res => {
@@ -71,7 +94,7 @@ Page({
         }).catch(err => {
                 console.log("err", err)
         }):this.setData({
-            choosablle:true,
+            disabel:true,
             isSave:false
         })
         !quitLoginFlag.tsg?myGetStorger(storagename.tsgInfo).then(res => {
@@ -82,7 +105,7 @@ Page({
         }).catch(err => {
             console.log(err)
         }):this.setData({
-            choosablle:true,
+            disabel:true,
             isSave:false
         })
         myGetStorger(storagename.openId).then(res => {
@@ -93,7 +116,7 @@ Page({
             })
         }).catch(err => {
           this.setData({
-            choosablle:true
+            disabel:true
           })
             console.log("err", err)
         })
@@ -129,52 +152,70 @@ Page({
     },
     // 获取是否记住密码
     bindChageck(e) {
+        let sno = this.data.dataInfo.sno;
+        
+        this.data.localNo&&this.data.localNo!=sno?this.isCommon():this.setData({
+            isSave: !this.data.isSave,
+            disabel:!this.data.disabel
+        });
+        
+    },
+    bindProtocol(){
         this.setData({
-            isSave: !this.data.isSave
+            argeeProtol:!this.data.argeeProtol
         })
+    },
+    goWebview(e){
+        var src =e.currentTarget.dataset.type ==="policy"? BaseRequestUrl+"resource/privacy/service.html": BaseRequestUrl+"/resource/privacy/private.html"
+    console.log(src)
+    myNavigatorTo(`/webview/webview?src=${src}`)
     },
     // 判断是否有openid，判断是否存在已有账号，控制chooseable
     isCommon() {
-        let jwwInfo = this.data.jwwInfo;
-        let yktInfo = this.data.yktInfo;
-        let tsgInfo = this.data.tsgInfo;
         let openid = this.data.openId;
         let sno = this.data.dataInfo.sno;
+        let name = ["jww","tsg","ykt"]
         console.log("openid****************&&&&&======>",openid)
-       if(openid&&(jwwInfo?.jwwSno||yktInfo?.yktSno||tsgInfo?.tsgSno)){
-          if(jwwInfo?.jwwSno==sno||yktInfo?.yktSno==sno||tsgInfo?.tsgSno == sno){
+        if(openid){
+           console.log("!quitLoginFlag[name[this.data.Index]]===>",!quitLoginFlag[name[this.data.Index]])
+        //    可以考虑删除
+            if(!this.data.localNo){
+                console.log("可以删除的")
               this.setData({
-                    choosablle:false,
+                    disabel:false,
                     isSave:false
               })
-          return;
+             return;
           }
-          wx.showModal({
-            title:"账号提醒",
-            content:"本账号和本微信绑定的账号不是同一个账号！只能做临时登录！如果想改变本微信绑定的账号，请前往 我的->设置->清空云端数据"
-          })
+          this.remind();
             this.setData({
-                choosablle:true,
+                disabel:true,
                 isSave:false
             })
        } else if(openid){
-        let name = ["jww","tsg","ykt"]
-        console.log("!quitLoginFlag[name[this.data.index]]",!quitLoginFlag[name[this.data.Index]])
-        console.log("name[this.data.index]",name[this.data.Index])
-        console.log("this.data.index",this.data.Index)
-        console.log("quitLoginFlag",quitLoginFlag)
-        !quitLoginFlag[name[this.data.Index]] &&this.setData({
-            choosablle:false,
+        !quitLoginFlag[name[this.data.Index]]&&!this.data.localNo ?this.setData({
+            disabel:false,
             isSave:true
-        })
+        }): this.remind()
        }
     },
-    // sno输入框失去焦点
-    inputblur() {
-        this.isCommon();
+     remind (){
+        wx.showModal({
+            title:"账号提醒",
+            content:"本账号和本微信绑定的账号不是同一个账号！只能做临时登录！如果想改变本微信绑定的账号，请前往 我的->设置->清空云端数据",
+            confirmText:"去设置",
+            success:res=>{
+                if(res.confirm&&this.data.openId){
+                    wx.redirectTo({
+                      url: '../../page/setting/setting',
+                    })
+                }
+            }
+          })
     },
     // 跳转到下一个页面
     goDetail() {
+        
         console.log(this.data.sessionId)
         if(this.data.index==0){
             !this.data.sessionId||!this.data.__VIEWSTATE?this.getSessionInfo()?.then(res=>{
@@ -194,6 +235,9 @@ Page({
             if (!this.data.dataInfo.pwd && !this.data.dataInfo.sno) {
                 myToast("填写信息不能为空或者空格")
                 return;
+            }else if(!this.data.argeeProtol){
+                myToast("请阅读协议，同意并勾选");
+                return ;
             } else {
                 switch (this.data.Index) {  //switch 通过index选择调用对应的login函数
                     case "0":
@@ -212,6 +256,7 @@ Page({
     },
     // 登入教务网
     jwwlogin() {
+        console.log("this.data.issave============>",this.data.isSave)
         myRequest("jwlogin", {
             "sessionId": this.data.sessionId,
             "__VIEWSTATE": this.data.__VIEWSTATE,
@@ -237,6 +282,7 @@ Page({
             if (this.data.isSave) {
                 mySetStorage("jwwInfo", jwwInfo)
                 this.setDataToDB("", this.data.dataInfo.sno, this.data.dataInfo.pwd, "", "", this.data.openId)
+                mySetStorage(storagename.localNo,this.data.dataInfo.sno)
             }
             else {
                 var UserInfo = getApp().globalData.UserInfo;
@@ -269,6 +315,7 @@ Page({
             if (this.data.isSave) {
                 mySetStorage("tsgInfo", tsgInfo)
                 this.setDataToDB("", this.data.dataInfo.sno, "", this.data.dataInfo.pwd, "", this.data.openId)
+                mySetStorage(storagename.localNo,this.data.dataInfo.sno)
             }
             var data1 = JSON.stringify(res.data)
             console.log("data1", data1)
@@ -299,10 +346,16 @@ Page({
                 state: state
             }
             if (this.data.isSave) {
+
+
+                console.log("======>111111111111this.data.isSave",this.data.isSave)
                 this.setDataToDB("", this.data.dataInfo.sno, "", "", this.data.dataInfo.pwd, this.data.openId)
                 mySetStorage("yktInfo", yktInfo)
+                mySetStorage(storagename.localNo,this.data.dataInfo.sno)
             }
             else {
+                console.log("======>2222222222222222222,this.data.isSave",this.data.isSave)
+
                 var UserInfo = getApp().globalData.UserInfo;
                 UserInfo.yktInfo = yktInfo;
                 app.globalData.UserInfo = UserInfo;
@@ -329,6 +382,5 @@ Page({
         }).catch(res => {
             myToast("网络链接异常");
         })
-
     },
 })

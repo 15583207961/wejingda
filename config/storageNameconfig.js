@@ -5,5 +5,6 @@ export const storagename = {
   balanceInfo:"balanceInfo",//一卡通账单详情
   jwwInfo:"jwwInfo",
   openId:"openId",
-  chatInfo:"chatInfo"
+  chatInfo:"chatInfo",
+  localNo:"localNo",//本地账号
 }

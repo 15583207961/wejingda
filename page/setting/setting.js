@@ -7,6 +7,7 @@ import {
   myRemoveStorage,
   myModal
 } from "../../utils/usePackegeSysFun.js";
+
 import {storagename} from "../../config/storageNameconfig.js"
 
 Page({
@@ -30,6 +31,13 @@ Page({
             myRemoveStorage(storagename.jwwInfo)
             myRemoveStorage(storagename.tsgInfo)
             myRemoveStorage(storagename.yktInfo)
+            myRemoveStorage(storagename.localNo)
+            var quitLoginFlag = getApp().globalData.quitLoginFlag;
+            quitLoginFlag.jww=false;
+            quitLoginFlag.ykt=false;
+            quitLoginFlag.tsg=false;
+            getApp().globalData.quitLoginFlag = quitLoginFlag;
+
           }).catch(err=>{
             myToast("网络异常")
           })
@@ -79,6 +87,7 @@ Page({
             myRemoveStorage(storagename.tsgInfo);
             break;
         }
+        myToast("退出登录成功")
       }
     })
   }

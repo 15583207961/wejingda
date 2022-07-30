@@ -135,6 +135,18 @@
           "pathName": "page/about/about",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "page/enroll/enroll",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "page/xxcx/xxcx",
+          "query": "",
+          "scene": null
         }
       ]
     }

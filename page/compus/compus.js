@@ -96,6 +96,7 @@ Page({
   isHaveLoaclInfo(key, path) {
 
     myGetStorger(key).then(res => {
+      console.log("helli========>11111",res)
       switch (this.data.index) {
         case 0:
           myNavigatorTo(path + "?index=0");
@@ -110,6 +111,7 @@ Page({
           return;
       }
     }).catch(err => {
+      console.log("err=====》***",err)
       myNavigatorTo(`/login/login?index=${this.data.index}&title=${this.data.nav_list[this.data.index].title}登录`);
     })
   },
@@ -117,8 +119,9 @@ Page({
   getFirstDate(path, data) {
     return new Promise((resolve, rej) => {
       console.log("huahuahu", path, data)
-      myRequest(path, data, "POST").then(
+      myRequest(path, data, "POST",false).then(
         res => {
+          console.log("------------------>res",res)
           resolve(res.data);
         }
       ).catch(err => {
@@ -132,20 +135,21 @@ Page({
     console.log("---------")
     myGetStorger("yktInfo").then(res => {
       let data = {
-        password: res.data.yktpwd,
-        username: res.data.yktSno
+        pass: res.data.yktpwd,
+        name: res.data.yktSno
       }
       this.getFirstDate("yktlogin", data)
         .then(res => {
           console.log("***&&&&---------->>>>>>>>>>", res)
           var item = {
-            money: res.data.money,
+            money: res.money,
             time: time
           }
-          console.log("*****res", res)
           this.setData({
             balanceInfo: item
           })
+          console.log("*****res", res,item)
+
           mySetStorage("balanceInfo", item)
         })
 
@@ -213,7 +217,7 @@ Page({
         this.setData({
           openid: res.data
         })
-        myRequest("getwechatuserinfo?openID=" + res.data, {}, "POST").then(res => {
+        myRequest("getwechatuserinfo?openID=" + res.data, {}, "POST",false).then(res => {
           console.log("----------------------------1=>",res)
           resolve("ok");
           if(!res?.data){

@@ -5,21 +5,23 @@ import {getResourceUrl} from "./useHandle.js"
   const  myToast = (title, icon = "none") =>{
     wx.showToast({
       title: title,
-      icon: icon
+      icon: icon,
+      mask:true
     })
   }
 
   // 封装wx Loading
    const myShowLoading = (title) =>{
     wx.showLoading({
-      title: title
+      title: title,
+      mask:true
     })
   }
 
   // 封装wx request
 
-   const myRequest = (url, data = {}, method = "GET") => {
-     myShowLoading("请求中...")
+   const myRequest = (url, data = {}, method = "GET",isshowLoading=true) => {
+    isshowLoading&&myShowLoading("请求中...")
     return new Promise((res, rej) => {
       wx.request({
         url: getResourceUrl(url),
@@ -124,6 +126,16 @@ import {getResourceUrl} from "./useHandle.js"
     })
   }
 
+  const myNavBarHieght = ()=>{
+    wx.getSystemInfo({
+      success: (result) => {
+        var menuHeight =  wx.getMenuButtonBoundingClientRect()
+        console.log("result=======>1111",result,menuHeight)
+        // 不想实现,后面实现......
+      },
+    })
+  }
+
 module.exports = {
-  myGetStorger,mySetStorage,myRequest,myShowLoading,myToast,myNavigatorTo,myRemoveStorage,myRedirectTo,myModal
+  myGetStorger,mySetStorage,myRequest,myShowLoading,myToast,myNavigatorTo,myRemoveStorage,myRedirectTo,myModal,myNavBarHieght
 }

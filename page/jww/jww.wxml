@@ -5,12 +5,20 @@
 </view>
 <!-- 第二部分 -->
 
-<view class="jww_function">
+<!-- <view class="jww_function">
     <view class="function_item" wx:for="{{function_list}}" wx:key="item" bindtap="godetail" data-index="{{index}}">
         <view class="image">
             <image src="{{item.imgurl}}"></image>    
         </view>
         <text class="fn_item_title">{{item.title}}</text>
         <image class="right_tip" src="../../static/public/xiangyou.png"></image>
+    </view> -->
+<!-- </view> -->
+
+<view class="container">
+    <view class="item" bindtap="godetail" data-index="{{index}}" wx:for="{{function_list}}" wx:key="item">
+        <image src="https://singlestep.cn/wejinda/resource/img/jw_{{item.imgurl}}.png" class="image-icon"></image>
+        <view class="tip">可查询</view>
+        <view class="title">{{item.title}}</view>
     </view>
 </view>
