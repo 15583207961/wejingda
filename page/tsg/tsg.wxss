@@ -16,79 +16,70 @@ page{
 }
 .chart_head{
     width: 100%;
-    height: 80rpx;
-    /* background:yellow; */
+    height: 120rpx;
+    
     display: flex;
     align-items: center;
 }
 .chart_head image{
-    width: 49rpx;
-    height: 49rpx;
-    margin:0 22rpx;
+    width: 64rpx;
+    height: 64rpx;
+    margin:0 32rpx;
 }
 .chart_head text{
-    font-size: 28rpx;
     color: #333333 ;
     font-weight: 550;
+    font-size: 36rpx;
+    font-weight: normal;
+    letter-spacing: 1rpx;
+    color: #333333;
 }
 .chart_ec{
     position: absolute;
     top: 10rpx;
-    left: 24rpx;
     width: 100%;
-    height: 510rpx;
+    height: 422rpx;
 }
 
 /* 第三部分 */
 .time{
-    width: 694rpx;
-    height: 92rpx;
+    width: 686rpx;
+    height: 112rpx;
     background-color: #fff;
     margin: 0 auto;
     box-shadow: 0px 4px 7px 0px rgba(245,245,245,1);
-    margin-top: 335rpx;
-    border-radius: 21rpx;
+    margin-top: 345rpx;
+    border-radius: 24rpx;
     display: flex;
     align-items: center;
-    /* justify-content: center; */
-    position: relative;
-    
-}
-.time view{
-    margin-left: 90rpx;
-    text-align: left;
-    font-weight: 550;
-    font-size: 28rpx;
+    font-size: 36rpx;
 }
 
-.time .image{
-    position: absolute;
-    left: 0rpx;
-    width: 49rpx;
-    height: 49rpx;
-    background-color: #8AF081 ;
+
+.sreach-image{
+    
+    width: 64rpx;
+    height: 64rpx;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 23rpx;
-    margin: 0 20rpx 0 20rpx;
+    margin: 0 30rpx 0 32rpx;
 }
-.time image{
-    width: 30rpx;
-    height: 30rpx;
-}
+
 
 .time::after{
     content: "";
     display: inline-block;
-    width: 20rpx;
-    height: 20rpx;
+    width: 15rpx;
+    height: 15rpx;
     border: 4rpx solid #979797;
     position: absolute;
-    right: 32rpx;
+    right: 62rpx;
     transform: rotate(45deg);
     border-left:0 ;
     border-bottom: 0;
+    border-radius: 5rpx;
 }
 
 /* 第四部分 */
@@ -99,43 +90,46 @@ page{
     border-radius: 24rpx;
     background-color: #fff;
     margin-bottom: 100rpx;
+    box-sizing: border-box;
+    padding: 32rpx;
+    padding-bottom: 0;
 }
 .data_container .head{
     width: 100%;
-    height: 92rpx;
-    /* background: yellow; */
     display: flex;
     align-items: center;
-    font-size: 28rpx;
-    font-weight: 550;
+    margin-bottom: 32rpx;
+    font-size: 36rpx;
+    font-weight: normal;
+    color: #333333;
 }
-.head .image{
-    width: 49rpx;
-    height: 49rpx;
-    background-color: #0FCB6E;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 23rpx;
-    margin: 0 20rpx 0 20rpx;
-}
-.head .image image{
-    width: 36rpx;
-    height: 36rpx;
+.head-img{
+    width: 64rpx;
+    height: 64rpx;
+    margin-right: 32rpx;
 }
 .detail_item{
     position: relative;
-    width: 94%;
+    height: 144rpx;
     
-    margin: 0 auto;
-    /* background-color: red; */
-    border-top: 1rpx solid #9797973a;
+    margin-top: 32rpx;
+
 }
 .item_title{
    
     padding-top: 16rpx;
     color: #333;
+    font-size: 34rpx;
+    font-weight: normal;
+    color: #000000;
+    margin-bottom: 24rpx;
+}
+
+.bottom-info{
+    display: flex;
     font-size: 28rpx;
+    font-weight: normal;
+    color: #B5B5B5;
 }
 .item_bottom_info{
     
@@ -144,26 +138,6 @@ page{
     color: #6D6D6D;
     font-size: 21rpx;
 }
-.item_bottom_info text{
-    padding-right: 20rpx;
-}
-.renew{
-    position: absolute;
-    top: 35rpx;
-    right: 43rpx;
-    width: 70rpx;
-    height: 42rpx;
-    background-color:  #4DADFF;
-    border-radius: 11rpx;
-    color: #fff;
-    font-size: 22rpx;
-    text-align: center;
-    line-height: 42rpx;
-}
-.redwran{
-    /* font-family: SimSun; */
-    /* font-style: italic; */
-    font-weight: 550;
-    font-size: 28rpx;
-    color: red;
+.bottom-info view{
+    margin-right: 44rpx;
 }

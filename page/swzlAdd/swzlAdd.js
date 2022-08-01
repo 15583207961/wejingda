@@ -1,66 +1,62 @@
-// page/swzlAdd/swzlAdd.js
+import {
+  myNavigatorTo,
+  myGetStorger,
+  myRequest,
+  myToast,
+  mySetStorage,
+  myRemoveStorage
+} from "../../utils/usePackegeSysFun.js";
 Page({
-
-  /**
-   * 页面的初始数据
-   */
-  data: {
+  data:{
 
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  // takePhoto
+  takePhoto(){
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success :res=> {
+        // tempFilePath可以作为 img 标签的 src 属性显示图片
+        const tempFilePaths = res.tempFilePaths
+        console.log(tempFilePaths)
+        this.compressImage(tempFilePaths[0],(data)=>{
+          console.log("datta==>",data)
+          wx.uploadFile({
+            url: 'https://singlestep.cn/wejinda/file', 
+            filePath: data,
+            name: 'file',
+            success (res){
+              const data = res.data
+              console.log("ressss----->",data)
+            }
+          })
+        })
+      }
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  //canvas 压缩
+  compressImage(path, callback) {
+    wx.getImageInfo({
+      src: path,
+      success: res=> {
+        var ctx = wx.createCanvasContext('photo_canvas'); // 创建画布
+        var towidth = 500;  //设置canvas尺寸，按宽度500px的比例压缩
+        var toheight = Math.trunc(500*res.height/res.width);  //根据图片比例换算出图片高度
+        this.setData({ canvasHeight: toheight });
+        ctx.drawImage(path, 0, 0, res.width, res.height, 0, 0, towidth, toheight);
+        ctx.draw(false, function () {
+          wx.canvasToTempFilePath({
+            canvasId: 'photo_canvas',
+            fileType:"jpg",
+            quality: 0.8, // 注意你的压缩质量，卤煮真的压缩出20KB的，图片整个都是糊的
+            success: res2=> {
+              console.log(res2.tempFilePath);
+              callback(res2.tempFilePath);
+            }
+          }, this)
+        })
+      }
+    });
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

@@ -3,9 +3,9 @@ Page({
     src:null
   },
   onLoad(e){
-    console.log(e)
+    console.log(e) 
     this.setData({
-      src:e.src
+      src:e.src!=1?e.src:"https://mp.weixin.qq.com/s?__biz=Mzg2NTgzMTE1NQ==&tempkey=MTE3Nl9UVnpLckVBNVNjUXNZUXR5eEdGdnZBc2hpeUZCeWhUME5VZ1BfMjNtSVdRc2VvZlZrcVh2azZLLTVUZEk5aWNvejZwNWozTi0tZ0Nia3NmMHNKYlJJWEx0d2JfcmJyLTBhM3BEQ0xkYkh0cnR1ZVZXSHk4akZ0WmJwZkl2Wk1TMDZBSl8tV3RXS1o0UTdtbWZyNVpCVkpvZjhLdjNOSFB1UnJ4cHl3fn4%3D&chksm=4e55509f7922d989bcfc0ef91d90201e1e516fce85a9c232bc4a318c8414437a2a901d9e4082#rd"
     })
   }
 })

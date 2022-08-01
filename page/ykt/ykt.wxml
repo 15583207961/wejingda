@@ -2,27 +2,29 @@
 
 <view class="card" style="background-color: {{islose?'#feb900':''}};">
     <view class="name">姓名：{{userName}}</view>
-    <view class="button">状态： {{state==1?"正常":"挂失中"}} <text></text>  日限：{{limitMoney}}</view>
-    <view class="price">￥ <text>{{money}}</text></view>
+    <view class="button">账户状态<text> {{state==1?"正常":"挂失中"}} </text> 单日限额<text>{{limitMoney}}</text></view>
+    <view class="price">余额￥ <text>{{money}}</text></view>
 </view>
 
 
 <!-- 导航栏 -->
 <view class="nav">
-    <view class="nav_item" wx:for="{{nav_list}}" wx:key="item" bindtap="handle_item" data-index="{{index}}">
-        <view class="image">
-            <image src="{{item.imgUrl}}"></image> 
+    <view class="nav-top-title">功能服务</view>
+    <view class="nav-container">
+        <view class="nav_item" wx:for="{{nav_list}}" wx:key="item" bindtap="handle_item" data-index="{{index}}">
+          
+                <image src="{{item.imgUrl}}" class="nav-item-img"></image>
+            <text>{{item.title}}</text>
         </view>
-        <text>{{item.title}}</text>
     </view>
 </view>
 
 <!-- 弹窗 -->
-<view class="limit_cavas" wx:if="{{ishowpupor}}" >
+<view class="limit_cavas" wx:if="{{ishowpupor}}">
     <view class="limit_container">
         <view class="title">{{index==1?'设置单日额度':'挂失一卡通'}}</view>
         <view wx:if="{{index==2}}" class="authcode">输入您的验证密码</view>
-        <input type="{{index==2?'password':'number'}}" placeholder="{{index==2?'':'最高上限200元'}}" class="input_1" bindinput="handle_input"  cursor-spacing="200"/>
+        <input type="{{index==2?'password':'number'}}" placeholder="{{index==2?'':'最高上限200元'}}" class="input_1" bindinput="handle_input" cursor-spacing="200" />
         <view class="bottom">
             <view class="cancel" bindtap="cancel_handle">取消</view>
             <view class="comfirm" bindtap="comfirm_handle">确定</view>

@@ -38,9 +38,6 @@
 </view>
 
 <!-- 展示不考信息模块 -->
-
-
-
 <view class="exam-container"  wx:if="{{MakeUpExamList.length>0}}">
     <view class="exam-item" wx:for="{{MakeUpExamList}}" wx:key="item">
         <view class="start-time">15:50</view>

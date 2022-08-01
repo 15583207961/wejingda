@@ -49,7 +49,7 @@
             <view class="merchant_name">{{item.machine[3]?item.machine[3]+"-"+item.shop:item.type}}</view>
             <view class="merchant_time">{{item.time}}</view>
         </view>
-        <view class="merchant_price">-{{item.spentMoney}}</view>
+        <view class="merchant_price">{{item.type=="微信充值"||item.type=="支付宝充值"? "+"+item.spentMoney:"-"+item.spentMoney}}</view>
     </view>
     <view class="tip">没有更多记录了~~</view>
 </view>

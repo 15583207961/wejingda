@@ -1,25 +1,29 @@
 
 <!-- 校园页面头部模块 -->
-<view class="compus_head" style="{{headThemebgc}}">
-        <view class="head_image">
-            <image src="../../static/public/3D.png"></image>
-        </view>
+<view class="compus-head" >
+    <swiper class="top-swiper" autoplay="true" circular="true">
+        <swiper-item class="swiper-item">
+            <image src="../../static/public/bg_top.png"class="item-image" ></image>
+        </swiper-item>
+        <swiper-item class="swiper-item">
+            <image src="../../static/public/bg_top.png"class="item-image" ></image>
+        </swiper-item>
+        <swiper-item class="swiper-item">
+            <image src="../../static/public/bg_top.png"class="item-image" ></image>
+        </swiper-item>
+    </swiper>
+    <image src="../../static/public/bg_arc.png" class="bg-arc"></image>
+
 </view>
 <!-- 导航栏模块 -->
 <view class="compus_nav">
     <view class="compus_item" wx:for="{{nav_list}}" wx:key="item" bindtap="goDetail" data-index="{{index}}">
-        <image src="{{item.imgUrl}}"></image>
+        <image src="{{item.imgUrl}}" class="nav-item-icon"></image>
         <view class="title">{{item.title}}</view>
     </view>
 </view>    
+<view class="emity-view"></view>
 
-<!-- 轮播图模块 -->
-
-<swiper class="swiper" autoplay="true" circular="true">
-    <swiper-item class="swiper_item" wx:for="{{swiper_list}}" wx:key="item" bindtap="swiperTap" data-index="{{index}}">
-    <image src="{{item.imageUrl}}"></image>
-    </swiper-item>
-</swiper>
 
 <!-- 数据可视区域 -->
 <view class="data_visualization">
@@ -44,3 +48,21 @@
 
 
 
+<view class="channel">
+    <!-- 社团频道 -->
+<view class="club channel-item">
+        社团招新
+</view>
+<view class="channel-item cate">
+    美食
+</view>
+<view class="channel-item cate">
+    校园竞赛
+</view>
+<view class="channel-item cate">
+    趣味面板
+</view>
+<view class="channel-item cate">
+    ****
+</view>
+</view>

@@ -1,6 +1,7 @@
 
 
-const app = getApp();
+
+import { getResourceUrl } from "../../utils/useHandle.js";
 import {
   myNavigatorTo,
   myGetStorger,
@@ -9,20 +10,21 @@ import {
   mySetStorage,
   myRemoveStorage
 } from "../../utils/usePackegeSysFun.js"
+
 Page({
   data: {
     nav_list: [{
-      imgUrl: "../../static/public/jww.png",
+      imgUrl: getResourceUrl("resource/img/icon_xfjl.png"),
       title: "消费记录"
     }, {
-      imgUrl: "../../static/public/tsg.png",
+      imgUrl: getResourceUrl("resource/img/icon_drxe.png"),
       title: "单日限额"
     }, {
-      imgUrl: "../../static/public/ykt.png",
-      title: "挂失账户"
+      imgUrl: getResourceUrl("resource/img/icon_zhgs.png"),
+      title: "账户挂失"
     }, {
-      imgUrl: "../../static/public/sdf.png",
-      title: "充值test"
+      imgUrl: getResourceUrl("resource/img/icon_wxcz.png"),
+      title: "微信充值"
     },],
     userName: "",
     state: "",
@@ -120,6 +122,7 @@ Page({
         });
         break;
       case 3:
+        myNavigatorTo("/webview/webview?src=")
     }
   },
 

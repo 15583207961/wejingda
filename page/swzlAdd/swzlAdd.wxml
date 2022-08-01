@@ -1,7 +1,8 @@
 <!-- 图片 -->
-<view class="swzl-add-image">
-    <view class="swzl-center-icon">+</view>
+<view class="swzl-add-image" bindtap="takePhoto">
+    <view class="swzl-center-icon" >+</view>
 </view>
+<canvas canvas-id='photo_canvas' style='position:fixed;left: 9999px;width:500px;height:{{ canvasHeight }}px' class='myCanvas'></canvas>
 
 <!-- 下拉框 位置 -->
 <view class="swzl-add-where">

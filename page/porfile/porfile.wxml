@@ -1,7 +1,8 @@
 <!-- 授权 -->
 <!-- <button bindtap="getUserProfile">授权</button> -->
-<view class="image">
-  <image src="../../static/public/3D.png"class="top-image"></image>
+<view class="profile-top">
+  <image class="top-bg" src="../../static/public/bg_top.png"></image>
+  <image class="bg-arc" src="../../static/public/bg_arc.png"></image>
 </view>
 <!-- 第二部分 -->
 <view class="info_Bar_back">
@@ -13,8 +14,9 @@
       <text>{{chatInfo.name}}</text>
     </view>
   </view>
+  <view class="other-info"></view>
 </view>
-
+<view class="emity-view"></view>
 <!-- 第三部分 -->
 
 <view class="function">

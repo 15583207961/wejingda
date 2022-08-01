@@ -5,9 +5,10 @@
 <!-- 第二部分可视化区域 -->
 <view class="chart_view">
     <view class="chart_head">
-        <image src="../../static/public/bianzhu2.png"></image>
+        <image src="{{ecIcon}}"></image>
         <text>我的借阅</text>
     </view>
+   
     <view class="chart_ec">
         <ec-canvas id="mychart-dom" cavnvas-id="mychart" ec="{{ec}}"></ec-canvas>
     </view>
@@ -16,26 +17,66 @@
 
 <!-- 第三部分 -->
 <view class="time" bindtap="sreachTsg">
-    <view class="image">
-        <image src="../../static/public/chaxun.png"></image>
-    </view>
+
+        <image src="{{sreachIcon}}" class="sreach-image"></image>
    <view class="title">搜索馆藏图书</view>
 </view>
 
 <!-- 第四部分借阅详情 -->
 <view class="data_container">
     <view class="head">
-        <view class="image">
-            <image src="../../static/public/shijian.png"></image>
-        </view>
+            <image src="{{jyxqIcon}}" class="head-img"></image>
         <text>借阅详情</text>
     </view>
-    <view class="detail_item" wx:for="{{borrowBooks}}" wx:key="item">
+    <!-- <view class="detail_item" wx:for="{{borrowBooks}}" wx:key="item">
         <view class="item_title">
             {{item.name}}
         </view>
         <view class="item_bottom_info">借：<text>{{item.borrowingTime}} </text> 还：<text>{{item.returnTime}}</text > 超期：<text class="{{item.value == '是'?'redwran':''}}">{{item.value}}</text></view>
         <view class="renew" bindtap="Renew" data-index="{{index}}">续借</view>
+    </view> -->
+    <view class="detail_item">
+        <view class="item_title">
+            Web前端技术开发
+        </view>
+        <view class="bottom-info">
+            借：<view class="jie-time">2021-03-31</view>
+            还：<view class="jie-time">2021-03-31</view>
+        </view>
     </view>
-    
+    <view class="detail_item">
+        <view class="item_title">
+            Web前端技术开发
+        </view>
+        <view class="bottom-info">
+            借：<view class="jie-time">2021-03-31</view>
+            还：<view class="jie-time">2021-03-31</view>
+        </view>
+    </view>
+    <view class="detail_item">
+        <view class="item_title">
+            Web前端技术开发
+        </view>
+        <view class="bottom-info">
+            借：<view class="jie-time">2021-03-31</view>
+            还：<view class="jie-time">2021-03-31</view>
+        </view>
+    </view>
+    <view class="detail_item">
+        <view class="item_title">
+            Web前端技术开发
+        </view>
+        <view class="bottom-info">
+            借：<view class="jie-time">2021-03-31</view>
+            还：<view class="jie-time">2021-03-31</view>
+        </view>
+    </view><view class="detail_item">
+        <view class="item_title">
+            Web前端技术开发
+        </view>
+        <view class="bottom-info">
+            借：<view class="jie-time">2021-03-31</view>
+            还：<view class="jie-time">2021-03-31</view>
+        </view>
+    </view>
 </view>

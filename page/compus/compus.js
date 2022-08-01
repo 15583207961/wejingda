@@ -3,7 +3,7 @@ import {
   navBars
 } from "./dataconfig.js";
 import {
-  getNowTime
+  getNowTime, getResourceUrl
 } from "../../utils/useHandle.js";
 import {
   myNavigatorTo,

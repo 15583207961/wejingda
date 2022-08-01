@@ -1,6 +1,7 @@
 <view class="nav">
     <view class="time" bindtap="onDisplayTime">
-      <picker mode="date" value="{{date}}" start="{{currentTime}}" bindchange="bindDateChange">
+      <!-- <picker mode="date" value="{{date}}" start="{{currentTime}}" bindchange="bindDateChange"> -->
+      <picker mode="date" value="{{date}}" start="" bindchange="bindDateChange">
     <view class="picker">
       {{date!=""?date:"2020-2021学年"}}
     </view>

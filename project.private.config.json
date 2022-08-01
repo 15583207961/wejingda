@@ -147,6 +147,18 @@
           "pathName": "page/xxcx/xxcx",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "page/swzlAdd/swzlAdd",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "page/porfile/porfile",
+          "query": "",
+          "scene": null
         }
       ]
     }

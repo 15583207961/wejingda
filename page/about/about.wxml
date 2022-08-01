@@ -5,6 +5,9 @@
 <view class="version">V 1.0</view>
 
 <view class="about-info">
+  <view class="info-item ">
+      特别鸣谢
+    </view>
     <view class="info-item ">
       版本更新
     </view>
@@ -19,6 +22,9 @@
       反馈
     </view>
   </navigator>
+  <view class="info-item ">
+      商务合作
+    </view>
 </view>
 
 

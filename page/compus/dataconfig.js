@@ -11,30 +11,46 @@ const swiperList = [{
 //导航bar配置
 
 const navBars =  [{
-  imgUrl: "../../static/public/jww.png",
+  imgUrl: getResourceUrl("resource/img/icon_jww.png"),
   path:"/jww/jww",
   title: "教务网"
 },
 {
-  imgUrl: "../../static/public/tsg.png",
+  imgUrl:getResourceUrl("resource/img/icon_tsg.png"),
   path:"/tsg/tsg",
   title: "图书馆"
 }, {
-  imgUrl: "../../static/public/ykt.png",
+  imgUrl: getResourceUrl("resource/img/icon_ykt.png"),
   path:"/ykt/ykt",
   title: "一卡通"
 },{
-  imgUrl: "../../static/public/photo.png",
+  imgUrl: getResourceUrl("resource/img/icon_xyfw.png"),
   path:"/compusBaseService/compusBaseService",
-  title: "掌上服务"
+  title: "校园服务"
 }, {
-  imgUrl: "../../static/public/xzcs.png",
+  imgUrl: getResourceUrl("resource/img/icon_lqcx.png"),
   path:"/enroll/enroll",
   title: "录取查询"
 }, {
-  imgUrl: "../../static/public/kd.png",
+  imgUrl: getResourceUrl("resource/img/icon_swzl.png"),
   path:"/LostAndFont/LostAndFont",
   title: "失物招领"
+}, {
+  imgUrl: getResourceUrl("resource/img/icon_yywx.png"),
+  path:"/LostAndFont/LostAndFont",
+  title: "预约维修"
+}, {
+  imgUrl: getResourceUrl("resource/img/icon_dd.png"),
+  path:"/LostAndFont/LostAndFont",
+  title: "待定"
+}, {
+  imgUrl: getResourceUrl("resource/img/icon_dd.png"),
+  path:"/LostAndFont/LostAndFont",
+  title: "待定"
+}, {
+  imgUrl: getResourceUrl("resource/img/icon_dd.png"),
+  path:"/LostAndFont/LostAndFont",
+  title: "待定"
 }
 ]
 

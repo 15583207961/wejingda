@@ -1,4 +1,7 @@
 import * as echarts from '../../ec-canvas/echarts.js';
+var initChart = null;
+import {getResourceUrl} from "../../utils/useHandle.js"
+
 import {
   myNavigatorTo,
   myGetStorger,
@@ -8,7 +11,6 @@ import {
   myRemoveStorage,
   myRedirectTo
 } from "../../utils/usePackegeSysFun.js"
-const baseUrl = getApp().globalData.BaseURL
 let chart = null;
 Page({
   data: {
@@ -21,12 +23,90 @@ Page({
       text1: "本",
       text2: "本"
     },
-    ec: {
-      onInit: initChart
-    },
+    ecIcon:getResourceUrl("resource/img/icon_wdjy.png"),
+    sreachIcon:getResourceUrl("resource/img/icon_ssgcts.png"),
+    jyxqIcon:getResourceUrl("resource/img/icon_jyxq.png"),
+    ec:{
+            onInit: function(canvas, width, height,dpr) {
+            console.log("init")  
+              initChart = echarts.init(canvas, null, {
+                width: width,
+                height: height,
+                devicePixelRatio: dpr
+              });
+              canvas.setChart(initChart);
+              return initChart;
+            }
+        },
     borrowBooks: [
 
     ]
+  },
+  initChartOption(){
+    console.log("heii")
+    initChart.setOption({
+      color: ['#80FFA5'],
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          type: 'line'
+        }
+      },
+      grid: {
+        left: '3%',
+        right: '10%',
+        bottom: '3%',
+        containLabel: true
+      },
+      xAxis: [{
+        type: 'category',
+        data: ['2019年', '2020年', '2021年'],
+        boundaryGap: false,
+        axisTick: {
+          alignWithLabel: true
+        },
+        axisLine: {
+          show: false //不显示坐标轴轴线
+        },
+        axisTick: {
+          show: false //不显示坐标轴刻度
+        }
+      }],
+      yAxis: [{
+        type: 'value',
+        boundaryGap: false,
+        axisLine: {
+          show: false //不显示坐标轴轴线
+        },
+        splitNumber:3,
+        axisTick: {
+          show: false //不显示坐标轴刻度
+        }
+      }],
+      series: [{
+        name: 'Borrow',
+        type: 'line',
+                smooth: true,
+        lineStyle: {
+          width: 1
+        },
+        showSymbol: false,
+        areaStyle: {
+          opacity: 0.8,
+          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+            {
+              offset: 0,
+              color: 'rgba(199,243,218,0.9)'
+            },
+            {
+              offset: 1,
+              color: 'rgb(255,255,255,0.9)'
+            }
+          ])
+        },
+        data: [60, 50, 31], 
+      }]
+    })
   },
   onLoad(e) {
     console.log("huahuhau", e);
@@ -36,6 +116,13 @@ Page({
       console.log(JSON.parse(e.data))
       this.hanleDate(JSON.parse(e.data))
     }
+    
+  },
+  onShow(){
+    setTimeout(()=>{
+      this.initChartOption()
+    },1000)
+
   },
   // 点解跳转到搜索页面
   sreachTsg() {
@@ -86,64 +173,3 @@ Page({
   }
 
 })
-
-function initChart(canvas, witdh, height, dpr) {
-  chart = echarts.init(canvas, null, {
-    witdh: witdh,
-    height: height,
-    devicePixelRatio: dpr
-  })
-  canvas.setChart(chart)
-
-  let option = getOption()
-
-  chart.setOption(option)
-  return chart
-}
-
-function getOption() {
-  return {
-    color: ['#80FFA5'],
-    xAxis: [
-      {
-        type: 'category',
-        boundaryGap: false,
-        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-      }
-    ],
-    yAxis: [
-      {
-        type: 'value'
-      }
-    ],
-    series: [
-      {
-        name: 'Line 1',
-        type: 'line',
-        stack: 'Total',
-        smooth: true,
-        lineStyle: {
-          width: 0
-        },
-        showSymbol: false,
-        areaStyle: {
-          opacity: 0.8,
-          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-            {
-              offset: 0,
-              color: 'rgb(128, 255, 165)'
-            },
-            {
-              offset: 1,
-              color: 'rgb(1, 191, 236)'
-            }
-          ])
-        },
-        emphasis: {
-          focus: 'series'
-        },
-        data: [140, 232, 101, 264, 90, 340, 250]
-      },
-    ]
-  };
-}
