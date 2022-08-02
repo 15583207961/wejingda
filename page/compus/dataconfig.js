@@ -31,7 +31,8 @@ const navBars =  [{
   imgUrl: getResourceUrl("resource/img/icon_lqcx.png"),
   path:"/enroll/enroll",
   title: "录取查询"
-}, {
+}
+, {
   imgUrl: getResourceUrl("resource/img/icon_swzl.png"),
   path:"/LostAndFont/LostAndFont",
   title: "失物招领"
@@ -42,15 +43,15 @@ const navBars =  [{
 }, {
   imgUrl: getResourceUrl("resource/img/icon_dd.png"),
   path:"/LostAndFont/LostAndFont",
-  title: "待定"
+  title: "开发中"
 }, {
   imgUrl: getResourceUrl("resource/img/icon_dd.png"),
   path:"/LostAndFont/LostAndFont",
-  title: "待定"
+  title: "开发中"
 }, {
   imgUrl: getResourceUrl("resource/img/icon_dd.png"),
   path:"/LostAndFont/LostAndFont",
-  title: "待定"
+  title: "开发中"
 }
 ]
 

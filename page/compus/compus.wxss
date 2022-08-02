@@ -35,7 +35,7 @@ page{
     height: 34rpx;
     object-fit: fill;
     position: absolute;
-    bottom: 0;
+    bottom: -1rpx;
 }
 /* 导航栏模块 */
 
@@ -43,12 +43,11 @@ page{
     box-sizing: border-box;
     width:686rpx;
     height: 304rpx;
-    margin: 0 auto;
     background-color: #fff;
-    border-radius: 21rpx;
+    border-radius: 24rpx;
     position: absolute;
-    top: 500rpx;
-    left: 28rpx;
+    top: 502rpx;
+    left: 32rpx;
     display: flex;
     flex-wrap: wrap;
     padding: 20rpx 32rpx;
@@ -130,6 +129,7 @@ page{
     text-align: center;
     bottom: 40rpx;
     font-size: 40rpx;
+    left: -0rpx;
     color: #4DADFF;
 }
 

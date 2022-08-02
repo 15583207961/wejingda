@@ -34,9 +34,11 @@
 <view class="enroll" wx:if="{{enrollInfo && id==0}}">
     <view class="enroll-top">
       <view class="enroll-top-left">
-      恭喜！{{enrollInfo.name[0]}}同学
+      <view class="hello">你好！</view>
+      <view class="name-first">{{enrollInfo.name[0]}}同学</view>
+      <view class="wecome">👏欢迎加入锦城大家庭</view>
       </view>
-      <image src="https://81.71.5.8/app/img/enroll.png" class="right-icon" alt="图片"/>
+      <image src="https://singlestep.cn/wejinda/resource/img/enroll.png" class="right-icon" alt="图片"/>
     </view>
 
     <view class="enroll-info">

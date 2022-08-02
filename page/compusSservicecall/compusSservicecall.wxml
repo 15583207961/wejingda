@@ -4,36 +4,20 @@
   <view class="{{id==1?'area selected':'area'}}"  bindtap="hanlde" data-id="1">部门</view>
 </view>
 
-<view class="container">
- <view class="item" bindtap="call" data-phone="15583207961">
-  <image src="../../static/public/headpic.png" class="headpic" alt="头像"></image>
-  <view class="name">计算机与软件学院</view>
-  <view class="phone">15583207961</view>
+<view class="container" wx:if="{{id==0}}">
+ <view class="item" bindtap="call" data-phone="{{item.phone}}" wx:for="{{phoneInfos.schoolPhoneArrayList}}" wx:key="item">
+  <image src="{{item.logo}}" class="headpic" alt="头像"></image>
+  <view class="name">{{item.name}}</view>
+  <view class="phone">{{item.phone}}</view>
  </view>
- <view class="item">
-  <image src="../../static/public/headpic.png" class="headpic" alt="头像"></image>
-  <view class="name">计算机与软件学院</view>
-  <view class="phone">028-87580272</view>
+ <view class="entiy-view"> 没有更多数据了</view>
+</view>
+
+<view class="container" wx:if="{{id==1}}">
+ <view class="item" bindtap="call" data-phone="{{item.phone}}" wx:for="{{phoneInfos.departmentPhoneArrayList}}" wx:key="item">
+  <image src="{{item.logo}}" class="headpic" alt="头像"></image>
+  <view class="name">{{item.name}}</view>
+  <view class="phone">{{item.phone}}</view>
  </view>
- <view class="item">
-  <image src="../../static/public/headpic.png" class="headpic" alt="头像"></image>
-  <view class="name">计算机与软件学院</view>
-  <view class="phone">028-87580272</view>
- </view>
- <view class="item">
-  <image src="../../static/public/headpic.png" class="headpic" alt="头像"></image>
-  <view class="name">计算机与软件学院</view>
-  <view class="phone">028-87580272</view>
- </view>
- <view class="item">
-  <image src="../../static/public/headpic.png" class="headpic" alt="头像"></image>
-  <view class="name">计算机与软件学院</view>
-  <view class="phone">028-87580272</view>
- </view>
- <view class="item">
-  <image src="../../static/public/headpic.png" class="headpic" alt="头像"></image>
-  <view class="name">计算机与软件学院</view>
-  <view class="phone">028-87580272</view>
- </view>
- 
+ <view class="entiy-view"> 没有更多数据了</view>
 </view>

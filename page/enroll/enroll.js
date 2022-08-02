@@ -16,13 +16,13 @@ Page({
    * 生命周期函数
    */
   onLoad() {
-    myGetStorger("enrollInfo").then(res=>{
-      this.setData({
-        enrollInfo:res.data
-      })
-    }).catch(err=>{
-      console.log("err",err)
-    })
+    // myGetStorger("enrollInfo").then(res=>{
+    //   this.setData({
+    //     enrollInfo:res.data
+    //   })
+    // }).catch(err=>{
+    //   console.log("err",err) 
+    // })
 
     wx.getSystemInfo({
       success: (result) => {

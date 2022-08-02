@@ -1,3 +1,4 @@
+import { getResourceUrl } from "../../utils/useHandle.js";
 import {
   myNavigatorTo,
   myGetStorger,
@@ -13,6 +14,12 @@ Page({
       rili:"/calendar/calendar",
       ditu:"/map/map",
       xk:"/photoframe/photoframe"
+    },
+    imageUrls:{
+      xkUrl:getResourceUrl("resource/img/icon_xqxk.png"),
+      riliUrl:getResourceUrl("resource/img/icon_xl.png"),
+      dituUrl:getResourceUrl("resource/img/icon_dt.png"),
+      phoneUrl:getResourceUrl("resource/img/icon_xydh.png"),
     }
   },
   goDetail(e){

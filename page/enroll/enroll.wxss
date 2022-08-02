@@ -92,12 +92,15 @@ page{
   display: flex;
   align-items: center;
 }
-.enroll-top-left{
-  width: 156rpx;
-  font-size: 52rpx;
-  color: #333333;
-  margin-right: 288rpx;
-  line-height: 80rpx;
+.hello{
+ font-size: 52rpx;
+ margin-bottom: 40rpx;
+}
+.name-first{
+  margin-bottom: 30rpx;
+}
+.name-first,.wecome{
+  font-size: 40rpx;
 }
 .right-icon{
   width: 241rpx;

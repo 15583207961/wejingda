@@ -1,6 +1,6 @@
 <view class="container">
   <view class="item" bindtap="goDetail" data-type="rili">
-    <image src="../../static/public/rili_1.png" class="icon"></image>
+    <image src="{{imageUrls.riliUrl}}" class="icon"></image>
     <view class="item_info">第 1 周</view>
     <view class="name">校历</view>
     <view class="other-info">
@@ -10,21 +10,21 @@
   </view>
  
   <view class="item" bindtap="goDetail" data-type="ditu">
-    <image src="../../static/public/ditu.png" class="icon"></image>
+    <image src="{{imageUrls.dituUrl}}" class="icon"></image>
     <view class="item_info">地点标注</view>
     <view class="name">地图</view>
     
   </view>
 
   <view class="item" bindtap="goDetail" data-type="xk">
-    <image src="../../static/public/xiangkuang.png" class="icon"></image>
+    <image src="{{imageUrls.xkUrl}}" class="icon"></image>
     <view class="item_info">17 周年</view>
     <view class="name">校庆相框</view>
     
   </view>
 
   <view class="item" bindtap="goDetail" data-type="phone">
-    <image src="../../static/public/dianhua.png" class="icon"></image>
+    <image src="{{imageUrls.phoneUrl}}" class="icon"></image>
     <view class="item_info">学院部门</view>
     <view class="name">校园电话</view>
     

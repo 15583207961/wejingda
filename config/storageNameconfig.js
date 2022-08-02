@@ -7,4 +7,6 @@ export const storagename = {
   openId:"openId",
   chatInfo:"chatInfo",
   localNo:"localNo",//本地账号
+  phoneHash:"phoneHash",//字段比较是否发生改变
+  phoneInfo:"phoneInfo",//本地存储信息
 }

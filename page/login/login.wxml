@@ -21,7 +21,7 @@
     <view class="protocol">
         <image src="{{argeeProtol?selectedIcon:icon}}" class="protocol-src" bindtap="bindProtocol"></image>
         已同意
-        <view bindtap="goWebview" data-type="protocol">《服务协议》</view>
+        <view bindtap="goWebview" data-type="protocol">《服务条款》</view>
         及<view bindtap="goWebview" data-type="private">《隐私政策》</view>
     </view>
     <view class="autoLogin" bindtap="bindChageck">

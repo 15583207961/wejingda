@@ -12,6 +12,7 @@ import {
 } from "../../utils/usePackegeSysFun.js";
 import { storagename } from "../../config/storageNameconfig.js";
 import { BaseRequestUrl } from "../../config/baseConfig.js";
+import { encodeURIComponentUrl } from "../../utils/useHandle.js";
 const quitLoginFlag = getApp().globalData.quitLoginFlag;
 Page({
     data: {
@@ -166,7 +167,7 @@ Page({
         })
     },
     goWebview(e){
-        var src =e.currentTarget.dataset.type ==="policy"? BaseRequestUrl+"resource/privacy/service.html": BaseRequestUrl+"/resource/privacy/private.html"
+        var src = encodeURIComponentUrl(e.currentTarget.dataset.type ==="policy"? BaseRequestUrl+"resource/privacy/service.html": BaseRequestUrl+"/resource/privacy/private.html")
     console.log(src)
     myNavigatorTo(`/webview/webview?src=${src}`)
     },

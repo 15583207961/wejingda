@@ -3,6 +3,7 @@ import {
   navBars
 } from "./dataconfig.js";
 import {
+  encodeURIComponentUrl,
   getNowTime, getResourceUrl
 } from "../../utils/useHandle.js";
 import {
@@ -32,7 +33,8 @@ Page({
       borrowed: "",
       time: ''
     },
-    openid: null
+    openid: null,
+    swapperInfo:[],//轮播信息
   },
   // 点击导航栏跳转到对应的详情页面
   goDetail(e) {
@@ -64,15 +66,16 @@ Page({
         myNavigatorTo(this.data.nav_list[3].path);
         break;
       case 5:
-        myNavigatorTo(this.data.nav_list[5].path);
-        break;
+        // myNavigatorTo(this.data.nav_list[5].path);
+        // break;
       case 6:
-        myNavigatorTo(this.data.nav_list[6].path);
-        break;
+        // myNavigatorTo(this.data.nav_list[6].path);
+        // break;
       case 7:
-        myNavigatorTo(this.data.nav_list[7].path);
-        break;
+        // myNavigatorTo(this.data.nav_list[7].path);
+        // break;
       default:
+        myToast("功能正在开发~~")
         break;
     }
   },
@@ -181,6 +184,26 @@ Page({
       console.log("errr====>::",err)
     })
   },
+
+//点击swaper跳转到页面
+  clickSwapper(e){
+    var src = e.currentTarget.dataset?.articles
+    console.log("点击了轮播图",src)
+
+    src&&myNavigatorTo(`/webview/webview?src=${encodeURIComponentUrl(src)}`)
+  },
+
+  // 网络请求后去轮播图的数据
+  getSwapperInfo(){
+    myRequest("swapper",{},"GET",false).then(res=>{
+      console.log("获取轮播数据",res)
+      this.setData({
+        swapperInfo:res.data.swapperInfoArrayList
+      })
+    }).catch(err=>{
+      console.log("失败了",err)
+    })
+  },
   onShow() {
     var time = getNowTime()
     myGetStorger(storagename.openId).then(res=>{
@@ -250,6 +273,7 @@ Page({
 
   // 获取手机型号
   onLoad(ee) {
+    this.getSwapperInfo();
     this.getUserInfoFromOpenid();
     myGetStorger("balanceInfo").then(res => {
       this.setData({

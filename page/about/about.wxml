@@ -1,6 +1,6 @@
 
 <!-- 图标 logo-->
-<image src="../../static/public/wejinda.png" alt="logo" class="about-logo"></image>
+<image src="{{logoUrl}}" alt="logo" class="about-logo"></image>
 <view class="company-name">We锦大</view>
 <view class="version">V 1.0</view>
 
@@ -29,7 +29,7 @@
 
 
 <view class="policy">
-   <view bindtap="goWebView" data-type="policy"> 《服务协议》 </view> | 
+   <view bindtap="goWebView" data-type="policy"> 《服务条款》 </view> | 
    <view  bindtap="goWebView" data-type="private"> 《隐私政策》</view>
 </view>
 
