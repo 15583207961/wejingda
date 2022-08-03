@@ -4,7 +4,7 @@ page{
 .swzl-sreach{
   width: 702rpx;
   height: 84rpx;
-  border:6rpx solid #2F9DFF ;
+  border:2rpx solid #2F9DFF ;
   border-radius: 16rpx;
   margin:0 auto;
   margin-top: 48rpx;

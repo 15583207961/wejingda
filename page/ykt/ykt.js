@@ -1,7 +1,7 @@
 
 
 
-import { getResourceUrl } from "../../utils/useHandle.js";
+import { getResourceUrl ,encodeURIComponentUrl} from "../../utils/useHandle.js";
 import {
   myNavigatorTo,
   myGetStorger,
@@ -39,6 +39,7 @@ Page({
   },
 
   onLoad(e) {
+    
     myGetStorger("balanceInfo").then(res => {
       const { name, state, userClass, money, limitMoney } = res.data;
       this.setData({
@@ -122,7 +123,9 @@ Page({
         });
         break;
       case 3:
-        myNavigatorTo("/webview/webview?src=")
+        const src =getApp().globalData.baseArticles?.filter(item=>item.name=="WeChatPay")[0]?.articles
+        src?myNavigatorTo("/webview/webview?src="+encodeURIComponentUrl(src)):myToast("网络异常，请稍后尝试");
+        break;
     }
   },
 

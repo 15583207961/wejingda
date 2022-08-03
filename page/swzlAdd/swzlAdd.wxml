@@ -1,37 +1,50 @@
 <!-- 图片 -->
 <view class="swzl-add-image" bindtap="takePhoto">
-    <view class="swzl-center-icon" >+</view>
+  <view class="swzl-center-icon">+</view>
 </view>
 <canvas canvas-id='photo_canvas' style='position:fixed;left: 9999px;width:500px;height:{{ canvasHeight }}px' class='myCanvas'></canvas>
 
 <!-- 下拉框 位置 -->
 <view class="swzl-add-where">
-  <image class="swzl-where-icon" src=""></image>
-  <input type="text" class="swzl-where-input" placeholder="A教 可输入，可以滑动选择"/>
+  <image class="swzl-where-icon" src="../../static/public/kd.png"></image>
+  <input type="text" class="swzl-where-input" bindinput="inputWhere" placeholder="A教 可输入，可以滑动选择" value="{{whereValue}}"/>
+  <picker bindchange="bindPickerChange" value="{{index}}" range="{{WhereArr}}">
+    <view class="picker">
+      <view class="drop-down-arrow"></view>
+    </view>
+  </picker>
+</view>
 
-</view>
 <!-- 下拉框 日期 -->
-<view class="swzl-add-where">
-  <image class="swzl-where-icon" src=""></image>
-  <input type="text" class="swzl-where-input" placeholder="A教 可输入，可以滑动选择"/>
+<view class="swzl-add-when">
+  <image class="swzl-where-icon" src="../../static/public/time.png"></image>
+  
+  <picker mode="date" value="{{date}}" start="2015-09-01"  bindchange="bindDateChange" >
+    <view class="pick-time">
+      <input type="text" class="swzl-when-input" placeholder="例如：2020-1-1" disabled="true" value="{{whenValue}}" />
+    <view class="drop-down-arrow"></view></view>
+  </picker>
   
 </view>
-<!-- 下拉框 关键字 -->
-<view class="swzl-add-where">
-  <image class="swzl-where-icon" src=""></image>
-  <input type="text" class="swzl-where-input" placeholder="A教 可输入，可以滑动选择"/>
-  
-</view>
+
 <!-- 下拉框 类型 -->
-<view class="swzl-add-where">
-  <image class="swzl-where-icon" src=""></image>
-  <input type="text" class="swzl-where-input" placeholder="A教 可输入，可以滑动选择"/>
-  
+<view class="swzl-add-short-desc">
+  <image class="swzl-where-icon" src="../../static/public/weitu.png"></image>
+  <input type="text" class="swzl-where-input" bindinput="inputWhereType" placeholder="例如 校园卡、钥匙、..." value="{{typeValue}}"/>
+  <picker bindchange="bindPickerChangeType" value="{{index}}" range="{{typeArr}}">
+    <view class="picker">
+      <view class="drop-down-arrow"></view>
+    </view>
+  </picker>
 </view>
 
 <!--详情 -->
-<textarea name="" class="swzl-add-textarea" id="" cols="30" rows="10" placeholder="在这里添加描述…"></textarea>
+<view class="textarea-view">
+
+  <textarea name="" class="swzl-add-textarea" id="" cols="10" rows="10" bindinput="getDescription" placeholder="在这里添加描述…(100字内）" value="{{descriptionValue}}"></textarea>
+  <view class="numTips">{{descriptionValue.length}}/100</view>
+</view>
 
 
 <!-- 提交按钮 -->
-<button class="swzl-send" type="primary" >发布</button>
+<button class="swzl-send" type="primary" bindtap="submit">发布</button>

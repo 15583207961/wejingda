@@ -204,6 +204,16 @@ Page({
       console.log("失败了",err)
     })
   },
+
+  // 网络获取固定的文章
+  getBaseArticles(){
+    myRequest("articles",{},"GET",false).then(res=>{
+      console.log("articles------------------------------",res)
+      getApp().globalData.baseArticles=res.data.articlesArrayList;
+    }).catch(err=>{
+      console.log("获取失败了文章",err)
+    })
+  },
   onShow() {
     var time = getNowTime()
     myGetStorger(storagename.openId).then(res=>{
@@ -230,7 +240,7 @@ Page({
     }).catch(err => {
       this.getBorrow(time)
     })
-
+    !getApp().globalData.baseArticles && this.getBaseArticles()
   },
   //启动小程程序，获去openid，请求云端数据。
   getUserInfoFromOpenid() {

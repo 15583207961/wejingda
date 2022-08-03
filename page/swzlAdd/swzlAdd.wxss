@@ -26,27 +26,41 @@ page{
 }
 
 
-.swzl-add-where{
+.swzl-add-where,.swzl-add-when,.swzl-add-short-desc{
   width: 702rpx;
   margin: 0 auto;
   margin-top: 28rpx;
   height: 80rpx;
   border-radius: 16rpx;
-  border:4rpx solid #979797;
-  position: relative;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+}
+.pick-time{
+  display: flex;
+  align-items: center;
+  flex: 1;
 }
 .swzl-where-icon{
-  position: absolute;
   width: 40rpx;
-  height: 46rpx;
-  top: 28rpx;
-  left: 30rpx;
+  height: 40rpx;
+  margin: 0 32rpx;
 }
-.swzl-where-input{
+.swzl-when-input{
+  width: 490rpx;
+}
 
-  position: absolute;
-  left: 90rpx;
-  height: 100%;
+.swzl-where-input{
+  flex: 1;
+}
+.drop-down-arrow{
+  width: 0rpx;
+  height: 0rpx;
+  border: 20rpx solid transparent;
+  border-top: 20rpx solid rgb(136, 135, 135);
+  border-radius: 10rpx;
+  margin: 32rpx;
+  margin-top: 58rpx;
 }
 .swzl-add-textarea{
   padding: 24rpx;
@@ -56,6 +70,16 @@ page{
   background-color: #fff;
   border-radius: 18rpx;
   box-sizing: border-box;
+}
+.textarea-view{
+  position: relative;
+}
+.numTips{
+  position: absolute;
+  bottom: 24rpx;
+  right: 56rpx;
+  font-size: 24rpx;
+  color: #333333;
 }
 
 .swzl-send{

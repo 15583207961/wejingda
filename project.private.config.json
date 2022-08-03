@@ -165,6 +165,18 @@
           "pathName": "page/compusSservicecall/compusSservicecall",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "page/LostAndFont/LostAndFont",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "page/swzlAdd/swzlAdd",
+          "query": "",
+          "scene": null
         }
       ]
     }

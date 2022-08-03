@@ -24,5 +24,6 @@ App({
       tsg:false
     },
     modifityFlag:true,//标记校园电话是否发生了变化
+    baseArticles:null,//基本的微信文章
   }
 })

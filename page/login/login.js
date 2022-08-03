@@ -282,7 +282,7 @@ Page({
             console.log("jwwInfo====>2",jwwInfo)
             if (this.data.isSave) {
                 mySetStorage("jwwInfo", jwwInfo)
-                this.setDataToDB("", this.data.dataInfo.sno, this.data.dataInfo.pwd, "", "", this.data.openId)
+                this.data.openId&&this.setDataToDB("", this.data.dataInfo.sno, this.data.dataInfo.pwd, "", "", this.data.openId)
                 mySetStorage(storagename.localNo,this.data.dataInfo.sno)
             }
             else {
@@ -315,7 +315,7 @@ Page({
             }
             if (this.data.isSave) {
                 mySetStorage("tsgInfo", tsgInfo)
-                this.setDataToDB("", this.data.dataInfo.sno, "", this.data.dataInfo.pwd, "", this.data.openId)
+                this.data.openId&& this.setDataToDB("", this.data.dataInfo.sno, "", this.data.dataInfo.pwd, "", this.data.openId)
                 mySetStorage(storagename.localNo,this.data.dataInfo.sno)
             }
             var data1 = JSON.stringify(res.data)
@@ -347,16 +347,12 @@ Page({
                 state: state
             }
             if (this.data.isSave) {
-
-
-                console.log("======>111111111111this.data.isSave",this.data.isSave)
-                this.setDataToDB("", this.data.dataInfo.sno, "", "", this.data.dataInfo.pwd, this.data.openId)
+                this.data.openId && this.setDataToDB("", this.data.dataInfo.sno, "", "", this.data.dataInfo.pwd, this.data.openId)
                 mySetStorage("yktInfo", yktInfo)
                 mySetStorage(storagename.localNo,this.data.dataInfo.sno)
             }
             else {
                 console.log("======>2222222222222222222,this.data.isSave",this.data.isSave)
-
                 var UserInfo = getApp().globalData.UserInfo;
                 UserInfo.yktInfo = yktInfo;
                 app.globalData.UserInfo = UserInfo;
