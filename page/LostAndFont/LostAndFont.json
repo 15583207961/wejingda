@@ -3,5 +3,6 @@
     "waterfall-flow":"../../components/waterfall-flow/waterfall-flow"
   },
   "navigationBarTitleText": "失物招领",
-    "navigationBarBackgroundColor": "#f5f5f5"
+    "navigationBarBackgroundColor": "#f5f5f5",
+    "enablePullDownRefresh": true
 }

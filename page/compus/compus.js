@@ -66,8 +66,8 @@ Page({
         myNavigatorTo(this.data.nav_list[3].path);
         break;
       case 5:
-        // myNavigatorTo(this.data.nav_list[5].path);
-        // break;
+        myNavigatorTo(this.data.nav_list[5].path);
+        break;
       case 6:
         // myNavigatorTo(this.data.nav_list[6].path);
         // break;

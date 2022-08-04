@@ -1,7 +1,11 @@
 <!-- 图片 -->
-<view class="swzl-add-image" bindtap="takePhoto">
+<image class="image-top" src="{{temporaryLink}}" wx:if="{{temporaryLink.length}}" mode="aspectFit"></image>
+<view class="swzl-add-image" bindtap="takePhoto"  wx:else>
   <view class="swzl-center-icon">+</view>
 </view>
+
+
+
 <canvas canvas-id='photo_canvas' style='position:fixed;left: 9999px;width:500px;height:{{ canvasHeight }}px' class='myCanvas'></canvas>
 
 <!-- 下拉框 位置 -->
@@ -41,8 +45,8 @@
 <!--详情 -->
 <view class="textarea-view">
 
-  <textarea name="" class="swzl-add-textarea" id="" cols="10" rows="10" bindinput="getDescription" placeholder="在这里添加描述…(100字内）" value="{{descriptionValue}}"></textarea>
-  <view class="numTips">{{descriptionValue.length}}/100</view>
+  <textarea name="" class="swzl-add-textarea" id="" cols="6" rows="" bindinput="getDescription" placeholder="在这里添加描述…(140字内）" value="{{descriptionValue}}"></textarea>
+  <view class="numTips">{{descriptionValue.length}}/140</view>
 </view>
 
 

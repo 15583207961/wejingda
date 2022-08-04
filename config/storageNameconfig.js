@@ -9,4 +9,5 @@ export const storagename = {
   localNo:"localNo",//本地账号
   phoneHash:"phoneHash",//字段比较是否发生改变
   phoneInfo:"phoneInfo",//本地存储信息
+  swzlMySends:"swzlMySends",//将自己发表的失物招领存放在本地
 }

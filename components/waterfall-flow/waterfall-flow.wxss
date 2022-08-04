@@ -3,6 +3,7 @@
 .swzl-waterfall-flow{
   width: 100vw;
   display: flex;
+  padding-bottom: 48rpx;
 }
 .swzl-flow-left{
   height: 200rpx;
@@ -18,13 +19,14 @@
   overflow: hidden;
   margin-top: 24rpx;
   margin-left: 24rpx;
+
 }
 
 
 .swzl-item-image{
   max-width: 339rpx;
   max-height: 500rpx;
-  object-fit: fill;
+  
 }
 .swzl-keyword{
 margin-top: 24rpx;

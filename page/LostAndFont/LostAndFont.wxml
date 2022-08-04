@@ -5,7 +5,7 @@
 
 
 <!--  瀑布流 -->
-<waterfall-flow ></waterfall-flow>
+<waterfall-flow dataInfoList="{{swzlDataList}}"></waterfall-flow>
 
 
 <!-- 发布失物招领 -->

@@ -2,31 +2,32 @@
 
 <view class="swzl-waterfall-flow">
   <view class="swzl-flow-left">
-    <view  wx:for="{{data}}" wx:key="{{item}}" bindtap="goItemDetail" data-id="{{index}}">
-    <view class="swzl-left-item" wx:if="{{index%2===0}}">
-      <image src="swzl-item-image" src=""></image>
-      <view class="swzl-keyword">钥匙</view>
-      <view class="swzl-item-profile">
-        <image class="swzl-item-headimg" src=""></image>
-        <view class="swzl-item-autor">昵称</view>
-        <view class="swzl-item-where">A教</view>
-        <view class="swzl-item-when">6月20日</view>
+    <view wx:for="{{dataInfoList}}" wx:key="{{item}}" bindtap="goItemDetail" data-index="{{index}}">
+      <view class="swzl-left-item" wx:if="{{index%2===0}}">
+        <image src="swzl-item-image" src="{{item.fileUrl}}" mode="widthFix"></image>
+        <view class="swzl-keyword">{{item.shortDesc}}</view>
+        <view class="swzl-item-profile">
+          <image class="swzl-item-headimg" src="{{item.userImage}}"></image>
+          <view class="swzl-item-autor">{{item.userNickName}}</view>
+          <view class="swzl-item-where">{{item.pickupLocation}}</view>
+          <view class="swzl-item-when">{{item.pickupTime}}</view>
+        </view>
       </view>
-    </view>
     </view>
   </view>
   <view class="swzl-flow-right">
-  
-    <view  wx:for="{{data}}" wx:key="{{item}}" bindtap="goItemDetail" data-id="{{item.id}}">
-    <view class="swzl-right-item" wx:if="{{index%2===1}}">
-      <image src="swzl-item-image" src=""></image>
-      <view class="swzl-keyword">钥匙</view>
-      <view class="swzl-item-profile">
-        <image class="swzl-item-headimg" src=""></image>
-        <view class="swzl-item-autor">昵称</view>
-        <view class="swzl-item-where">A教</view>
-        <view class="swzl-item-when">6月20日</view>
+
+    <view wx:for="{{dataInfoList}}" wx:key="{{item}}" bindtap="goItemDetail" data-index="{{index}}">
+      <view class="swzl-right-item" wx:if="{{index%2===1}}">
+        <image src="swzl-item-image" src="{{item.fileUrl}}" mode="widthFix"></image>
+        <view class="swzl-keyword">{{item.shortDesc}}</view>
+        <view class="swzl-item-profile">
+          <image class="swzl-item-headimg" src="{{item.userImage}}"></image>
+          <view class="swzl-item-autor">{{item.userNickName}}</view>
+          <view class="swzl-item-where">{{item.pickupLocation}}</view>
+          <view class="swzl-item-when">{{item.pickupTime}}</view>
+        </view>
+        </view>
       </view>
     </view>
-    </view></view>
-</view>
+  </view>
