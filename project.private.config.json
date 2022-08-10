@@ -177,6 +177,36 @@
           "pathName": "page/swzlAdd/swzlAdd",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "page/cropper/cropper",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "page/chatRoom/chatRoom",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "page/test/test",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "page/chatGroup/chatGroup",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "page/fbcx/fbcx",
+          "query": "",
+          "scene": null
         }
       ]
     }

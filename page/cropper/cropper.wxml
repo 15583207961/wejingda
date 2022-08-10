@@ -1,0 +1,7 @@
+<view style="width:100%;height:500rpx;">
+    <image-cropper id="image-cropper" bindload="cropperload" bindimageload="loadimage" bindtapcut="clickcut"  width="{{width}}" height="{{height}}" imgSrc="{{src}}" angle="{{angle}}" disable_width="{{true}}" max_width="{{max_width}}" max_height="{{max_height}}" limit_move="{{true}}" >
+    </image-cropper>
+</view>
+<view class='bottom'>
+    <button bindtap='submit' type="primary" class="btn">确定</button>
+</view>

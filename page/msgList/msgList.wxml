@@ -1,0 +1,10 @@
+<view class="msg-list-container">
+  <view class="item" wx:for="{{msglist}}" wx:key="item" bindtap="clickItem" data-index="{{index}}">
+    <image src="{{item.userImg}}" class="item-headpic"></image>
+    <view class="info">
+      <view class="name">{{item.nickName}}</view>
+      <view class="msg">你好呀！茱莉亚</view>
+      <view class="time">晚上 2:20</view>
+    </view>
+  </view>
+</view>

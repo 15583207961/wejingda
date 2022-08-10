@@ -3,16 +3,8 @@
 .swzl-waterfall-flow{
   width: 100vw;
   display: flex;
- 
 }
-.swzl-flow-left{
-  height: 200rpx;
-  padding-bottom: 48rpx;
-}
-.swzl-flow-right{
-  height: 200rpx;
-  padding-bottom: 48rpx;
-}
+
 .swzl-left-item,.swzl-right-item{
   width: 339rpx;
   word-wrap:break-word;
@@ -27,9 +19,8 @@
 
 .swzl-item-image{
   max-width: 339rpx;
-  max-height: 500rpx;
-  
 }
+
 .swzl-keyword{
 margin-top: 24rpx;
 margin-left: 20rpx;

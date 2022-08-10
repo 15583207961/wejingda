@@ -1,18 +1,37 @@
 page{
   background-color: #f5f5f5;
 }
+.image-top-container{
+  position: relative;
+}
 .image-top{
-
   display: block;
   margin: 0 auto;
   margin-top: 32rpx;
+  max-width: 702rpx;
+  max-height: 702rpx;
+}
+.delete-view{
+  width: 64rpx;
+  height: 64rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0 ;
+  right: 10rpx;
+  background-color: rgba(0, 0, 0, 0);
+}
+.delete-image{
+  width: 48rpx;
+  height: 48rpx;
 }
 .swzl-add-image{
   width: 702rpx;
   height: 394rpx;
   margin: 0 auto;
   margin-top: 40rpx;
-  background-color: #D8D8D8 ;
+  background-color: #fff ;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -53,7 +72,7 @@ page{
   margin: 0 32rpx;
 }
 .swzl-when-input{
-  width: 490rpx;
+  width: 510rpx;
 }
 
 .swzl-where-input{
@@ -62,11 +81,18 @@ page{
 .drop-down-arrow{
   width: 0rpx;
   height: 0rpx;
-  border: 20rpx solid transparent;
-  border-top: 20rpx solid rgb(136, 135, 135);
-  border-radius: 10rpx;
+  border: 15rpx solid transparent;
+  border-top: 15rpx solid rgb(136, 135, 135);
+  border-radius: 5rpx;
   margin: 32rpx;
   margin-top: 58rpx;
+}
+.picker{
+  display: flex;
+  align-items: center;
+}
+.swzl-thing-input{
+  width: 503rpx;
 }
 .swzl-add-textarea{
   padding: 24rpx;
@@ -97,4 +123,5 @@ page{
   margin-top: 24rpx;
   width: 310rpx !important;
   height: 82rpx !important;
+  margin-bottom: 32rpx;
 }

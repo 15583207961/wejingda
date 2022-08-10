@@ -4,6 +4,7 @@ import {
   myRequest,
   myToast,
   mySetStorage,
+  myPreviewInfos,
   myRemoveStorage
 } from "../../utils/usePackegeSysFun.js";
 import { storagename } from "../../config/storageNameconfig.js";
@@ -38,31 +39,69 @@ Page({
       "书",
       "作业"
     ],
+    typeThingArr:[
+      "lost","found"
+    ],
     whereValue: "",//地点显示信息
     whenValue: "",//显示时间信息
     typeValue: "",//类型信息
     descriptionValue: "",//描述信息
     openid:null,//openid
     temporaryLink:"",//临时链接
+    isShowTips:false,//是否出现过第一次提示
+    typeThingValue:null,
+  },
+  //删除当前照片
+  delete(){
+    this.setData({
+      temporaryLink:""
+    })
+    getApp().globalData.imgSrc="";
+  },
+  //预览图片
+  preview(){
+    myPreviewInfos([{url:this.data.temporaryLink}])
+  },
+  // 文字检查是否违规
+  checkText(text){
+    return new Promise((resolve,rej)=>{
+      myRequest("checkmsg",{
+        "openid": this.data.openid, 
+        "scene": 2, 
+        "version": 2, 
+        "content": text 
+        },"POST").then(res=>{
+          console.log("检测成功了",res)
+          resolve(res)
+        }).catch(err=>{
+          rej(err)
+          console.log("检测失败了",err)
+        })
+    })
   },
   // takePhoto
   takePhoto() {
-    wx.chooseImage({
-      count: 1,
-      sizeType: ['original', 'compressed'],
-      sourceType: ['album', 'camera'],
-      success: res => {
-        // tempFilePath可以作为 img 标签的 src 属性显示图片
-        const tempFilePaths = res.tempFilePaths
-        console.log(tempFilePaths)
-        this.compressImage(tempFilePaths[0], (data) => {
-          console.log("datta==>", data)
-          this.setData({
-            temporaryLink:data
-          })
-        })
-      }
+    myNavigatorTo("/cropper/cropper").then(res=>{
+      console.log("tiaozhangchengg ",res)
+    }).catch(err=>{
+      console.log("是啊比了",err)
     })
+    // wx.chooseImage({
+    //   count: 1,
+    //   sizeType: ['original', 'compressed'],
+    //   sourceType: ['album', 'camera'],
+    //   success: res => {
+    //     // tempFilePath可以作为 img 标签的 src 属性显示图片
+    //     const tempFilePaths = res.tempFilePaths
+    //     console.log(tempFilePaths)
+    //     this.compressImage(tempFilePaths[0], (data) => {
+    //       console.log("datta==>", data)
+    //       this.setData({
+    //         temporaryLink:data
+    //       })
+    //     })
+    //   }
+    // })
   },
   //canvas 压缩
   compressImage(path, callback) {
@@ -123,6 +162,14 @@ Page({
       typeValue: this.data.typeArr[e.detail.value]
     })
   },
+//inputThingType
+inputThingType(e){
+  let value = e.detail.value
+  console.log("helloo".value)
+  this.setData({
+    typeThingValue: this.data.typeThingArr[value]
+  })
+},
   //getDescription获取描述
   getDescription(e) {
     let value = e.detail.value.trim()
@@ -132,8 +179,12 @@ Page({
   },
   // 发送
   submit() {
-    if (!this.data.WhereArr) {
-      myToast("点的信息不能为空");
+    if(!this.data.temporaryLink){
+      myToast("图片不能为空")
+      return;
+    }
+    if (!this.data.whereValue) {
+      myToast("地点信息不能为空");
       return;
     }
     if (!this.data.whenValue) {
@@ -148,16 +199,28 @@ Page({
       myToast("描述字数不能少于10")
       return;
     }
-    this.updateImageToDB()
+    if(!this.data.typeThingValue){
+      myToast("类别不能为空");
+      return ;
+    }
+    this.checkText(this.data.whereValue+this.data.typeValue+this.data.descriptionValue).then(res=>{
+      console.log("成功了",res);
+      if(res.data){
+        this.updateImageToDB()
+        return ;
+      }
+      myToast(res.message,"error")
+    }).catch(err=>{
+      console.log("失败了",err)
+    })
   },
   // 上传图片
   updateImageToDB(){
     wx.uploadFile({
-      url: 'https://singlestep.cn/wejinda/uploadimage?type=lost',
+      url: 'https://singlestep.cn/wejinda/uploadimg?type=lost',
       filePath: this.data.temporaryLink,
       name: 'file',
       success:res1=> {
-       
         console.log("ressss----->0",res1)
         const res = JSON.parse(res1.data)
         console.log("ressss----->1",res.data)
@@ -167,21 +230,25 @@ Page({
   },
   // 上传信息
   updateInfos(filePath) {
-    let data = {
-      "userID": this.data.openid,
-      "lostID": "",
-      "type": "found",
-      "userContact": "10086",
-      "userImage": "",
+    let data ={
+      "userID": this.data.openid, 
+      "lostID": "", 
+      "type": this.data.typeThingValue,
+      "userContact": "10086", 
+      "userImage": "", 
       "userNickName": "",
-      "pickupTime": this.data.whenValue,
-      "pickupLocation": this.data.whereValue,
-      "shortDesc": this.data.typeValue,
-      "describe": this.data.descriptionValue,
-      "fileUrl": filePath,
-      "upLoadTime": ""
+      "pickupTime": this.data.whenValue, 
+      "pickupLocation": this.data.whereValue, 
+      "shortDesc": this.data.typeValue, 
+      "describe": this.data.descriptionValue, 
+      "fileUrl": filePath, 
+      "upLoadTime": "", 
+      "checkID": "",
+      "checkState": "",
+      "city": "" 
     }
     let swzlMySends =[];
+    data.checkState="审核中"
      myGetStorger(storagename.swzlMySends).then(res=>{
        console.log("获取到本地数据",res)
        swzlMySends=res.data
@@ -194,7 +261,7 @@ Page({
     
     myRequest("addlostfound", data,"POST").then(res=>{
       console.log("上传成功",res)
-      myToast(res.data,"success")
+      myToast(res.data)
       
       setTimeout(()=>{
         mySetStorage(storagename.swzlMySends,swzlMySends)
@@ -210,7 +277,18 @@ Page({
   onLoad(e){
     console.log(e)
     this.setData({
-      openid:e.openid
+      openid:e.openid,
+      
     })
+  },
+  onShow(e){
+    console.log("-------------------onshow")
+    this.setData({
+      temporaryLink:getApp().globalData.imgSrc
+    })
+  },
+  onUnload(){
+    getApp().globalData.imgSrc="";
+    myGetStorger()
   }
 })

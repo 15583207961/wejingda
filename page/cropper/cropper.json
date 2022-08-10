@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "image-cropper",
+  "navigationBarBackgroundColor": "#000000",
+  "usingComponents": {
+      "image-cropper": "../../components/image-cropper/image-cropper"
+  }
+}

@@ -1,0 +1,82 @@
+<view>
+
+
+
+  <view class="chat-room-top" style="height: {{titleHeight+32}}rpx;padding-top: {{titleTop}}rpx;">
+    <image class="backImage" src="../../static/public/icon_back(1).png" bindtap="goback"></image>
+    <view class="popInfo">
+      <view class="pop-name">{{nickName}}</view>
+      IP:四川 成都市
+    </view>
+  </view>
+
+  <scroll-view class="scroll-view" style="height: {{scrollHeight}}rpx;" scroll-y="true" scroll-top="{{scrolltop}}">
+    <!-- <view class="test1" wx:for="{{list}}">{{item+",item"+index+",list.length-1"}}</view> -->
+  <view  wx:for="{{list}}" wx:key="item">
+    <view class="left-item" wx:if="{{item.receiverID == myOpenID}}">
+      <image src="{{userImg}}" class="left-headpic"></image>
+
+      <view class="left-content">
+        {{item.content}}
+      </view>
+    </view>
+    <view class="right-item" wx:if="{{item.receiverID == receiveID}}">
+      <view class="empty"></view>
+      <image src="{{myUrl}}" class="right-headpic"></image>
+      <view class="right-content">
+        {{item.content}}
+      </view>
+    </view>
+  </view>
+
+  </scroll-view>
+</view>
+
+<view class="input-content">
+  <view class="input-view" style="bottom:{{inputUp}}rpx;">
+    <input class="input" placeholder="输入信息" adjust-position="{{false}}" bindfocus="inputFocus" bindblur="inputBlur" bindinput="inputValue" bindconfirm="	bindconfirm" value="{{inputvalue}}" />
+    <button class="send" bindtap="sendMsg">发送</button>
+  </view>
+</view>
+
+
+<!-- 新的 -->
+<!-- <view class="container"> -->
+
+
+
+<!-- <view class="chat-room-top" style="height: {{titleHeight+32}}rpx;padding-top: {{titleTop}}rpx;">
+  <image class="backImage" src="../../static/public/icon_back(1).png" bindtap="goback"></image>
+  <view class="popInfo">
+    <view class="pop-name">{{nickName}}</view>
+    IP:四川 成都市
+  </view>
+</view> -->
+<!-- 
+<scroll-view class="scroll-view" scroll-y="true" style="height: {{scrollHeight}}rpx;" scroll-top="{{scrolltop}}"> -->
+  <!-- <view class="test1" wx:for="{{list}}">{{item+",item"+index+",list.length-1"}}</view> -->
+<!-- <view  wx:for="{{list}}" wx:key="item">
+  <view class="left-item" wx:if="{{item.receiverID == myOpenID}}">
+    <image src="{{userImg}}" class="left-headpic"></image>
+
+    <view class="left-content">
+      {{item.content}}
+    </view>
+  </view>
+  <view class="right-item" wx:if="{{item.receiverID == receiveID}}">
+    <view class="empty"></view>
+    <image src="{{myUrl}}" class="right-headpic"></image>
+    <view class="right-content">
+      {{item.content}}
+    </view>
+  </view>
+</view>
+
+</scroll-view>
+
+<view class="input-view">
+  <input class="input" placeholder="输入信息" bindfocus="inputFocus" bindblur="inputBlur" bindinput="inputValue" bindconfirm="	bindconfirm" value="{{inputvalue}}" />
+  <button class="send" bindtap="sendMsg">发送</button>
+</view>
+</view> -->
+

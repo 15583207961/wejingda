@@ -7,6 +7,7 @@
     "page/ykt/ykt",
     "page/login/login",
     "page/map/map",
+    "page/chatGroup/chatGroup",
     "page/photoframe/photoframe",
     "page/Consdetail/Consdetail",
     "page/calendar/calendar",
@@ -14,8 +15,12 @@
     "page/setting/setting",
     "page/swiperdetail/swiperdetail",
     "page/xxcx/xxcx",
+    "page/fbcx/fbcx",
+    "page/msgList/msgList",
+    "page/test/test",
     "page/kjscx/kjscx",
     "page/porfile/porfile",
+    "page/chatRoom/chatRoom",
     "page/LostAndFont/LostAndFont",
     "page/swzlSreach/swzlSreach",
     "page/swzlAdd/swzlAdd",
@@ -23,6 +28,7 @@
     "page/compusBaseService/compusBaseService",
     "page/swzlItemDetail/swzlItemDetail",
     "page/webview/webview",
+    "page/cropper/cropper",
     "page/enroll/enroll",
     "page/about/about"
 

@@ -19,6 +19,16 @@
 <view class="emity-view"></view>
 <!-- 第三部分 -->
 
+<view class="tools-nav-bar">
+  <view class="tip-title">功能服务</view>
+  <view class="bars">
+    <view class="bars-item" bindtap="toMsgList">
+      <image src="{{toolsUrl}}" class="item-image"></image>
+      消息
+    </view>
+  </view>
+</view>
+
 <view class="function">
   <view class="function_item" bindtap="to_detail">
     <view class="funtuion_iamge">

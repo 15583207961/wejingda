@@ -167,7 +167,8 @@ Page({
         })
     },
     goWebview(e){
-        var src = encodeURIComponentUrl(e.currentTarget.dataset.type ==="policy"? BaseRequestUrl+"resource/privacy/service.html": BaseRequestUrl+"/resource/privacy/private.html")
+        console.log(e.currentTarget.dataset.type)
+        var src = encodeURIComponentUrl(e.currentTarget.dataset.type ==="protocol"? BaseRequestUrl+"resource/privacy/service.html": BaseRequestUrl+"/resource/privacy/private.html")
     console.log(src)
     myNavigatorTo(`/webview/webview?src=${src}`)
     },

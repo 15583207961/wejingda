@@ -20,13 +20,14 @@ import {getResourceUrl} from "./useHandle.js"
 
   // 封装wx request
 
-   const myRequest = (url, data = {}, method = "GET",isshowLoading=true) => {
+   const myRequest = (url, data = {}, method = "GET",isshowLoading=true,header) => {
     isshowLoading&&myShowLoading("请求中...")
     return new Promise((res, rej) => {
       wx.request({
         url: getResourceUrl(url),
         data: data || {},
         method: method,
+        header:header,
         success: (data) => {
           res(data.data);
           wx.hideLoading()
@@ -126,16 +127,65 @@ import {getResourceUrl} from "./useHandle.js"
     })
   }
 
-  const myNavBarHieght = ()=>{
-    wx.getSystemInfo({
-      success: (result) => {
-        var menuHeight =  wx.getMenuButtonBoundingClientRect()
-        console.log("result=======>1111",result,menuHeight)
-        // 不想实现,后面实现......
-      },
+  const mySystemInfo = (multiple = 2)=>{
+    return new Promise((resolve,rej)=>{
+      wx.getSystemInfo({
+        success: (result) => {
+          var menu =  wx.getMenuButtonBoundingClientRect()
+          console.log("result=======>result",result)
+          console.log("result=======>menuHeight",menu)
+          // 不想实现,后面实现......
+          var data = {
+            // 胶囊信息
+            menuHeight:menu.height*multiple, //高
+            menuWidth:menu.width*multiple, //宽
+            menuTop:menu.top*multiple,//胶囊距离顶部的位置
+            menuLeft:menu.left*multiple,//胶囊距离左边的位置
+            menuRight:menu.right*multiple,//胶囊距离右边的位置
+            menuBottom:menu.bottom*multiple,//胶囊底部距离顶部的位置
+  
+            // 手机信息
+            devicePixelRatio:result.devicePixelRatio,//像素比
+            model:result.model,//手机型号
+            safeAreaBottom:result.safeArea.bottom*multiple,
+            safeAreaTop:result.safeArea.top*multiple,
+            safeAreaTight:result.safeArea.right*multiple,
+            safeAreaLeft:result.safeArea.left*multiple,
+            safeAreaHeight:result.safeArea.height*multiple,
+            safeAreaWidth:result.safeArea.width*multiple,
+            screenWidth:result.screenWidth*multiple,
+            screenHeight:result.screenHeight*multiple,
+            windowHeight:result.windowHeight*multiple,
+            windowWidth:result.windowWidth*multiple
+          }
+          resolve(data)
+        },
+        fail:err=>{
+          console.log("系统信息获取失败了~")
+          rej(err)
+        }
+      })
+    })
+  
+  }
+
+  // 分装微信预览图片
+  const myPreviewInfos = (sources,current=0,showmenu=true) => {
+    return new Promise((resovle,rej)=>{
+      wx.previewMedia({
+        sources: sources,
+        current:current,
+        showmenu:showmenu,
+        success:res=>{
+          resovle(res)
+        },
+        fail:err=>{
+          rej(err)
+        }
+      })
     })
   }
 
 module.exports = {
-  myGetStorger,mySetStorage,myRequest,myShowLoading,myToast,myNavigatorTo,myRemoveStorage,myRedirectTo,myModal,myNavBarHieght
+  myGetStorger,mySetStorage,myRequest,myShowLoading,myToast,myPreviewInfos,myNavigatorTo,myRemoveStorage,myRedirectTo,myModal,mySystemInfo
 }

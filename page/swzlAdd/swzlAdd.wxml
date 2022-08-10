@@ -1,5 +1,10 @@
 <!-- 图片 -->
-<image class="image-top" src="{{temporaryLink}}" wx:if="{{temporaryLink.length}}" mode="aspectFit"></image>
+<view wx:if="{{temporaryLink.length}}" class="image-top-container">
+  <view bindtap="delete" class="delete-view">
+    <image src="../../static/public/delete.png" class="delete-image" alt="删除"/>
+  </view>
+  <image class="image-top" src="{{temporaryLink}}"  mode="aspectFit" bindtap="preview"></image>
+</view>
 <view class="swzl-add-image" bindtap="takePhoto"  wx:else>
   <view class="swzl-center-icon">+</view>
 </view>
@@ -42,10 +47,22 @@
   </picker>
 </view>
 
+<!-- 类型 -->
+<view class="swzl-add-short-desc">
+  <image class="swzl-where-icon" src="../../static/public/weitu.png"></image>
+
+  <picker bindchange="inputThingType" value="{{index}}" range="{{typeThingArr}}">
+ 
+    <view class="picker">
+      <input type="text" class="swzl-thing-input"  placeholder="类别" disabled="true" value="{{typeThingValue}}"/>
+      <view class="drop-down-arrow"></view>
+    </view>
+  </picker>
+</view>
 <!--详情 -->
 <view class="textarea-view">
 
-  <textarea name="" class="swzl-add-textarea" id="" cols="6" rows="" bindinput="getDescription" placeholder="在这里添加描述…(140字内）" value="{{descriptionValue}}"></textarea>
+  <textarea name="" class="swzl-add-textarea" id="" cols="6" rows="" bindinput="getDescription" placeholder="在这里添加描述…(140字内）" value="{{descriptionValue}}" cursor-spacing="{{190}}"></textarea>
   <view class="numTips">{{descriptionValue.length}}/140</view>
 </view>
 

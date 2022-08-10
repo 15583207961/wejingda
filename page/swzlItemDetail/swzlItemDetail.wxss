@@ -3,8 +3,11 @@
   width: 100%;
 }
 
-view,image{
-  position: absolute; 
+
+.top-info{
+  width: 100vw;
+  display: flex;
+  align-items: center;
 }
 .swzl-detail-headImg{
 
@@ -13,57 +16,55 @@ view,image{
   width: 112rpx;
   height: 112rpx;
   border-radius: 112rpx;
-
+  margin-left: 32rpx;
 }
-.swzl-detail-useName{
-    color: #777777;
-    font-size: 20rpx;
 
-    top: 56rpx;
-    left: 146rpx;
-}
-.swzl-detail-sendtime{
-
-  left: 146rpx;
-  top: 120rpx;
+.right-info{
+  margin-left: 24rpx;
+  font-size: 32rpx;
   color: #777777;
-  font-size: 20rpx;
+
 }
-.swzl-detail-where{
-  top: 202rpx;
-  left: 54rpx;
+.ip{
+  font-size: 22rpx;
+  margin-top: 18rpx;
+}
+
+
+.midle-info{
+  margin-left: 32rpx;
+  font-size: 28rpx;
   color: #777777;
-  font-size: 20rpx;
+  margin-top: 48rpx;
 }
+
 .swzl-detail-gettime{
-  top: 248rpx;
-  left: 54rpx;
-  color: #777777;
-  font-size: 20rpx;
+  margin: 12rpx 0;
 }
 .swzl-detail-descript{
   width: 658rpx;  
-  position: relative;
-  padding-top:292rpx ;
-  margin-left: 46rpx;
-  font-size: 28rpx;
+
+  margin: 24rpx 32rpx;
+  font-size: 34rpx;
   color: #333;
+  text-indent: 1rem;
 }
 .swzl-detail-thingImg{
-  max-width: 686rpx;
-  max-height: 518rpx;
+  width: 686rpx;
   border-radius: 16rpx;
   position: relative;
   display: block;
   margin: 0 auto;
+  object-fit: fill;
+  
 }
 .swzl-deatil-btn{
-  width:686rpx  ;
+  width:320rpx  ;
   /* position: flex; */
   background-color: #07C160;
   /* bottom: 102rpx; */
   margin-top: 48rpx;
   color: #fff;
   font-size: 32rpx;
-
+margin-bottom: 32rpx;
 }

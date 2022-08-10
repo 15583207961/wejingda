@@ -18,17 +18,22 @@ Page({
       this.setData({
         phoneInfos:res.data
       })
+    }).catch(err=>{
+      console.log("失败了",err)
     })
 
    
     getApp().globalData.modifityFlag&&this.getModifityInfo().then(res=>{
-        console.log("返回的数据",res)
-        let arr =res.modifyInfoArrayList.filter(item=> item.name === "SchoolPhoneInfo")
+        console.log("返回的数据111",res)
+        let arr =res.modifyArrayList.filter(item=> item.name === "SchoolPhoneInfo")
         myGetStorger(storagename.phoneHash).then(reslocal=>{
           if(arr.length&&arr[0].modify != reslocal.data){
             mySetStorage(storagename.phoneHash,arr[0].modify);
             this.getPhoneList();
+            console.log("1==>")
           }
+          console.log("2==>")
+
         }).catch(err=>{
           mySetStorage(storagename.phoneHash,arr[0]?.modify)
           this.getPhoneList();
@@ -37,6 +42,7 @@ Page({
        
         getApp().globalData.modifityFlag = false;
       }).catch(err=>{
+        console.log("yich",err)
         !this.data.phoneInfos.length&&myToast("网络异常，请稍后尝试")
       })
   
@@ -45,7 +51,7 @@ Page({
   //发送请求获取修改裂变信息
   getModifityInfo(){
   return  new Promise((resolve,rej)=>{
-    myRequest("baseinfo").then(res=>{
+    myRequest("modify").then(res=>{
       console.log("获取到baseInfo信息",res)
      resolve(res.data);
     }).catch(err=>{

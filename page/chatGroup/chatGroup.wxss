@@ -1,0 +1,66 @@
+page{
+  width: 100vw;
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+.item{
+  width: 100%;
+  display: flex;
+  padding: 32rpx;
+  box-sizing: border-box;
+}
+.headpic{
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 48rpx;
+  margin-right: 24rpx;
+  margin-top: 8rpx;
+}
+.name{
+  font-size: 34rpx;
+  color: #333;
+}
+.info{
+  width: 566rpx;
+  padding-top: 12rpx;
+}
+.show{
+  animation: show linear 500ms;
+  animation-fill-mode: forwards;
+}
+.hide{
+  animation: hide linear 500ms;
+  animation-fill-mode: forwards;
+}
+@keyframes hide{
+  0%{
+   max-height: 800rpx;
+  }
+  100%{
+    max-width: 104rpx;
+  }
+}
+@keyframes show{
+  0%{
+    max-height: 104rpx;
+  }
+  100%{
+    max-height: 800rpx;
+  }
+}
+.name text{
+  font-size: 32rpx;
+  color: #333333a6;
+}
+.describe{
+  margin-top: 8rpx;
+  font-size: 28rpx;
+  color: #333333a6;
+  width: 100%;
+}
+.row1{
+  display: inline-block;
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow:ellipsis;
+}

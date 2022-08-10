@@ -27,7 +27,18 @@
     <image src="{{imageUrls.phoneUrl}}" class="icon"></image>
     <view class="item_info">学院部门</view>
     <view class="name">校园电话</view>
+  </view>
+ 
+  <view class="item" bindtap="goDetail" data-type="fbcx">
+    <image src="{{imageUrls.fbcx}}" class="icon"></image>
+    <view class="item_info">查分班</view>
+    <view class="name">新生报道</view>
     
   </view>
 
+  <view class="item" bindtap="goDetail" data-type="chatGroup">
+    <image src="{{imageUrls.chatGroup}}" class="icon"></image>
+    <view class="item_info">社团部门</view>
+    <view class="name">兴趣Q群</view>
+  </view>
 </view>

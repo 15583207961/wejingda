@@ -10,11 +10,13 @@ import {
 } from "../../utils/usePackegeSysFun.js";
 import { storagename } from "../../config/storageNameconfig.js";
 import {getUserInfos}  from "../../utils/getUserInfo.js"
+import { getResourceUrl } from "../../utils/useHandle.js";
 Page({
     data:{
         userInfo:'',
         openid:null,
-        chatInfo:{}
+        chatInfo:{},
+        toolsUrl:getResourceUrl("resource/img/icon_xfjl.png")
     },
     // 页面加载
    onShow(){
@@ -85,6 +87,9 @@ Page({
       }
 
     },
-    // 
+    // toMsgList 去消息列表
+    toMsgList(){
+      myNavigatorTo("/msgList/msgList")
+    }
     
 })

@@ -1,0 +1,132 @@
+page{
+  height: 100vh;
+  /* overflow: hidden; */
+  background-color: #f5f5f5;
+}
+.chat-room-top{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  box-shadow: 0rpx 4rpx 8rpx 0rpx rgba(231, 231, 231, 0.5);  
+  z-index: 1;
+}
+.backImage{
+  width: 52rpx;
+  height: 52rpx;
+  object-fit: fill;
+  margin-left: 22rpx;
+  margin-right: 223rpx; 
+}
+.popInfo{
+font-size: 20rpx;
+text-align: center;
+
+}
+.pop-name{
+  font-size: 32rpx;
+}
+/* 新加的 */
+.container{
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  /* height: 100vh; */
+  /* overflow: hidden; */
+}
+.scroll-view{
+  
+  width: 104vw;
+  padding: 32rpx;
+  padding-top: 0;
+  padding-right: 0;
+  box-sizing: border-box;
+}
+.test{
+  width: 100%;
+  background-color: skyblue;
+  height: 100rpx;
+}
+
+
+.input-content{
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+ pointer-events: none;
+}
+.left-item,.right-item{
+  display: flex;
+  margin-bottom: 48rpx;
+}
+.right-item{
+  flex-direction: row-reverse;
+}
+.empty{
+  width: 64rpx;
+  height: 1rpx;
+}
+.left-headpic,.right-headpic{
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 48rpx;
+  
+}
+.left-headpic{
+  margin-right: 24rpx;
+}
+.right-headpic{
+  margin-left: 24rpx;
+}
+.left-content,.right-content{
+  margin-top: 24rpx;
+  max-width: 460rpx;
+  padding:32rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 32rpx;
+}
+.right-content{
+  background-color: rgb(92, 145, 226);
+  color: #fff;
+}
+.input-view{
+  position: absolute;
+ bottom: 0rpx;
+  width: 100%;
+  height: 140rpx;
+  padding: 32rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-evenly;
+}
+/* .input-view{
+  width: 100vw;
+  height: 140rpx;
+  padding: 32rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-evenly;
+} */
+.input{
+  pointer-events: visibleFill;
+ width: 65%;
+ height: 80rpx;
+ padding-left: 24rpx;
+ background-color: #fff;
+ border-radius: 16rpx;
+ box-sizing: border-box;
+ padding-right: 24rpx;
+}
+.send{
+  pointer-events: visibleFill;
+  width: 20%;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background-color: #00b26a;
+  margin: 0;
+}

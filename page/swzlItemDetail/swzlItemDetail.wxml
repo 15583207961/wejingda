@@ -1,9 +1,18 @@
-<image class="swzl-detail-headImg" src="{{itemData.userImage}}"></image>
-<view class="swzl-detail-useName">{{itemData.userNickName}}</view>
-<view class="swzl-detail-sendtime">发布时间： {{itemData.upLoadTime}}</view>
-<view class="swzl-detail-where">拾取地点： {{itemData.pickupLocation}}</view>
-<view class="swzl-detail-gettime">拾取时间： {{itemData.pickupTime}}</view>
-<view class="swzl-detail-descript">描述： {{itemData.describe}}</view>
+<view class="top-info">
+  <image class="swzl-detail-headImg" src="{{itemData.userImage}}"></image>
+  <view class="right-info">
+    <view class="swzl-detail-useName">{{itemData.userNickName}}</view>
 
-<image class="swzl-detail-thingImg" src="{{itemData.fileUrl}}" mode="aspectFit"></image>
+    <view class="ip">IP:{{itemData.city}}</view>
+  </view>
+</view>
+<view class="midle-info">
+  <view class="swzl-detail-where">拾取地点： {{itemData.pickupLocation}}</view>
+  <view class="swzl-detail-gettime">拾取时间： {{itemData.pickupTime}}</view>
+  <view class="swzl-detail-sendtime">发布时间： {{itemData.upLoadTime}}</view>
+  
+</view>
+<view class="swzl-detail-descript"> {{itemData.describe}}</view>
+
+<image class="swzl-detail-thingImg" src="{{itemData.fileUrl}}" mode="widthFix" bindtap="preview"></image>
 <button class="swzl-deatil-btn" bindtap="connect">联系他</button>

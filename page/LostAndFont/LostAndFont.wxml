@@ -1,12 +1,23 @@
 <!-- 搜索框 -->
-<view class="swzl-sreach" bindtap="goSreachPage">
-  <image src= "" class="swzl-sreach-icon"></image>
+<view class="toolBar">
+  <view class="{{currentType=='lost'?'lost select-color':'lost'}}" bindtap="selectType" data-type="lost">丢失</view>
+  <view class="{{currentType=='pick'?'pick select-color':'pick'}}" bindtap="selectType" data-type="pick">拾的</view>
+  <view class="swzl-sreach" bindtap="goSreachPage">
+    <image src="../../static/public/swzlsreach.png" class="swzl-sreach-icon"></image>
+  </view>
+  <image src="../../static/public/addswzl.png" class="add-swzl" bindtap="goAddPage"></image>
 </view>
 
 
 <!--  瀑布流 -->
-<waterfall-flow dataInfoList="{{swzlDataList}}"></waterfall-flow>
-
+<view style="height: 112rpx;width: 1rpx;"></view>
+<view wx:if="{{currentType=='lost'}}">
+  <waterfall-flow dataInfoList="{{swzlDataInfoLost}}"></waterfall-flow>
+</view>
+<view wx:else>
+  <waterfall-flow dataInfoList="{{swzlDataInfoPick}}"></waterfall-flow>
+</view>
 
 <!-- 发布失物招领 -->
- <view class="swzl-add" bindtap="goAddPage">+</view>
+
+<view class="empty" wx-if="{{showTips}}">已经到底了~</view>
