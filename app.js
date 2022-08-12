@@ -14,6 +14,25 @@ App({
     })
     this.getlocalData();
    //建立mt连接
+   wx.onAppHide((res)=>{
+     console.log("res小程序切后台",res)
+     this.globalData.openid&& this.setUserStatus(this.globalData.openid,false);
+   })
+  },
+  
+
+  // 小程序启动设置用户的当前状态为活跃状态
+  setUserStatus(openid,lineStatus){
+    let data = {
+      openID: openid, 
+      lineStatus:lineStatus, 
+      time: "" 
+      }
+    myRequest("setlinestatus",data,"POST",false).then(res=>{
+      console.log("设置成功",res)
+    }).catch(err=>{
+      console.log("设置失败",err)
+    })
   },
   //获取本地数据
   getlocalData(){
@@ -22,11 +41,15 @@ App({
       this.globalData.openid=res.data
       this.connect(res.data);
       this.getmsglistmqtt(res.data)
+      //本地用openid可以设置用户的在线状态
+      wx.onAppShow(()=>{
+        console.log("小程序切换前台")
+        this.setUserStatus(res.data,true);
+      })
     }).catch(err=>{
       console.llog("还没有openid",err)
     })
   },
-
   // 小程启动之后建立mqtt全局监听
   connect(myOpenID) {
     /**

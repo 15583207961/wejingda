@@ -90,6 +90,10 @@ Page({
     // toMsgList 去消息列表
     toMsgList(){
       myNavigatorTo("/msgList/msgList")
+    },
+    // toMySend去我发布页面
+    toMySend(){
+      myNavigatorTo("/mySendInfo/mySendInfo")
     }
     
 })

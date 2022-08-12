@@ -36,8 +36,12 @@ Page({
   getListPerson(openid){
   myRequest(`getmsglist?id=${openid}`,{},"POST").then(res=>{
     console.log("获取成功消息列表",res);
+    this.showTimeFormat()
     this.setData({
-      msglist:res.data.personMsgArrayList
+      msglist:res.data.personMsgArrayList.map(item=>{
+        item.showTime = this.showTimeFormat(item.createDate)
+        return item;
+      })
     })
   })
   },
@@ -58,5 +62,31 @@ Page({
     const data  = this.data.msglist[e.currentTarget.dataset.index];
     data.myOpenID = this.data.openid
     myNavigatorTo("/chatRoom/chatRoom?data="+JSON.stringify(data)
-  )}
+  )},
+  // 消息记录的时间的显示
+  showTimeFormat(time){
+    let Otime =new Date(time);
+    let OYear = Otime.getFullYear();
+    let OMonth = this.fotmatTimeFull0(Otime.getMonth()+1);
+    let Oday =this.fotmatTimeFull0(Otime.getDate()) ;
+    let HM = this.fotmatTimeFull0(Otime.getHours())+":"+this.fotmatTimeFull0(Otime.getMinutes());
+    let OTimeStamp = Otime.valueOf();
+    let nowTimeStamp = new Date().valueOf();
+    let gap = nowTimeStamp - OTimeStamp;
+    let OneDayTimeStamp = 24 * 60 * 60 * 1000
+    if(gap <= OneDayTimeStamp){
+      return HM;
+    }
+    else if( gap<=2*OneDayTimeStamp){
+      return "昨天";
+    }else if(gap <= 3*OneDayTimeStamp){
+      return "前天";
+    }else{
+      return OYear+"-"+OMonth+"-"+Oday;
+    }
+  },
+  //时间0格式
+  fotmatTimeFull0(num){
+    return num>=10?num:"0"+num
+  }
 })

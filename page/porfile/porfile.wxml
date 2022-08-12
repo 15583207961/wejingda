@@ -26,6 +26,10 @@
       <image src="{{toolsUrl}}" class="item-image"></image>
       消息
     </view>
+    <view class="bars-item" bindtap="toMySend">
+      <image src="{{toolsUrl}}" class="item-image"></image>
+      发布
+    </view>
   </view>
 </view>
 

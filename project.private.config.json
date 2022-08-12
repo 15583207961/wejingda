@@ -207,6 +207,18 @@
           "pathName": "page/fbcx/fbcx",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "page/mySendInfo/mySendInfo",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "page/msgList/msgList",
+          "query": "",
+          "scene": null
         }
       ]
     }

@@ -43,12 +43,28 @@ Page({
       topicName:topicName
     })
     topicName&&this.getmsgrecord(topicName);
+    topicName&&this.setTopicNameStatus(topicName,"true")
     // this.connect(e.myOpenID,e.receiveID)
     this.linsenMqtt()
     mySystemInfo()
     // 
     this.getScrollInfo()
     this.getLocalDate()
+  },
+  onUnload(){
+    this.data.topicName && this.setTopicNameStatus(this.data.topicName,"false")
+  },
+  // 聊天室启动，设置topic状态
+  setTopicNameStatus(topicName,cating){
+    let data = {
+      topicname:topicName,
+      cating:cating
+    }
+    myRequest("settopiccating",data,"POST",false,{"content-type":"application/x-www-form-urlencoded"}).then(res=>{
+      console.log("聊天室状态设置成功",res)
+    }).catch(err=>{
+      console.log("聊天室状态设置失败",err)
+    })
   },
 //页面启动获取本地数据
 getLocalDate(){
@@ -65,7 +81,7 @@ getLocalDate(){
   getmsgrecord(topicname){
     myRequest(`getmsgrecord?topicname=${topicname}`,{},"POST").then(res=>{
       console.log("获取消息记录成功",res)
-      const list = res.data.imMsgArrayList
+      const list = res.data.oldMsgArrayList.concat(res.data.newMsgArrList)
       this.setData({
         list:list,
         scrolltop:list.length*800
@@ -162,6 +178,7 @@ getLocalDate(){
       senderID: this.data.myOpenID,
       receiverID: this.data.receiveID,
       content: content,
+      "read": "false",
       date: ""
     }
     if (this.data.firstSend&&!this.data.topicName) {

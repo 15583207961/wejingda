@@ -62,6 +62,14 @@ text-align: center;
 }
 .right-item{
   flex-direction: row-reverse;
+  position: relative;
+  margin-bottom: 60rpx;
+}
+.info-status{
+  position: absolute;
+  bottom: -42rpx;
+  right: 200rpx;
+  font-size: 28rpx;
 }
 .empty{
   width: 64rpx;
@@ -91,6 +99,7 @@ text-align: center;
   background-color: rgb(92, 145, 226);
   color: #fff;
 }
+
 .input-view{
   position: absolute;
  bottom: 0rpx;
@@ -101,6 +110,7 @@ text-align: center;
   display: flex;
   justify-content: space-evenly;
 }
+
 /* .input-view{
   width: 100vw;
   height: 140rpx;

@@ -65,7 +65,5 @@
   <textarea name="" class="swzl-add-textarea" id="" cols="6" rows="" bindinput="getDescription" placeholder="在这里添加描述…(140字内）" value="{{descriptionValue}}" cursor-spacing="{{190}}"></textarea>
   <view class="numTips">{{descriptionValue.length}}/140</view>
 </view>
-
-
 <!-- 提交按钮 -->
 <button class="swzl-send" type="primary" bindtap="submit">发布</button>

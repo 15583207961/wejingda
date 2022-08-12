@@ -3,8 +3,8 @@
     <image src="{{item.userImg}}" class="item-headpic"></image>
     <view class="info">
       <view class="name">{{item.nickName}}</view>
-      <view class="msg">你好呀！茱莉亚</view>
-      <view class="time">晚上 2:20</view>
+      <view class="msg">{{item.lastMsg}}</view>
+      <view class="time">{{item.showTime}}</view>
     </view>
   </view>
 </view>
