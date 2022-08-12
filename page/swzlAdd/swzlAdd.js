@@ -39,6 +39,8 @@ Page({
       "书",
       "作业"
     ],
+    imageWidth:"",
+    imageHeight:"",
     typeThingArr:[
       "lost","found"
     ],
@@ -206,7 +208,8 @@ inputThingType(e){
     this.checkText(this.data.whereValue+this.data.typeValue+this.data.descriptionValue).then(res=>{
       console.log("成功了",res);
       if(res.data){
-        this.updateImageToDB()
+        this.updateImageToDB();
+       
         return ;
       }
       myToast(res.message,"error")
@@ -224,7 +227,7 @@ inputThingType(e){
         console.log("ressss----->0",res1)
         const res = JSON.parse(res1.data)
         console.log("ressss----->1",res.data)
-        this.updateInfos(res.data)
+       this.updateInfos(res.data)
       }
     })
   },
@@ -245,7 +248,9 @@ inputThingType(e){
       "upLoadTime": "", 
       "checkID": "",
       "checkState": "",
-      "city": "" 
+      "city": "" ,
+      "imgWidth": this.data.imageWidth, 
+      "imgHeight": this.data.imageHeight 
     }
     let swzlMySends =[];
     data.checkState="审核中"
@@ -285,6 +290,19 @@ inputThingType(e){
     console.log("-------------------onshow")
     this.setData({
       temporaryLink:getApp().globalData.imgSrc
+    })
+    wx.getImageInfo({
+      src: getApp().globalData.imgSrc,
+      success:res=>{
+        console.log("res图片信息--->",res)
+        this.setData({
+          imageWidth:res.width,
+          imageHeight:res.height
+        })
+      },
+      fail:err=>{
+        console.log("失败了---->",err)
+      }
     })
   },
   onUnload(){

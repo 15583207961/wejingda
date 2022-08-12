@@ -28,9 +28,9 @@ Page({
     receiveID: "",//对方的id
     firstSend: true,//是否是进入界面是否是第一次发送消息。
     topicName: "",//当前聊天室的话题
-    nickName:"",
-    userImg:"",
-    myUrl:""
+    nickName:"",//对方的 昵称，现在在聊天顶部
+    userImg:"",//对方的头像
+    myUrl:"",//我的头像
   },
   onLoad(e) {
     console.log("房间", e)
@@ -47,7 +47,6 @@ Page({
     // this.connect(e.myOpenID,e.receiveID)
     this.linsenMqtt()
     mySystemInfo()
-    // 
     this.getScrollInfo()
     this.getLocalDate()
   },
@@ -68,6 +67,7 @@ Page({
   },
 //页面启动获取本地数据
 getLocalDate(){
+  // 获取自己的头像
   myGetStorger(storagename.chatInfo).then(res=>{
     console.log("bending数据获取成功chatInfo",res)
     this.setData({
@@ -77,7 +77,7 @@ getLocalDate(){
     console.log("本地数据获取失败",err)
   })
 },
-  //根据openid和topic获取消息记录
+  //根据topicname获取消息记录
   getmsgrecord(topicname){
     myRequest(`getmsgrecord?topicname=${topicname}`,{},"POST").then(res=>{
       console.log("获取消息记录成功",res)
@@ -169,6 +169,8 @@ getLocalDate(){
     })
   },
 
+
+  // 点击发送信息
   sendMsg() {
     var content = this.data.inputvalue.trim()
     if (!content) {
@@ -181,7 +183,8 @@ getLocalDate(){
       "read": "false",
       date: ""
     }
-    if (this.data.firstSend&&!this.data.topicName) {
+    // 判断是否存在topicname，如果没有先发送请求，建立topicname，在发送第二次，如果有着直接携带发送
+    if (!this.data.topicName) {
       myRequest("firstmsg", data, "POST").then(res => {
         console.log("第一次成功了", res)
         this.getmsgrecord(res.data)
@@ -193,6 +196,7 @@ getLocalDate(){
         })
         this.sendSecond(data, res.data)
       }).catch(err => {
+        myToast("出问题了，请稍后重试")
         console.log("第一次失败了", err)
       })
     } else {
@@ -202,9 +206,7 @@ getLocalDate(){
       inputvalue: ""
     })
   },
-  bindconfirm(e) {
-    console.log("bindconfirm", e)
-  },
+ 
 
 
 

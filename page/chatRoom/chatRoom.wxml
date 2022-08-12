@@ -26,7 +26,7 @@
       <view class="right-content">
         {{item.content}}
       </view>
-      <view class="info-status">{{item.read === "true"?"已读":"未读"}}</view>
+      <view class="{{item.read === 'true'?'info-status' :'info-status-color info-status'}}">{{item.read === "true"?"已读":"未读"}}</view>
     </view>
   </view>
 

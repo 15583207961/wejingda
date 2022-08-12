@@ -14,5 +14,5 @@
 </view>
 <view class="swzl-detail-descript"> {{itemData.describe}}</view>
 
-<image class="swzl-detail-thingImg" src="{{itemData.fileUrl}}" mode="widthFix" bindtap="preview"></image>
+<image class="swzl-detail-thingImg" style="height: {{Number(itemData.imgHeight) / Number(itemData.imgWidth) * 686}}rpx;" src="{{itemData.fileUrl}}" mode="widthFix" bindtap="preview"></image>
 <button class="swzl-deatil-btn" bindtap="connect">联系他</button>
