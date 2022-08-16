@@ -9,6 +9,7 @@ import {
 } from "../../utils/usePackegeSysFun.js";
 import { storagename } from "../../config/storageNameconfig.js";
 import { getUserInfos } from "../../utils/getUserInfo"
+import { getResourceUrl } from "../../utils/useHandle.js";
 // const dataInfo = getApp().globalData.swzlDataInfo||{foundInfoArrayList:[],lostInfoArrayList:[]}
 const pagelost = getApp().globalData.pagelost || 0 //丢失的偏移页数
 const pagepick = getApp().globalData.pagepick || 0  //拾的的偏移页数
@@ -25,6 +26,14 @@ Page({
     currentType: "lost",
     swzlDataInfoPick: swzlDataInfoPick,
     swzlDataInfoLost: swzlDataInfoLost,
+    moreBtncls:"cha-more ",
+    funtoolcls:"fun-tool-top",
+    searchUrl:getResourceUrl("resource/img/icon_ssfb.png"),
+    addUrl:getResourceUrl("resource/img/icon_xzfb.png"),
+    mysendUrl:getResourceUrl("resource/img/icon_wdfb.png"),
+    add:getResourceUrl("resource/img/icon_menu.png"),
+    containCls:"bottom-container",
+    toolsCls:"bottom-tools",
   },
   /**
    * 内部函数
@@ -33,6 +42,12 @@ Page({
     !swzlDataInfoPick.length || !swzlDataInfoLost.length ? this.getLostInfo(0) : this.setData({
       swzlDataInfoPick: swzlDataInfoPick,
       swzlDataInfoLost: swzlDataInfoLost,
+    })
+  },
+  onShow(){
+    this.setData({
+      containCls:"bottom-container",
+      toolsCls:"bottom-tools",
     })
   },
   onReachBottom() {
@@ -153,5 +168,29 @@ Page({
     wx.navigateTo({
       url: '../../page/swzlAdd/swzlAdd?openid=' + openid,
     })
+  },
+
+  // moreBtn 点击更多显示更多
+  moreBtn(){
+    console.log("hgytfghjk")
+    
+      this.setData({
+        containCls:"bottom-container contain-show",
+        toolsCls:"bottom-tools bottom-tools-show",
+      })
+  
+    console.log("moreBtncls",this.data.containCls)
+    console.log("moreBtncls",this.data.toolsCls)
+  },
+  // hide
+  hide(){
+    this.setData({
+      containCls:"bottom-container contian-hide",
+      toolsCls:"bottom-tools bottom-tools-hide",
+    })
+  },
+  // mysendPage
+  mysendPage(){
+    myNavigatorTo("/mySendInfo/mySendInfo")
   }
 })

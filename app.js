@@ -15,16 +15,35 @@ App({
     this.getlocalData();
    //建立mt连接
    wx.onAppHide((res)=>{
-     console.log("res小程序切后台",res)
-     this.globalData.openid&& this.setUserStatus(this.globalData.openid,false);
+     console.log("res小程序切后台设置用户的状态为false",res)
+     this.globalData.openid&& this.setUserStatus(this.globalData.openid,"false");
    })
+   wx.onAppShow(()=>{
+    console.log("小程序切换前台设置用户的状态为true")
+    this.globalData.openid&& this.setUserStatus(this.globalData.openid,"true");
+  })
+  wx.onSocketError((e)=>{
+    console.log("SocketTask.onError===>",e)
+  })
+  wx.onSocketMessage((e)=>{
+    console.log("wx.onSocketMessage====>",e)
+  })
+  wx.onSocketOpen((e)=>{
+    console.log("wx.onSocketOpen====>",e)
+  })
+  // SocketTask.send((e)=>{
+  //   console.log("SocketTask.send====>",e)
+  // })
+  wx.onSocketClose((e)=>{
+    console.log("wx.onSocketClose====>",e)
+  })
   },
   
 
   // 小程序启动设置用户的当前状态为活跃状态
   setUserStatus(openid,lineStatus){
     let data = {
-      openID: openid, 
+      senderID: openid, 
       lineStatus:lineStatus, 
       time: "" 
       }
@@ -42,10 +61,10 @@ App({
       this.connect(res.data);
       this.getmsglistmqtt(res.data)
       //本地用openid可以设置用户的在线状态
-      wx.onAppShow(()=>{
-        console.log("小程序切换前台")
-        this.setUserStatus(res.data,true);
-      })
+
+        console.log("启动小程序询设置用户状态为true")
+        this.setUserStatus(res.data,"true");
+    
     }).catch(err=>{
       console.llog("还没有openid",err)
     })
@@ -59,15 +78,10 @@ App({
     // 因此不要忘了带上这个 /mqtt !!!
     // 微信小程序中需要将 wss 协议写为 wxs，且由于微信小程序出于安全限制，不支持 ws 协议
     try {
-      this.globalData.client = mqtt.connect(`wxs://singlestep.cn:443/mqtt`, {
-        keepalive: 60,   
-        username: "test12321342134",
-        password: "test312312321",
-        reconnectPeriod: 1000, 
-        connectTimeout: 30 * 1000, 
+      this.globalData.client = mqtt.connect(`wxs://singlestep.cn/mqtt`, {
+       ...this.getlocalData.mmqttOptions,
         clientId:myOpenID,
-      });
-  
+      });  
       this.globalData.client.on("connect", () => {
         wx.showToast({
           title: "连接成功",
@@ -87,23 +101,24 @@ App({
   
         this.globalData.client.on("error", (error) => {
           // this.setValue("conenctBtnText", "连接");
-          console.log("onError", error);
+          console.log("mqtt连接出错了onError", error);
         });
   
-        this.globalData.client.on("reconnect", () => {
+        this.globalData.client.on("reconnect", (e) => {
           // this.setValue("conenctBtnText", "连接");
-          console.log("reconnecting...");
+          console.log("发生了重新连接.....",e);
+          this.getmsglistmqtt(this.getlocalData.openid)
         });
   
-        this.globalData.client.on("offline", () => {
+        this.globalData.client.on("offline", (e) => {
           // this.setValue("conenctBtnText", "连接");
-          console.log("onOffline");
+          console.log("连接已断开onOffline",e);
           myToast("已断开链接")
         });
    //订阅话题 全局每个都要订阅的
         this.globalData.client.subscribe("ClientSpring");
-        this.globalData.client.subscribe("hello")
-        this.globalData.client.subscribe("hello")
+        // this.globalData.client.subscribe("hello")
+        // this.globalData.client.subscribe("hello")
         // 更多 MQTT.js 相关 API 请参阅 https://github.com/mqttjs/MQTT.js#api
       });
     } catch (error) {
@@ -118,9 +133,13 @@ App({
       const msgList = res.data.personMsgArrayList;
       this.globalData.getmsglistmqtt = msgList;
       mySetStorage(storagename.getmsglistmqtt,msgList);
-      msgList.forEach(item => {
-        this.globalData.client.subscribe(item.topicName)
-        console.log("小程序启动订阅了主题",item.topicName)
+      msgList.forEach((item,index) => {
+        try{
+          this.globalData.client.subscribe(item.topicName)
+          console.log("小程序启动订阅了主题",index,item.topicName)
+        }catch(err){
+          console.log("订阅消息问题--->*:",err)
+        }
       });
     res
     }).catch(err=>{
@@ -162,6 +181,12 @@ App({
       jww:false,
       ykt:false,
       tsg:false
+    },
+    mqttOptions:{
+      username: "test",
+      password: "test",
+      reconnectPeriod: 1, // 1000毫秒，设置为 0 禁用自动重连，两次重新连接之间的间隔时间
+      connectTimeout: 30 * 1000, // 30秒，连接超时时间
     },
     modifityFlag:true,//标记校园电话是否发生了变化
     baseArticles:null,//基本的微信文章

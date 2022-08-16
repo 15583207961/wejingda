@@ -219,6 +219,24 @@
           "pathName": "page/msgList/msgList",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "page/swzlSreach/swzlSreach",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "page/swzlItemDetail/swzlItemDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "page/swzlSreach/swzlSreach",
+          "query": "",
+          "scene": null
         }
       ]
     }

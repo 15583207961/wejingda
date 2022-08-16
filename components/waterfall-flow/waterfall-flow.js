@@ -15,6 +15,7 @@ Component({
    * 组件的初始数据
    */
   data: {
+    plx:2
   },
 
   /**

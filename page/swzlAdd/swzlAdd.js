@@ -60,10 +60,7 @@ Page({
     })
     getApp().globalData.imgSrc="";
   },
-  //预览图片
-  preview(){
-    myPreviewInfos([{url:this.data.temporaryLink}])
-  },
+
   // 文字检查是否违规
   checkText(text){
     return new Promise((resolve,rej)=>{
@@ -287,7 +284,6 @@ inputThingType(e){
     })
   },
   onShow(e){
-    console.log("-------------------onshow")
     this.setData({
       temporaryLink:getApp().globalData.imgSrc
     })
@@ -308,5 +304,21 @@ inputThingType(e){
   onUnload(){
     getApp().globalData.imgSrc="";
     myGetStorger()
+  },
+  // 长按删除图片
+  bindtouchstart(e){
+    this.startTime = e.timeStamp;
+    console.log(this.startTime)  
+  },
+  bindtouchend(e){
+    this.endtime = e.timeStamp;
+     console.log(this.startTime)  
+     if(this.endtime - this.startTime > 500){
+       this.takePhoto()
+     }else{
+         //预览图片
+        myPreviewInfos([{url:this.data.temporaryLink}])
+
+     }
   }
 })

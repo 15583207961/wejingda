@@ -4,13 +4,17 @@
   <view class="swzl-flow-left">
     <view wx:for="{{dataInfoList}}" wx:key="{{item}}" bindtap="goItemDetail" data-index="{{index}}">
       <view class="swzl-left-item" wx:if="{{index%2===0}}">
-        <image class="swzl-item-image" src="{{item.fileUrl}}" mode="widthFix" style="height: {{Number(item.imgHeight) / Number(item.imgWidth) * 339}}rpx;"></image>
+       <view style="width: 339rpx; height: {{item.imgHeight / item.imgWidth * 339}}rpx; overflow: hidden;">
+        <image class="swzl-item-image" src="{{item.fileUrl}}" mode="widthFix"></image>
+       </view>
         <view class="swzl-keyword">{{item.shortDesc}}</view>
         <view class="swzl-item-profile">
           <image class="swzl-item-headimg" src="{{item.userImage}}"></image>
           <view class="swzl-item-autor">{{item.userNickName}}</view>
-          <view class="swzl-item-where">{{item.pickupLocation}}</view>
-          <view class="swzl-item-when">{{item.pickupTime}}</view>
+          <view class="info-bottom">
+            <view class="swzl-item-where">{{item.pickupLocation}}</view>
+            <view class="swzl-item-when">{{item.pickupTime}}</view>
+          </view>
         </view>
       </view>
     </view>
@@ -19,13 +23,17 @@
 
     <view wx:for="{{dataInfoList}}" wx:key="{{item}}" bindtap="goItemDetail" data-index="{{index}}">
       <view class="swzl-right-item" wx:if="{{index%2===1}}">
-        <image class="swzl-item-image" src="{{item.fileUrl}}"  mode="widthFix" style="height: {{Number(item.imgHeight) / Number(item.imgWidth) * 339}}rpx;"></image>
+        <view style="width: 339rpx;height: {{item.imgHeight /item.imgWidth * 339}}rpx; overflow: hidden;">
+        <image class="swzl-item-image" src="{{item.fileUrl}}" mode="widthFix"></image>
+       </view>
         <view class="swzl-keyword">{{item.shortDesc}}</view>
         <view class="swzl-item-profile">
           <image class="swzl-item-headimg" src="{{item.userImage}}"></image>
           <view class="swzl-item-autor">{{item.userNickName}}</view>
-          <view class="swzl-item-where">{{item.pickupLocation}}</view>
-          <view class="swzl-item-when">{{item.pickupTime}}</view>
+          <view class="info-bottom">
+            <view class="swzl-item-where">{{item.pickupLocation}}</view>
+            <view class="swzl-item-when">{{item.pickupTime}}</view>
+          </view>
         </view>
       </view>
     </view>

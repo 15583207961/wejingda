@@ -1,8 +1,25 @@
-<view class="swzl-sreach" bindtap="goSreachPage">
-  <image src= "" class="swzl-sreach-icon"></image>
-  <input type="text" placeholder="输入关键字" auto-focus="true" class="swzl-input"/>
+<view class="top-input">
+ <view class="description">
+  <input type="text" placeholder="描述：如手机、饭卡" class="description-input" bindinput="inputValueDesc"/>
+</view>
+<view class="where">
+  <input type="text" placeholder="地点（可选）" class="where-input" bindinput="inputValueWhere"/>
+</view>
+<view class="time">
+  <picker mode="date" value="{{date}}" start="2015-09-01"  bindchange="bindDateChange" class="picker">
+    <view class="pick-time">
+      <input type="text" class="time-input" placeholder="时间（可选）" disabled="true" value="{{whenValue}}" />
+      <image src="../../static/public/triangle.png" class="triangle"></image>
+      </view>
+  </picker>
+  
 </view>
 
+<view class="topo-btn">
+  <view class="cancle" bindtap="cancle">取消</view>
+  <view class="search-btn" bindtap="search">查询</view>
+</view>
+</view>
 
 <!-- 瀑布流 -->
-<waterfall-flow ></waterfall-flow>
+<waterfall-flow  dataInfoList="{{list}}"></waterfall-flow>

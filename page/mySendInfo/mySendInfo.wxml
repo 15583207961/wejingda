@@ -1,5 +1,15 @@
 <view class="container">
-    <view class="item">
-        
+    <view class="item" wx:for="{{list}}" wx:key="item">
+        <view class="image-view" bindtap="godetail" data-index="{{index}}">
+            <image class="item-image" src="{{item.fileUrl}}" mode="widthFix"></image>
+        </view>
+        <view class="item-info" bindtap="godetail" data-index="{{index}}">
+            <view class="item-name">{{item.shortDesc}}</view>
+            <view class="item-desc">{{item.describe}}</view>
+            <view class="item-time">{{item.upLoadTime}}</view>
+        </view>
+        <view class="{{item.checkState=='true'||item.checkState=='false'?'tips '+item.checkState:'tips'}}">{{item.checkState=="true"?"审核通过":item.checkState=='false'?"未通过":item.checkState}}</view>
+        <image src="{{deleteUrl}}" class="delete" bindtap="delete" data-index="{{index}}"></image>
     </view>
+
 </view>

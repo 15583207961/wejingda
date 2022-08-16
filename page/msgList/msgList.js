@@ -56,7 +56,7 @@ Page({
   },
   //获取消息列表
   getListPerson(openid){
-  myRequest(`getmsglist?id=${openid}`,{},"POST").then(res=>{
+  myRequest(`getmsglist?id=${openid}`,{},"POST",false).then(res=>{
     console.log("获取成功消息列表",res);
     this.showTimeFormat()
     this.setData({

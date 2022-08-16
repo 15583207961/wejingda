@@ -41,7 +41,8 @@ font-size: 28rpx;
   left: 20rpx;
   top: 12rpx;
 }
-.swzl-item-autor,.swzl-item-where,.swzl-item-when{
+
+.swzl-item-autor,.info-bottom{
   position: absolute;
   top: 12rpx;
   left: 80rpx;
@@ -49,11 +50,11 @@ font-size: 28rpx;
   font-size: 20rpx;
   line-height: 28rpx;
 }
+.info-bottom{
+  display: flex;
+  top: 40rpx;
+}
 .swzl-item-where{
-  left: 80rpx;
-  top: 40rpx;
+ margin-right: 8rpx;
 }
-.swzl-item-when{
-  left: 120rpx;
-  top: 40rpx;
-}
+

@@ -1,9 +1,9 @@
 <view calss="container">
   <view class="item" wx:for="{{list}}" wx:key="item">
     <image src="{{item.headpic}}" class="headpic"></image>
-    <view class="{{curIndex==index?'info show':currIndex == -1 ?'info hide':'info'}}">
+    <view class="{{curIndex==index?'info show':currIndex == -1 ?'info hide':'info hide'}}">
       <view class="name" bindtap="copynum" data-num="{{item.qqnumber}}">{{item.name}} <text>{{item.qqnumber}}</text> </view>
-      <view class="{{curIndex==index?'describe ':'describe row1'}}" bindtap="showCompleteInfo" data-index="{{index}}">{{item.describe}}</view>
+      <view class="{{curIndex==index?'describe ':'describe'}}" bindtap="showCompleteInfo" data-index="{{index}}">{{item.describe}}</view>
     </view>
   </view>
 </view>

@@ -1,13 +1,15 @@
 <!-- 搜索框 -->
 <view class="toolBar">
   <view class="{{currentType=='lost'?'lost select-color':'lost'}}" bindtap="selectType" data-type="lost">丢失</view>
+  <view class="line"></view>
   <view class="{{currentType=='pick'?'pick select-color':'pick'}}" bindtap="selectType" data-type="pick">拾的</view>
-  <view class="swzl-sreach" bindtap="goSreachPage">
-    <image src="../../static/public/swzlsreach.png" class="swzl-sreach-icon"></image>
-  </view>
-  <image src="../../static/public/addswzl.png" class="add-swzl" bindtap="goAddPage"></image>
 </view>
 
+<!-- 修改ui界面 -->
+
+<view class="fun-tool-btn">
+  <image src="{{add}}" bindtap="moreBtn" class="{{moreBtncls}}"></image>
+</view>
 
 <!--  瀑布流 -->
 <view style="height: 112rpx;width: 1rpx;"></view>
@@ -21,3 +23,24 @@
 <!-- 发布失物招领 -->
 
 <view class="empty" wx-if="{{showTips}}">已经到底了~</view>
+
+
+<view class="{{containCls}}">
+  <view class="empty-bg" bindtap="hide"></view>
+
+  <view class="{{toolsCls}}">
+  <view class="bottom-top"></view>
+    <view class="search-item" bindtap="goSreachPage">
+      <image src="{{searchUrl}}" class="item-image"></image>
+      搜索
+    </view>
+    <view class="add-item" bindtap="goAddPage">
+      <image src="{{addUrl}}" class="item-image"></image>
+      新增
+    </view>
+    <view class="mySend-item" bindtap="mysendPage">
+      <image src="{{mysendUrl}}" class="item-image"></image>
+      我的发布
+    </view>
+</view>
+</view>

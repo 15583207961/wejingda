@@ -16,7 +16,9 @@ Page({
         userInfo:'',
         openid:null,
         chatInfo:{},
-        toolsUrl:getResourceUrl("resource/img/icon_xfjl.png")
+        toolsUrl:getResourceUrl("resource/img/icon_xfjl.png"),
+        msgUrl:getResourceUrl("resource/img/icon_msg.png"),
+        mySendURl:getResourceUrl("resource/img/icon_wd_fb.png")
     },
     // 页面加载
    onShow(){

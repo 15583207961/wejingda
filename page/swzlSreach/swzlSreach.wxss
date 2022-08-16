@@ -23,3 +23,56 @@ page{
   flex: 1;
 }
 
+/* 新ui */
+.top-input{
+  width: 100%;
+  padding-top: 24rpx;
+  background-color: #fff;
+  padding-left: 32rpx;
+  height: 544rpx;
+  border-radius: 0 0 48rpx 48rpx;
+  box-sizing: border-box;
+}
+.description,.where,.time,.pick-time{
+  width: 686rpx;
+  height: 112rpx;
+  border-radius: 16rpx;
+  background: #f5f5f5;
+  margin-bottom: 24rpx;
+  display: flex;
+  align-items: center;
+}
+.picker{
+  height: 112rpx;
+
+}
+.triangle{
+  width: 36rpx;
+  height: 26rpx;
+margin-right: 32rpx;
+}
+.description-input,.time-input,.where-input{
+
+  height: 100%;
+  flex: 1;
+  box-sizing: border-box;
+  padding-left: 24rpx;
+}
+
+.topo-btn{
+  display: flex;
+  
+}
+.cancle,.search-btn{
+width: 326rpx;
+height: 80rpx;
+border-radius: 16rpx;
+text-align: center;
+line-height: 80rpx;
+background: #d6d6d6;
+color: #fff;
+}
+.search-btn{
+margin-left: 34rpx;
+background: #0099ff;
+}

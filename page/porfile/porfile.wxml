@@ -20,17 +20,15 @@
 <!-- 第三部分 -->
 
 <view class="tools-nav-bar">
-  <view class="tip-title">功能服务</view>
-  <view class="bars">
+
     <view class="bars-item" bindtap="toMsgList">
-      <image src="{{toolsUrl}}" class="item-image"></image>
+      <image src="{{msgUrl}}" class="item-image"></image>
       消息
     </view>
     <view class="bars-item" bindtap="toMySend">
-      <image src="{{toolsUrl}}" class="item-image"></image>
+      <image src="{{mySendURl}}" class="item-image"></image>
       发布
     </view>
-  </view>
 </view>
 
 <view class="function">

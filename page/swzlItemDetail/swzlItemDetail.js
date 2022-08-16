@@ -24,8 +24,14 @@ Page({
     const eventChannel = this.getOpenerEventChannel()
     eventChannel.on(EventType.SWZLgoItemDetail,(e)=>{
       console.log("页面传递过来的数据",e)
+      let data = e.data
+      const  upLoadTimeArr= e.data.upLoadTime.split(" ")
+      const upLoadTimeArr1 = upLoadTimeArr[0].split("-")
+      const upLoadTimeArr2 = upLoadTimeArr[1].split(":")
+      data.sendtime1 = upLoadTimeArr1[1]+"月"+upLoadTimeArr1[2]+"日",
+      data.sendtime2 = upLoadTimeArr1[1]+"月"+upLoadTimeArr1[2]+"日"+upLoadTimeArr2[0]+":"+upLoadTimeArr2[1]
       this.setData({
-        itemData:e.data
+        itemData:data
       })
     })
     

@@ -31,10 +31,14 @@ Page({
     nickName:"",//对方的 昵称，现在在聊天顶部
     userImg:"",//对方的头像
     myUrl:"",//我的头像
+    userindex:0,//
   },
   onLoad(e) {
     console.log("房间", e)
     const { receiverID, nickName, userImg, myOpenID ,topicName=null} = JSON.parse(e.data)
+    wx.setNavigationBarTitle({
+      title: nickName,
+    })
     this.setData({
       myOpenID: myOpenID,
       receiveID: receiverID,
@@ -43,23 +47,43 @@ Page({
       topicName:topicName
     })
     topicName&&this.getmsgrecord(topicName);
-    topicName&&this.setTopicNameStatus(topicName,"true")
+    // 进入聊天界面设置cating
+    if(topicName){
+      console.log("消息列表中进入聊天状态请求")
+      this.setTopicNameStatus(myOpenID,receiverID,topicName)
+    }
+
     // this.connect(e.myOpenID,e.receiveID)
+    // 用户用户状态
+    receiverID&&this.getReceiverStatus(receiverID);
     this.linsenMqtt()
     mySystemInfo()
     this.getScrollInfo()
     this.getLocalDate()
   },
-  onUnload(){
-    this.data.topicName && this.setTopicNameStatus(this.data.topicName,"false")
+  //获取用户的状态
+  getReceiverStatus(receiverID){
+      myRequest("getlinestatus",{openid:receiverID},"POST","false",{"content-type":"application/x-www-form-urlencoded"}).then(res=>{
+        console.log("用户的状态",res)
+      }).catch(err=>{
+        console.log("获取用户状态失败",err)
+      })
   },
-  // 聊天室启动，设置topic状态
-  setTopicNameStatus(topicName,cating){
+  // 退出聊天界面
+  onUnload(){
+    console.log("退出聊天框发送的聊天室状态请求")
+    this.data.topicName && this.setTopicNameStatus(this.data.myOpenID)
+  },
+  // 设置topic状态
+  setTopicNameStatus(myOpenID,receiveId=null,cating=null){
     let data = {
-      topicname:topicName,
-      cating:cating
+      senderID:myOpenID,
+      receiverID:receiveId,
+      cating:cating,
+      time: null,
+      lineStatus:null
     }
-    myRequest("settopiccating",data,"POST",false,{"content-type":"application/x-www-form-urlencoded"}).then(res=>{
+    myRequest("setlinestatus",data,"POST",false,{"content-type":"application/json"}).then(res=>{
       console.log("聊天室状态设置成功",res)
     }).catch(err=>{
       console.log("聊天室状态设置失败",err)
@@ -110,6 +134,16 @@ getLocalDate(){
       console.log(`在chatRoom页面监听到mqtt数据${topic}话题，数据`, curMsg)
       if (topic === this.data.topicName) {
         let list = this.data.list
+        if(curMsg.content === this.data.receiveID+"已上线"){
+          this.setData({
+            userindex:list.length
+          })
+          console.log("list.length用户上线了，查看当前已有的消息条数",this.data.userindex)
+          return;
+        }
+        else if(curMsg.content === this.data.myOpenID+"已上线" ){
+          return ;
+        }
         list.push(curMsg)
         this.setData({
           list: list,
@@ -164,6 +198,10 @@ getLocalDate(){
     }
     myRequest(`secondmsg?topicname=${topicName}`, data, "POST").then(res => {
       console.log("消息发送成功了", res)
+      /**
+       * 占时使用信息列表中获取
+       */
+      // this.getmsgrecord(this.data.topicName)
     }).catch(err => {
       console.log("消息发送失败了", err)
     })
@@ -180,17 +218,20 @@ getLocalDate(){
       senderID: this.data.myOpenID,
       receiverID: this.data.receiveID,
       content: content,
-      "read": "false",
+      read: "false",
       date: ""
     }
     // 判断是否存在topicname，如果没有先发送请求，建立topicname，在发送第二次，如果有着直接携带发送
     if (!this.data.topicName) {
       myRequest("firstmsg", data, "POST").then(res => {
         console.log("第一次成功了", res)
+        console.log("走的第一条路线没得topicName")
         this.getmsgrecord(res.data)
         this.setData({
           firstSend: false
         })
+        console.log("从点击联系他发送的聊天室状态请求")
+        this.setTopicNameStatus(this.data.myOpenID,this.data.receiveID,res.data)
         this.setData({
           topicName: res.data
         })
@@ -200,6 +241,7 @@ getLocalDate(){
         console.log("第一次失败了", err)
       })
     } else {
+      console.log("走的第二条线路有topicName")
       this.sendSecond(data, this.data.topicName)
     }
     this.setData({

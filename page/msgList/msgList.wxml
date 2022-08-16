@@ -1,10 +1,13 @@
+<view class="top-shadow"></view>
 <view class="msg-list-container">
   <view class="item" wx:for="{{msglist}}" wx:key="item" bindtap="clickItem" data-index="{{index}}">
     <image src="{{item.userImg}}" class="item-headpic"></image>
     <view class="info">
       <view class="name">{{item.nickName}}</view>
       <view class="msg">{{item.lastMsg}}</view>
-      <view class="time">{{item.showTime}}</view>
+      
+      <view class="time">{{item.listShowTime}}</view>
+      <view class="tips" wx:if="{{item.newMsg != '0'}}">{{item.newMsg}}</view>
     </view>
-  </view>
+  </view> 
 </view>

@@ -8,8 +8,13 @@ page{
   display: block;
   margin: 0 auto;
   margin-top: 32rpx;
-  max-width: 702rpx;
-  max-height: 702rpx;
+  width: 686rpx;
+}
+.text-tips{
+  text-align: center;
+  font-size: 34rpx;
+  color: #b5b5b5;
+  margin-top: 24rpx;
 }
 .delete-view{
   width: 64rpx;
@@ -33,6 +38,7 @@ page{
   margin-top: 40rpx;
   background-color: #fff ;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   border-radius: 16rpx;
@@ -50,12 +56,16 @@ page{
   color: #fff;
 }
 
-
+.triangle{
+  width: 36rpx;
+  height: 26rpx;
+margin-right: 32rpx;
+}
 .swzl-add-where,.swzl-add-when,.swzl-add-short-desc{
-  width: 702rpx;
+  width: 686rpx;
   margin: 0 auto;
   margin-top: 28rpx;
-  height: 80rpx;
+  height: 112rpx;
   border-radius: 16rpx;
   background-color: #fff;
   display: flex;
@@ -64,36 +74,28 @@ page{
 .pick-time{
   display: flex;
   align-items: center;
-  flex: 1;
+  width: 100%;
 }
 .swzl-where-icon{
   width: 40rpx;
   height: 40rpx;
   margin: 0 32rpx;
 }
-.swzl-when-input{
-  width: 510rpx;
-}
 
-.swzl-where-input{
-  flex: 1;
+
+.swzl-where-input,.swzl-when-input,.swzl-thing-input{
+  width: 580rpx;
+  padding-left: 32rpx;
 }
-.drop-down-arrow{
-  width: 0rpx;
-  height: 0rpx;
-  border: 15rpx solid transparent;
-  border-top: 15rpx solid rgb(136, 135, 135);
-  border-radius: 5rpx;
-  margin: 32rpx;
-  margin-top: 58rpx;
+.pick-time{
+  display: flex;
+  flex: 1;
 }
 .picker{
   display: flex;
   align-items: center;
 }
-.swzl-thing-input{
-  width: 503rpx;
-}
+
 .swzl-add-textarea{
   padding: 24rpx;
   width: 702rpx;
@@ -120,8 +122,8 @@ page{
 
 .swzl-send{
   margin: 0 auto;
-  margin-top: 24rpx;
+  margin-top: 48rpx;
   width: 310rpx !important;
   height: 82rpx !important;
-  margin-bottom: 32rpx;
+  margin-bottom: 48rpx;
 }

@@ -1,18 +1,35 @@
+
+
 <view class="top-info">
   <image class="swzl-detail-headImg" src="{{itemData.userImage}}"></image>
   <view class="right-info">
     <view class="swzl-detail-useName">{{itemData.userNickName}}</view>
 
-    <view class="ip">IP:{{itemData.city}}</view>
+    <view class="top-info-tow">
+      <view class="top-info-tow-sendtime">{{itemData.sendtime1}}</view>
+      <view class="line"></view>
+      <view class="ip">发布于{{itemData.city}}</view>
+    </view>
   </view>
 </view>
-<view class="midle-info">
-  <view class="swzl-detail-where">拾取地点： {{itemData.pickupLocation}}</view>
-  <view class="swzl-detail-gettime">拾取时间： {{itemData.pickupTime}}</view>
-  <view class="swzl-detail-sendtime">发布时间： {{itemData.upLoadTime}}</view>
-  
-</view>
-<view class="swzl-detail-descript"> {{itemData.describe}}</view>
 
-<image class="swzl-detail-thingImg" style="height: {{Number(itemData.imgHeight) / Number(itemData.imgWidth) * 686}}rpx;" src="{{itemData.fileUrl}}" mode="widthFix" bindtap="preview"></image>
+<view class="swzl-detail-descript"> {{itemData.describe}}</view>
+<view class="midle-info">
+  <view class="swzl-detail-where">{{itemData.type=="found"?'拾取':"丢失"}}地点 
+    <view>
+      {{itemData.pickupLocation}}
+    </view>
+  </view>
+  <view class="sprint-line"></view>
+  <view class="swzl-detail-gettime">{{itemData.type=="found"?'拾取':"丢失"}}时间
+  <view>{{itemData.pickupTime}}</view>
+   </view>
+   <view class="sprint-line"></view>
+  <view class="swzl-detail-sendtime">发布时间
+  <view>{{itemData.sendtime2}}</view>
+   </view>
+</view>
+
+
+<image class="swzl-detail-thingImg" style="width: 686rpx;height: {{itemData.imgHeight / itemData.imgWidth * 686}}rpx;" src="{{itemData.fileUrl}}" mode="aspectFill" bindtap="preview"></image>
 <button class="swzl-deatil-btn" bindtap="connect">联系他</button>
