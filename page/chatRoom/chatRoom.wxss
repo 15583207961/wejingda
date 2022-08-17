@@ -197,7 +197,7 @@ text-align: center;
 }
 .left-item,.right-item{
   display: flex;
-  margin-bottom: 32rpx;
+  margin-bottom: 44rpx;
 }
 .right-item{
   flex-direction: row-reverse;
@@ -218,9 +218,9 @@ text-align: center;
   height: 1rpx;
 }
 .left-headpic,.right-headpic{
-  width: 72rpx;
-  height: 72rpx;
-  border-radius: 48rpx;
+  width: 92rpx;
+  height: 92rpx;
+  border-radius: 60rpx;
   
 }
 .left-headpic{
@@ -232,7 +232,7 @@ text-align: center;
 .left-content,.right-content{
 
   max-width: 340rpx;
-  padding:12rpx 32rpx 18rpx 32rpx;
+  padding:18rpx 32rpx 18rpx 32rpx;
   box-sizing: border-box;
   background-color: #fff;
   border-radius: 16rpx;

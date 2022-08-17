@@ -42,6 +42,7 @@
 <view class="chat-container">
 
   <scroll-view class="scroll-view" scroll-y="true" scroll-top="{{scrolltop}}">
+  <view style="height: 32rpx; width: 100rpx;"></view>
     <view wx:for="{{list}}" wx:key="item">
       <view class="left-item" wx:if="{{item.receiverID == myOpenID}}">
         <image src="{{userImg}}" class="left-headpic"></image>
@@ -54,7 +55,7 @@
         <image src="{{myUrl}}" class="right-headpic"></image>
         <view class="right-content">
           {{item.content}}
-           <view class="{{userindex>=index||item.read === 'true'?'info-status' :'info-status-color info-status'}}">{{userindex>=index||item.read === "true"?"已读":"未读"}}</view>
+           <view class="{{item.read === 'true'?'info-status' :'info-status-color info-status'}}">{{item.read === "true"?"已读":"未读"}}</view>
         </view>
        
       </view>

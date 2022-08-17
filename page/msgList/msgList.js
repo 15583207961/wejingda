@@ -32,32 +32,32 @@ Page({
     })
     // this.getMsgList()
   },
-  onShow(){
-   if(this.data.openid){
-     this.getListPerson(this.data.openid)
-   }else{
-    myGetStorger(storagename.openId).then(res=>{
-      console.log("获取到openid",res)
-      this.setData({
-        openid:res.data
-      })
-      this.getListPerson(res.data)
-    }).catch(err=>{
-      console.log("本地还没有openid",err)
-      myGetStorger(storagename.getmsglistmqtt).then(res=>{
-        console.log("获取到了数据",res)
-        this.setData({
-          msglist:res.data
-        })
-      })
-    })
-   }
+  // onShow(){
+  //  if(this.data.openid){
+  //    this.getListPerson(this.data.openid)
+  //  }else{
+  //   myGetStorger(storagename.openId).then(res=>{
+  //     console.log("获取到openid",res)
+  //     this.setData({
+  //       openid:res.data
+  //     })
+  //     this.getListPerson(res.data)
+  //   }).catch(err=>{
+  //     console.log("本地还没有openid",err)
+  //     myGetStorger(storagename.getmsglistmqtt).then(res=>{
+  //       console.log("获取到了数据",res)
+  //       this.setData({
+  //         msglist:res.data
+  //       })
+  //     })
+  //   })
+  //  }
    
-  },
+  // },
   //获取消息列表
   getListPerson(openid){
   myRequest(`getmsglist?id=${openid}`,{},"POST",false).then(res=>{
-    console.log("获取成功消息列表",res);
+    console.log("获取成功消息列表--->msglist",res);
     this.showTimeFormat()
     this.setData({
       msglist:res.data.personMsgArrayList.map(item=>{

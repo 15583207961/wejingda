@@ -44,6 +44,7 @@
 }
 .swzl-detail-useName{
   font-size: 34rpx;
+  color: #191919;
   margin-bottom: 22rpx;
 }
 .top-info-tow{
@@ -70,7 +71,7 @@
   font-size: 32rpx;
   color: #191919;
 }
-.swzl-detail-where{
+.swzl-detail-gettime{
   text-align: left;
  
 }
@@ -87,7 +88,6 @@
 
   font-size: 34rpx;
   font-weight: 400;
-  text-indent: 1rem;
 }
 .swzl-detail-thingImg{
   width: 686rpx;

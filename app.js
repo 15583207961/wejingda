@@ -24,6 +24,7 @@ App({
   })
   wx.onSocketError((e)=>{
     console.log("SocketTask.onError===>",e)
+
   })
   wx.onSocketMessage((e)=>{
     console.log("wx.onSocketMessage====>",e)
@@ -35,9 +36,28 @@ App({
   //   console.log("SocketTask.send====>",e)
   // })
   wx.onSocketClose((e)=>{
+    // 微信小程序断开链接，手动断开mqtt，在重新连接mqtt
     console.log("wx.onSocketClose====>",e)
-  })
-  },
+    // if(this.globalData.client){
+      // this.globalData.client.end()
+      // this.globalData.client = null
+      // this.connect(this.globalData.openid)
+    // 消息列表 可能有点问题
+    // this.globalData.getmsglistmqtt?.forEach((item,index) => {
+    //   try{
+    //     this.globalData.client.subscribe(item.topicName)
+    //     console.log("小程序启动订阅了主题",index,item.topicName)
+    //   }catch(err){
+    //     console.log("订阅消息问题--->*:",err)
+    //   }
+    // if(this.globalData.client){
+    //   this.globalData.client.end()
+    //   this.globalData.client = null
+    // }
+    // this.globalData.client = this.connect(this.globalData.openid)
+    // this.globalData.client = this.connect(this.globalData.openid)
+    });
+    },
   
 
   // 小程序启动设置用户的当前状态为活跃状态
@@ -71,6 +91,8 @@ App({
   },
   // 小程启动之后建立mqtt全局监听
   connect(myOpenID) {
+    this.globalData.num = this.globalData.num + 1
+    console.log("mqtt连接中---》**")
     /**
      * 还差一个查询是否存在一个topic
      */
@@ -80,7 +102,7 @@ App({
     try {
       this.globalData.client = mqtt.connect(`wxs://singlestep.cn/mqtt`, {
        ...this.getlocalData.mmqttOptions,
-        clientId:myOpenID,
+        clientId:myOpenID+this.globalData.num,
       });  
       this.globalData.client.on("connect", () => {
         wx.showToast({
@@ -107,7 +129,7 @@ App({
         this.globalData.client.on("reconnect", (e) => {
           // this.setValue("conenctBtnText", "连接");
           console.log("发生了重新连接.....",e);
-          this.getmsglistmqtt(this.getlocalData.openid)
+          // this.getmsglistmqtt(this.getlocalData.openid)
         });
   
         this.globalData.client.on("offline", (e) => {
@@ -129,7 +151,7 @@ App({
   //小程序启动获取消息列表
   getmsglistmqtt(openid){
     myRequest(`getmsglist?id=${openid}`,{},"POST").then(res=>{
-      console.log("获的到了消息列表--->",res)
+      console.log("获的到了消息列表--->小程序启动获取，循环做订阅话题",res)
       const msgList = res.data.personMsgArrayList;
       this.globalData.getmsglistmqtt = msgList;
       mySetStorage(storagename.getmsglistmqtt,msgList);
@@ -198,6 +220,7 @@ App({
     systemInfos:null,//手机系统信息
     keyboardHeigth:null,//键盘高度
     openid:null,//openid,
-    getmsglistmqtt:null
+    getmsglistmqtt:null,
+    num:0,
   }
 })

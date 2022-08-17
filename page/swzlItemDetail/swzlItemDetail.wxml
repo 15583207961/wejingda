@@ -1,5 +1,3 @@
-
-
 <view class="top-info">
   <image class="swzl-detail-headImg" src="{{itemData.userImage}}"></image>
   <view class="right-info">
@@ -15,19 +13,21 @@
 
 <view class="swzl-detail-descript"> {{itemData.describe}}</view>
 <view class="midle-info">
-  <view class="swzl-detail-where">{{itemData.type=="found"?'拾取':"丢失"}}地点 
+ 
+  <view class="swzl-detail-gettime">{{itemData.type=="found"?'拾取':"丢失"}}时间
+    <view>{{itemData.pickupTime}}</view>
+  </view>
+  <view class="sprint-line"></view>
+  <view class="swzl-detail-where">{{itemData.type=="found"?'拾取':"丢失"}}地点
     <view>
       {{itemData.pickupLocation}}
     </view>
   </view>
+  
   <view class="sprint-line"></view>
-  <view class="swzl-detail-gettime">{{itemData.type=="found"?'拾取':"丢失"}}时间
-  <view>{{itemData.pickupTime}}</view>
-   </view>
-   <view class="sprint-line"></view>
   <view class="swzl-detail-sendtime">发布时间
-  <view>{{itemData.sendtime2}}</view>
-   </view>
+    <view>{{itemData.sendtime2}}</view>
+  </view>
 </view>
 
 

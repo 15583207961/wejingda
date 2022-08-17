@@ -46,14 +46,12 @@ Page({
       userImg: userImg,
       topicName:topicName
     })
+    // 获取消息列表，存在过消息记录，这里已经在联系他的时候已经发送了请求查看是否用topicName
     topicName&&this.getmsgrecord(topicName);
-    // 进入聊天界面设置cating
-    if(topicName){
-      console.log("消息列表中进入聊天状态请求")
-      this.setTopicNameStatus(myOpenID,receiverID,topicName)
-    }
 
-    // this.connect(e.myOpenID,e.receiveID)
+    // 进入聊天界面设置cating
+    this.setTopicNameStatus(myOpenID,receiverID)
+
     // 用户用户状态
     receiverID&&this.getReceiverStatus(receiverID);
     this.linsenMqtt()
@@ -61,6 +59,7 @@ Page({
     this.getScrollInfo()
     this.getLocalDate()
   },
+
   //获取用户的状态
   getReceiverStatus(receiverID){
       myRequest("getlinestatus",{openid:receiverID},"POST","false",{"content-type":"application/x-www-form-urlencoded"}).then(res=>{
@@ -72,14 +71,17 @@ Page({
   // 退出聊天界面
   onUnload(){
     console.log("退出聊天框发送的聊天室状态请求")
-    this.data.topicName && this.setTopicNameStatus(this.data.myOpenID)
+    this.setTopicNameStatus(this.data.myOpenID)
   },
   // 设置topic状态
+  /**
+   * 要把这个cating去掉
+   */
   setTopicNameStatus(myOpenID,receiveId=null,cating=null){
     let data = {
       senderID:myOpenID,
       receiverID:receiveId,
-      cating:cating,
+      // cating:cating,
       time: null,
       lineStatus:null
     }
@@ -138,6 +140,7 @@ getLocalDate(){
           this.setData({
             userindex:list.length
           })
+          this.getmsgrecord(this.data.topicName)
           console.log("list.length用户上线了，查看当前已有的消息条数",this.data.userindex)
           return;
         }
@@ -152,11 +155,15 @@ getLocalDate(){
       }
     })
   },
+
+  // 返回
   goback() {
     wx.navigateBack({
       delta: 1,
     })
   },
+
+  //键盘
   inputFocus(e) {
     console.log(e, '键盘弹起')
     var inputHeight = 0
@@ -201,7 +208,7 @@ getLocalDate(){
       /**
        * 占时使用信息列表中获取
        */
-      // this.getmsgrecord(this.data.topicName)
+      this.getmsgrecord(this.data.topicName)
     }).catch(err => {
       console.log("消息发送失败了", err)
     })
@@ -226,12 +233,10 @@ getLocalDate(){
       myRequest("firstmsg", data, "POST").then(res => {
         console.log("第一次成功了", res)
         console.log("走的第一条路线没得topicName")
-        this.getmsgrecord(res.data)
         this.setData({
           firstSend: false
         })
         console.log("从点击联系他发送的聊天室状态请求")
-        this.setTopicNameStatus(this.data.myOpenID,this.data.receiveID,res.data)
         this.setData({
           topicName: res.data
         })
