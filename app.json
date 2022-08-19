@@ -12,6 +12,7 @@
     "page/Consdetail/Consdetail",
     "page/calendar/calendar",
     "page/setting/setting",
+    "page/openCourse/openCourse",
     "page/swiperdetail/swiperdetail",
     "page/xxcx/xxcx",
     "page/mySendInfo/mySendInfo",

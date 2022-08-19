@@ -1,0 +1,19 @@
+<view class="top-bg" style="height: {{topHeight}}rpx;">
+  <view class="titleTop" style="height: {{titleHeight}}rpx;top: {{titleTop}}rpx;">
+    <image class="backImage" src="../../static/public/icon_back(1).png" bindtap="goback"></image>
+    开课啦
+</view>
+</view>
+
+<view class="container" style="padding-top: {{topHeight}}rpx;">
+    <view class="item" wx:for="{{dataList}}" wx:key="item">
+     <image src="{{item.classImage}}" class="item-image" ></image>
+     <view class="item-base-info">
+        <view class="item-name">{{item.className}} </view>
+        <view class="item-speaker">{{item.speaker}} | {{item.duration}}</view>
+        <view class="item-other-info">{{item.lectureTime}} | {{item.lectureVenue}}</view>
+     </view>
+     <view class="end">已结束</view>
+     <view class="people">{{item.peopleNumber}}人报名</view>
+    </view>
+</view>

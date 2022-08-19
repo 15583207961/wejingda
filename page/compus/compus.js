@@ -204,7 +204,20 @@ Page({
       console.log("失败了",err)
     })
   },
-
+// gotoPage  跳转到开课了页面
+gotoPage(){
+  if(this.data.openid){
+    myNavigatorTo("/openCourse/openCourse?openid="+this.data.openid)
+  }else{
+    getUserInfos().then(res=>{
+      console.log("res=---->",res)
+      mySetStorage(storagename.openId,res.data.openid)
+      myNavigatorTo("/openCourse/openCourse?openid="+res.data.openid)
+    }).catch(err=>{
+      console.log("err--->",err)
+    })
+  }
+},
   // 网络获取固定的文章
   getBaseArticles(){
     myRequest("articles",{},"GET",false).then(res=>{

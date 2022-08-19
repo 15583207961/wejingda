@@ -47,7 +47,8 @@
     <!-- 社团频道 -->
 <view class="club channel-item">
 </view>
-<view class="channel-item cate">
+<view class="channel-item cate" bindtap="gotoPage">
+开课了
 </view>
 <view class="channel-item cate">
 </view>

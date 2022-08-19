@@ -237,6 +237,12 @@
           "pathName": "page/swzlSreach/swzlSreach",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "page/openCourse/openCourse",
+          "query": "",
+          "scene": null
         }
       ]
     }
