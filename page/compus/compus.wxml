@@ -46,11 +46,13 @@
 <view class="channel">
     <!-- 社团频道 -->
 <view class="club channel-item">
+校园推文
 </view>
 <view class="channel-item cate" bindtap="gotoPage">
 开课了
 </view>
 <view class="channel-item cate">
+校园赛
 </view>
 <view class="channel-item cate">
 </view>

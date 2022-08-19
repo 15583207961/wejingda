@@ -21,6 +21,25 @@ const getNowTime = ()=>{
     var time = (date.getMonth() + 1) + "月" + date.getDate() + "日 " + date.getHours() + ":" + date.getMinutes()
     return time;
 }
+
+// 敏感词汇过滤
+ const checkText = (text)=>{
+  return new Promise((resolve,rej)=>{
+    myRequest("checkmsg",{
+      "openid": this.data.openid, 
+      "scene": 2, 
+      "version": 2, 
+      "content": text 
+      },"POST").then(res=>{
+        console.log("检测成功了",res)
+        resolve(res)
+      }).catch(err=>{
+        rej(err)
+        console.log("检测失败了",err)
+      })
+  })
+}
+
 module.exports = {
-  getResourceUrl,getNowTime,encodeURIComponentUrl,decodeURIComponentUrl
+  getResourceUrl,getNowTime,encodeURIComponentUrl,decodeURIComponentUrl,checkText
 }

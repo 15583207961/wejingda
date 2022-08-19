@@ -6,14 +6,36 @@
 </view>
 
 <view class="container" style="padding-top: {{topHeight}}rpx;">
-    <view class="item" wx:for="{{dataList}}" wx:key="item">
+    <view class="item" wx:for="{{dataList}}" wx:key="item" bindtap="goDetail" data-index="{{index}}">
      <image src="{{item.classImage}}" class="item-image" ></image>
      <view class="item-base-info">
         <view class="item-name">{{item.className}} </view>
-        <view class="item-speaker">{{item.speaker}} | {{item.duration}}</view>
+        <view class="item-speaker">{{item.speaker}} </view>
         <view class="item-other-info">{{item.lectureTime}} | {{item.lectureVenue}}</view>
      </view>
-     <view class="end">已结束</view>
+     <view class="end">{{item.ended? "已结束":item.applied?"已报名":"未开始"}}</view>
      <view class="people">{{item.peopleNumber}}人报名</view>
+    </view>
+</view>
+<!-- 添加按钮 -->
+<image class="apply-Course" src="https://singlestep.cn/wejinda/resource/img/icon_menu.png" bindtap="applyCourse"></image>
+
+<view class="modal" wx:if="{{showModal}}">
+  <view class="{{appearcloseAnima?'modal-close-mask':'modal-show-mask'}}" bindtap="cancel"></view>
+    <view class="{{appearcloseAnima?'modal-contain-close':'modal-contain'}}">
+      <view class="title">{{modalData.className}}</view>
+      <view class="base-info">
+        <view class="speaker">主讲人：{{modalData.speaker}}</view>
+        <view class="duration">时长：{{modalData.duration}}</view>
+        <view class="lectureVenue">地点：{{modalData.lectureVenue}}</view>
+        <view class="lecture-time">时间：{{modalData.lectureTime}}</view>
+      </view>
+      <image src="https://singlestep.cn/wejinda/resource/img/enroll.png" class="modal-icon"></image>
+      <view class="course-introduction">{{modalData.courseIntroduction}}</view>
+
+     <view class="btn-contain">
+      <button class="cancel" bindtap="cancel" bindanimationend="closeAnimationed"> 取消</button>
+      <button class="apply" disabled="{{modalData.ended}}" bindtap="apply">{{modalData.ended?"已结束":modalData.applied?"取消报名":"报名"}}</button>
+     </view>
     </view>
 </view>
