@@ -85,22 +85,6 @@ Page({
     }).catch(err=>{
       console.log("是啊比了",err)
     })
-    // wx.chooseImage({
-    //   count: 1,
-    //   sizeType: ['original', 'compressed'],
-    //   sourceType: ['album', 'camera'],
-    //   success: res => {
-    //     // tempFilePath可以作为 img 标签的 src 属性显示图片
-    //     const tempFilePaths = res.tempFilePaths
-    //     console.log(tempFilePaths)
-    //     this.compressImage(tempFilePaths[0], (data) => {
-    //       console.log("datta==>", data)
-    //       this.setData({
-    //         temporaryLink:data
-    //       })
-    //     })
-    //   }
-    // })
   },
   //canvas 压缩
   compressImage(path, callback) {
@@ -284,6 +268,7 @@ inputThingType(e){
     })
   },
   onShow(e){
+    
     this.setData({
       temporaryLink:getApp().globalData.imgSrc
     })

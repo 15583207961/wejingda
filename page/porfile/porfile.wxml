@@ -29,6 +29,10 @@
       <image src="{{mySendURl}}" class="item-image"></image>
       发布
     </view>
+    <view class="bars-item" bindtap="toMyCourse">
+      <image src="{{mySendURl}}" class="item-image"></image>
+      课堂
+    </view>
 </view>
 
 <view class="function">

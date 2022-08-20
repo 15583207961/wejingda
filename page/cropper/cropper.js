@@ -7,8 +7,17 @@ Page({
         height: 300, //高度
         max_width: 300,
         max_height: 400,
+        disable_height:false
     },
     onLoad: function (options) {
+        console.log("options--->",options)
+        if(options?.type == "applyCourse"){
+          this.setData({
+            disable_height:true,
+            width:300,
+            height:210
+          })
+        }
             this.cropper = this.selectComponent("#image-cropper");
             this.setData({
                 src: options.imgSrc

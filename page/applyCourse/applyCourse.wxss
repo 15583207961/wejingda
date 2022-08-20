@@ -1,0 +1,109 @@
+page{
+  background-color: #f5f5f5;
+}
+.image-top-container{
+  position: relative;
+}
+.image-top{
+  display: block;
+  margin: 0 auto;
+  margin-top: 32rpx;
+  width: 686rpx;
+}
+.text-tips{
+  text-align: center;
+  font-size: 34rpx;
+  color: #b5b5b5;
+  margin-top: 24rpx;
+}
+.delete-view{
+  width: 64rpx;
+  height: 64rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0 ;
+  right: 10rpx;
+  background-color: rgba(0, 0, 0, 0);
+}
+.delete-image{
+  width: 48rpx;
+  height: 48rpx;
+}
+.swzl-add-image{
+  width: 702rpx;
+  height: 394rpx;
+  margin: 0 auto;
+  margin-top: 40rpx;
+  background-color: #fff ;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16rpx;
+}
+.swzl-center-icon{
+  width: 128rpx;
+  height: 128rpx;
+  border-radius: 128rpx;
+  background-color: #EBEBEB ;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 80rpx;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* input info */
+.classInfo{
+  margin-left: 32rpx;
+}
+.class-name-input{
+  width: 686rpx;
+  height: 112rpx;
+  border-radius: 16rpx;
+  background-color: #fff;
+  margin-top: 32rpx;
+  padding-left: 32rpx;
+  box-sizing: border-box;
+  
+}
+.time-view{
+  display: flex;
+
+}
+.time,.date{
+  flex: 1;
+
+}
+.time input, .date input{
+  width: 100%;
+  height: 112rpx;
+}
+.textarea-view{
+  position: relative;
+  padding-bottom: 64rpx;
+  background-color: #fff;
+  border-radius: 18rpx;
+  width: 686rpx;
+  margin: 0 auto;
+margin-top: 32rpx;
+padding: 24rpx;
+box-sizing: border-box;
+}
+.numTips{
+  position: absolute;
+  bottom: 24rpx;
+  right: 56rpx;
+  font-size: 24rpx;
+  color: #333333;
+}
+.sumbit{
+  margin-top: 48rpx;
+  width: 228rpx;
+  height: 80rpx;
+  background-color: #0099FF;
+  color: #fff;
+}

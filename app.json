@@ -13,6 +13,8 @@
     "page/calendar/calendar",
     "page/setting/setting",
     "page/openCourse/openCourse",
+    "page/myCourse/myCourse",
+    "page/applyCourse/applyCourse",
     "page/swiperdetail/swiperdetail",
     "page/xxcx/xxcx",
     "page/mySendInfo/mySendInfo",

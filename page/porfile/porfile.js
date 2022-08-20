@@ -96,6 +96,10 @@ Page({
     // toMySend去我发布页面
     toMySend(){
       myNavigatorTo("/mySendInfo/mySendInfo")
+    },
+    // toMyCourse
+    toMyCourse(){
+      myNavigatorTo("/myCourse/myCourse")
     }
     
 })
