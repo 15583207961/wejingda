@@ -6,15 +6,21 @@
     "page/tsg/tsg",
     "page/ykt/ykt",
     "page/login/login",
+    "page/checkMsg/checkMsg",
     "page/map/map",
     "page/chatGroup/chatGroup",
+    "page/messageBoard/messageBoard",
     "page/photoframe/photoframe",
     "page/Consdetail/Consdetail",
     "page/calendar/calendar",
     "page/setting/setting",
+    "page/WSPAdd/WSPAdd",
+    "page/myInvite/myInvite",
     "page/openCourse/openCourse",
+    "page/miscwebview/miscwebview",
     "page/myCourse/myCourse",
     "page/applyCourse/applyCourse",
+    "page/workStudyProgram/workStudyProgram",
     "page/swiperdetail/swiperdetail",
     "page/xxcx/xxcx",
     "page/mySendInfo/mySendInfo",
@@ -25,6 +31,7 @@
     "page/porfile/porfile",
     "page/chatRoom/chatRoom",
     "page/LostAndFont/LostAndFont",
+    "page/typhon/typhon",
     "page/swzlSreach/swzlSreach",
     "page/swzlAdd/swzlAdd",
     "page/compusSservicecall/compusSservicecall",
@@ -32,9 +39,9 @@
     "page/swzlItemDetail/swzlItemDetail",
     "page/webview/webview",
     "page/cropper/cropper",
+    "page/confessionWall/confessionWall",
     "page/enroll/enroll",
     "page/about/about"
-
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -52,7 +59,9 @@
       "selectedIconPath":"./static/public/icon_school.png",
       "iconPath": "./static/public/icon_school_uncheck.png"
     
-    },{
+    }
+    
+    ,{
       "pagePath": "page/porfile/porfile",
       "text": "我的",
       "selectedIconPath":"./static/public/icon_my.png",

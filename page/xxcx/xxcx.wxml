@@ -24,14 +24,14 @@
 
 <view class="exam-container"  wx:if="{{exam_list.length>0}}">
     <view class="exam-item" wx:for="{{exam_list}}" wx:key="item">
-        <view class="start-time">15:50</view>
+        <view class="start-time">{{item.openTime||noMsg}}</view>
         <view class="exam-name">{{item.name}}</view>
         <view class="exam-where">{{item.place}}</view>
         <view class="exam-item-bottom">
-            <view class="end-time">17:20</view>
+            <view class="end-time">{{item.endTime||noMsg}}</view>
 
             <view class="username">{{item.studentName}}</view>
-            <view class="exam-when">2022-06-10</view>
+            <view class="exam-when">{{item.time||noMsg}}</view>
         </view>
         <view class="seat-no">座位号：<text>{{item.number}}</text></view>
     </view>
@@ -40,14 +40,14 @@
 <!-- 展示不考信息模块 -->
 <view class="exam-container"  wx:if="{{MakeUpExamList.length>0}}">
     <view class="exam-item" wx:for="{{MakeUpExamList}}" wx:key="item">
-        <view class="start-time">15:50</view>
+        <view class="start-time">{{item.openTime||noMsg}}</view>
         <view class="exam-name">{{item.name}}</view>
         <view class="exam-where">{{item.place}}</view>
         <view class="exam-item-bottom">
-            <view class="end-time">17:20</view>
+            <view class="end-time">{{item.endTime||noMsg}}</view>
 
             <view class="username">{{item.studentName}}</view>
-            <view class="exam-when">2022-06-10</view>
+            <view class="exam-when">{{item.time||noMsg}}</view>
         </view>
         <view class="seat-no">座位号：<text>{{item.number}}</text></view>
     </view>

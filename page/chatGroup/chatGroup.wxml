@@ -1,11 +1,57 @@
-<view calss="container">
-  <view class="item" wx:for="{{list}}" wx:key="item">
-    <image src="{{item.headpic}}" class="headpic"></image>
-    <view class="{{curIndex==index?'info show':currIndex == -1 ?'info hide':'info hide'}}">
-      <view class="name" bindtap="copynum" data-num="{{item.qqnumber}}">{{item.name}} <text>{{item.qqnumber}}</text> </view>
-      <view class="{{curIndex==index?'describe ':'describe'}}" bindtap="showCompleteInfo" data-index="{{index}}">{{item.describe}}</view>
+<view class="top-bg" style="height: {{topHeight}}rpx;">
+  <view class="titleTop" style="height: {{titleHeight}}rpx;top: {{titleTop}}rpx;">
+    <image class="backImage" src="../../static/public/icon_back(1).png" bindtap="goback"></image>
+    锦城Q群
+  </view>
+</view>
+
+<view calss="container" style="padding-top: {{topHeight}}rpx;">
+  <view class="item" bindtap="goDetail" data-index="-1">
+    <image src="https://singlestep.cn/wejinda/resource/img/swapper_62e86c52e4b0bb61828b1e8e_.png" class="headpic"></image>
+    <view class="info hide">
+      <view class="name" bindtap="copynum" data-num="{{item.qqnumber}}">锦城Q群 </view>
+      <view class="describe" bindtap="showCompleteInfo" data-index="{{-1}}">关于锦城Q群</view>
+    </view>
+  </view>
+  <view class="item" wx:for="{{list}}" wx:key="item" bindtap="goDetail" data-index="{{index}}">
+    <image src="{{item.qIcon}}" class="headpic"></image>
+    <view class="info hide">
+      <view class="name" bindtap="copynum" data-num="{{item.qqnumber}}">{{item.qName}} </view>
+      <view class="describe" bindtap="showCompleteInfo" data-index="{{index}}">{{item.introduction}}</view>
     </view>
   </view>
 </view>
 
 
+
+
+
+<view class="modal" wx:if="{{showModal}}">
+  <view class="{{appearcloseAnima?'modal-close-mask':'modal-show-mask'}}" bindtap="cancel"></view>
+  <view class="{{appearcloseAnima?'modal-contain-close':'modal-contain'}}">
+    <view class="title">{{modalIndex!=-1? modalData.qName:"关于锦城Q群"}}</view>
+    <view class="base-info" wx:if="{{modalIndex!=-1}}">
+      <view class="speaker">创办人: {{modalData.createName}}</view>
+      <view class="speaker">Q群号: {{modalData.qNumber}}</view>
+    </view>
+    <view class="course-introduction" wx:if="{{modalIndex!=-1}}">{{modalData.introduction}}</view>
+    <view class="course-introduction" wx:else>
+      <view class="article">锦城Q群，是一个关于记录锦城的各种群聊的信息平台（例如：技术学习群聊、运动爱好群聊、小语种学习群、学习监督打卡群聊等一系列合法群聊），目的只有一个，为每一位还在迷茫中过日子的同学，提供一个寻找属于自己车队的一个渠道。</view>
+      <view class="article">锦城Q群，也是一个传承，让每一位同学能够不迷失方向、不绕圈子走老路。
+        当然最后也希望大家多多投递各种QQ群聊，让我们的大学不迷路。</view>
+      <view class="article">祝愿每一位同学都能在大学的生活中实现自己的人生目标，未来可期，锦绣前程。</view>
+    </view>
+
+    <view class="btn-contain" wx:if="{{modalIndex!=-1}}">
+      <button class="cancel" bindtap="cancel" bindanimationend="closeAnimationed"> 取消</button>
+      <button class="apply" disabled="{{modalData.ended}}" bindtap="copy" data-value="{{modalData.qNumber}}">复制Q群</button>
+    </view>
+    <view wx:else>
+      <button class="back" bindtap="cancel" bindanimationend="closeAnimationed"> 退出</button>
+    </view>
+    <view class="tips">欢迎投Q群，联系人
+      <view bindtap="copy" data-value="2146503434"> 2146503434 </view> 或
+      <view bindtap="copy" data-value="95547598"> 95547598</view>
+    </view>
+  </view>
+</view>

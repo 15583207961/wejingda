@@ -67,7 +67,9 @@
     <view class="top-process" style="height: {{topHeight}}rpx;"></view>
     <view style="height: {{topHeight}}rpx;width: 10rpx;"></view>
     <view class="process-item" wx:for="{{reportProcess}}" wx:key="item">
-        {{item.bzmc}} <text>{{item.statusmc}}</text>
+        {{item.bzmc}} 
+        <image src="{{doneimage}}" class="done-icon" wx:if="{{item.statusmc=='已办理'}}"></image>
+        <text wx:else>{{item.statusmc}}</text> 
     </view>
     <view style="height: {{topHeight}}rpx;width: 10rpx;"></view>
 </view>

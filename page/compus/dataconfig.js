@@ -36,22 +36,11 @@ const navBars =  [{
   imgUrl: getResourceUrl("resource/img/icon_swzl.png"),
   path:"/LostAndFont/LostAndFont",
   title: "失物招领"
-}, {
+},
+ {
   imgUrl: getResourceUrl("resource/img/icon_yywx.png"),
-  path:"/LostAndFont/LostAndFont",
-  title: "预约维修"
-}, {
-  imgUrl: getResourceUrl("resource/img/icon_dd.png"),
-  path:"/LostAndFont/LostAndFont",
-  title: "开发中"
-}, {
-  imgUrl: getResourceUrl("resource/img/icon_dd.png"),
-  path:"/LostAndFont/LostAndFont",
-  title: "开发中"
-}, {
-  imgUrl: getResourceUrl("resource/img/icon_dd.png"),
-  path:"/LostAndFont/LostAndFont",
-  title: "开发中"
+  path:"/confessionWall/confessionWall",
+  title: "表白墙"
 }
 ]
 

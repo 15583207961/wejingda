@@ -8,6 +8,10 @@ import {
   myRedirectTo,
   myNavBarHieght
 } from "../../utils/usePackegeSysFun.js";
+import {
+  encodeURIComponentUrl,
+  getNowTime, getResourceUrl
+} from "../../utils/useHandle.js";
 import { storagename } from "../../config/storageNameconfig.js";
 Page({
   data:{
@@ -28,6 +32,7 @@ Page({
     })
       this.getLocalDate()
       this.getReqdata(this.data.page,e.openid,"index")
+     
   },
   // 获取本地数据
   getLocalDate(){
@@ -118,12 +123,17 @@ Page({
   applyAndDelete(type,itemdata){
     myRequest(`ApplyClasses?openid=${this.data.openid}&classId=${this.data.modalData.classId}&type=${type}`).then(res=>{
       console.log("报名成功",res)
+    if(res.code===200){
       let dataList = this.data.dataList;
       dataList[this.data.index] = itemdata;
       this.setData({
         dataList:dataList,
         appearcloseAnima:true
       })
+      myToast(type=="insert"?"报名成功":"取消报名成功","success")
+    }else{
+      myToast("出现异常了","error")
+    }
       setTimeout(()=>{
         this.setData({
           appearcloseAnima:false,
@@ -143,5 +153,9 @@ Page({
   // applyCourse
   applyCourse(){
     myNavigatorTo("/applyCourse/applyCourse")
+  },
+  // goWebview
+  goWebview(){
+    myNavigatorTo("/webview/webview?src="+encodeURIComponentUrl("https://mp.weixin.qq.com/s?__biz=Mzg2NTgzMTE1NQ==&mid=2247483729&idx=1&sn=d46dbb42ca11d804e6b2b7ef5060dee5&chksm=ce5550cdf922d9dbc4d080a50bdd9737b1bd86010b3ed56707d040fa278f1c373cafd55f5ca0#rd"))
   }
 })

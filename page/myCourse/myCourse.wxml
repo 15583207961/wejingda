@@ -1,0 +1,39 @@
+<!-- 顶部导航栏 -->
+<view class = "nav-bar">
+  <view class="{{id==0?'query selected':'query'}}" bindtap="hanlde" data-id="0">报名</view>
+  <view class="spilte"></view>
+  <view class="{{id==1?'area selected':'area'}}"  bindtap="hanlde" data-id="1">开办</view>
+</view>
+
+<!-- 报名 -->
+
+<view class="container" wx:if="{{id==0}}">
+    <view class="item"  bindtap="goDetail" wx:for="{{applyList}}" wx:key="item" data-index="{{index}}">
+     <image src="{{item.classImage}}" class="item-image" ></image>
+     <view class="item-base-info">
+        <view class="item-name">{{item.className}} </view>
+        <view class="item-speaker">{{item.speaker}} </view>
+        <view class="item-other-info">{{item.lectureTime}} | {{item.lectureVenue}}</view>
+     </view>
+     <view class="end">{{item.ended?"已结束":"未开始"}}</view>
+     <image src="https://singlestep.cn/wejinda/resource/img/icon_del.png" class="delete-image-apply" bindtap="deleteApply" data-index="{{index}}"></image>
+    </view>
+</view>
+
+<!-- 创办的课程 -->
+<view class="container" wx:if="{{id==1}}">
+  <view class="create-item" wx:for="{{createList}}" wx:if="item">
+    <view class="create-image-view">
+      
+      <image class="create-image" src="{{item.classImage}}" mode="widthFix"></image>
+      <!-- <image class="create-image" src="{{item.classImage}}" mode="widthFix"></image> -->
+    </view>
+    <view class="info-1">
+      <view class="create-class-name">{{item.className}}</view>
+    </view>
+    <view class="create-base-info">{{item.lectureTime}} | {{item.lectureVenue}}</view>
+    <view class="item-state">{{item.ended?"已结束":"未开始"}}</view>
+    <image src="https://singlestep.cn/wejinda/resource/img/icon_update.png" class="update-icon" bindtap="update" data-index="{{index}}"></image>
+    <image src="https://singlestep.cn/wejinda/resource/img/icon_del.png" bindtap="deleteApply" data-index="{{index}}"  class="delete-icon"></image>
+  </view>
+</view>

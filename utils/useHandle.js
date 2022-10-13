@@ -1,5 +1,15 @@
 const { BaseRequestUrl } = require("../config/baseConfig");
-
+import {
+  myNavigatorTo,
+  myGetStorger,
+  myRequest,
+  myToast,
+  mySetStorage,
+  myRemoveStorage,
+  myRedirectTo,
+  myNavBarHieght
+} from "./usePackegeSysFun.js";
+// import { storagename } from "../../config/storageNameconfig.js";
 // 封装请的资源路径方法
 
 const getResourceUrl = (url)=>{
@@ -23,10 +33,10 @@ const getNowTime = ()=>{
 }
 
 // 敏感词汇过滤
- const checkText = (text)=>{
+ const checkText = (text,openid)=>{
   return new Promise((resolve,rej)=>{
     myRequest("checkmsg",{
-      "openid": this.data.openid, 
+      "openid":openid, 
       "scene": 2, 
       "version": 2, 
       "content": text 

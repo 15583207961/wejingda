@@ -1,0 +1,7 @@
+.add{
+  width: 96rpx;
+  height: 96rpx;
+  position: fixed;
+  bottom: 48rpx;
+  right: 48rpx;
+}

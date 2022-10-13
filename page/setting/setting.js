@@ -68,7 +68,8 @@ Page({
     let typeName = {
       jww:"教务网",
       tsg:"图书馆",
-      ykt:"一卡通"
+      ykt:"一卡通",
+      xsbd:"分班查询"
     }
     let type = e.currentTarget.dataset.type
     myModal("警告",`确认退出${typeName[type]}账号登录`).then(res=>{
@@ -85,6 +86,9 @@ Page({
           case "tsg":
             quitLoginFlag.tsg = true;
             myRemoveStorage(storagename.tsgInfo);
+            break;
+          case "xsbd":
+            myRemoveStorage(storagename.xsbdInfo);
             break;
         }
         myToast("退出登录成功")

@@ -65,6 +65,7 @@ z-index: 100;
   width: 686rpx;
   height: 92rpx;
 }
+
 .protocol{
   display: flex;
   align-items: center;
@@ -208,6 +209,12 @@ margin-bottom: 30rpx;
   position: absolute;
   right: 32rpx;
   color: #B2B2B2;
+}
+.done-icon{
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  right: 32rpx; 
 }
 .top-process{
   width: 100vw;

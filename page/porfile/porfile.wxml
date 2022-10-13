@@ -33,6 +33,18 @@
       <image src="{{mySendURl}}" class="item-image"></image>
       课堂
     </view>
+    <view class="bars-item" bindtap="toMyInvite">
+      <image src="{{mySendURl}}" class="item-image"></image>
+      招聘帖
+    </view>
+</view>
+
+<view class="tools-nav-bar" wx:if="{{AMInfo.openid}}">
+<view class="bars-item" bindtap="checkMsg" wx:if="{{AMInfo.workStudyPrograms == 1}}">
+  <image src="{{msgUrl}}" class="item-image"></image>
+  审核
+</view>
+
 </view>
 
 <view class="function">

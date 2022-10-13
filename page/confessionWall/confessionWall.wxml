@@ -1,0 +1,32 @@
+<view class="confession-wall">
+    <view class="bg_1"></view>
+    <view class="bg_2">
+     <view class="pic">
+      <image src="https://singlestep.cn/wejinda/resource/img/biaobaiqiang.jpg" class="user-pic"></image>
+      <image src="https://singlestep.cn/wejinda/resource/img/icon_bbq.png" class="icon-bbq"></image>
+      <view class="college">
+      计算机学院
+      </view>
+      <view class="report">举报</view>
+      <view class="info">
+         <view class="user-name-contain">
+          <view class="user-name">是阿琛啊</view>
+         <image src="https://singlestep.cn/wejinda/resource/img/level_tong.png" class="level"></image>
+         </view>
+         <view class="user-id">表白ID 1314520</view>
+         <view class="leave-msg"># 就让这一刻留白</view>
+         <view class="tags">
+          <view class="tag-item">22岁 182cm 70kg 男</view>
+          <view class="tag-item">打篮球</view>
+          <view class="tag-item">钢琴</view>
+          
+         </view>
+         <view class="get-info">
+          <image src="https://singlestep.cn/wejinda/resource/img/love.png" class="love"></image>
+          <view class="tips">获取联系号</view>
+         </view>
+      </view>
+     </view>
+    </view>
+
+</view>

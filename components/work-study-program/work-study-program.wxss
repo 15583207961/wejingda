@@ -1,0 +1,146 @@
+/* item */
+page{
+  background-color: #f5f5f5f5;
+}
+.contain{
+  padding-top: 32rpx;
+}
+.item{
+  width: 686rpx;
+  padding: 32rpx;
+  box-sizing: border-box;
+  border-radius: 16rpx;
+  margin: 0 auto;
+  margin-bottom: 48rpx;
+  background-color: #fff;
+}
+.top{
+  display: flex;
+  position: relative;
+  margin-bottom: 28rpx;
+  align-items: baseline;
+}
+.comparyName{
+  font-size: 34rpx;
+  margin-right: 16rpx;
+}
+.type{
+  font-size: 24rpx;
+  color: #716969;
+}
+.more{
+  position: absolute;
+  right: -4rpx;
+  width: 68rpx;
+  height: 68rpx;
+  top: -10rpx;
+  /* background-color: blue; */
+}
+.more-image{
+  position: absolute;
+  right: 15rpx;
+  width: 38rpx;
+  height: 10rpx;
+  top: 30rpx;
+}
+
+/* toast */
+  .mask{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    /* background-color: red; */
+  }
+  .option{
+    position: absolute;
+    top: 50rpx;
+    right: -24rpx;
+    border-radius: 16rpx;
+    background: #f5f5f5;
+    box-shadow: 0rpx 4rpx 8rpx rgba(100,100,100,0.5);
+    padding: 12rpx 24rpx;
+    font-size: 28rpx;
+  }
+.option view{
+  padding: 12rpx 0 ;
+}
+
+.show{
+  animation: show 200ms linear;
+  animation-fill-mode: forwards;
+}
+@keyframes show{
+  0%{
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100%{
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.hide{
+  animation: hide 150ms linear;
+  animation-fill-mode:forwards ;
+}
+@keyframes hide{
+  0%{
+    opacity: 1;
+    transform: scale(1);
+  }
+  100%{
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+/*  */
+.content{
+  font-size: 32rpx;
+}
+.center{
+  margin-top: 28rpx;
+}
+.center view{
+font-size: 26rpx;
+  margin-top: 18rpx;
+}
+.bottom{
+  margin-top: 70rpx;
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+.heapic{
+  width: 48rpx;
+  height: 48rpx;
+  border-radius:48rpx;
+  margin-right: 16rpx;
+ 
+}
+.time{
+  position: absolute;
+  right: 15rpx;
+  font-size: 24rpx;
+
+}
+.check{
+  margin-top: 48rpx;
+  display: flex;
+  position: relative;
+}
+radio{
+  font-size: 28rpx;
+  margin-right: 24rpx;
+}
+.submit{
+  width: 120rpx;
+  position: absolute;
+  right: 32rpx;
+  font-size: 28rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  color: #fff;
+  background-color: #0099FF;
+}

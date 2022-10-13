@@ -32,30 +32,10 @@ App({
   wx.onSocketOpen((e)=>{
     console.log("wx.onSocketOpen====>",e)
   })
-  // SocketTask.send((e)=>{
-  //   console.log("SocketTask.send====>",e)
-  // })
+
   wx.onSocketClose((e)=>{
     // 微信小程序断开链接，手动断开mqtt，在重新连接mqtt
     console.log("wx.onSocketClose====>",e)
-    // if(this.globalData.client){
-      // this.globalData.client.end()
-      // this.globalData.client = null
-      // this.connect(this.globalData.openid)
-    // 消息列表 可能有点问题
-    // this.globalData.getmsglistmqtt?.forEach((item,index) => {
-    //   try{
-    //     this.globalData.client.subscribe(item.topicName)
-    //     console.log("小程序启动订阅了主题",index,item.topicName)
-    //   }catch(err){
-    //     console.log("订阅消息问题--->*:",err)
-    //   }
-    // if(this.globalData.client){
-    //   this.globalData.client.end()
-    //   this.globalData.client = null
-    // }
-    // this.globalData.client = this.connect(this.globalData.openid)
-    // this.globalData.client = this.connect(this.globalData.openid)
     });
     },
   
@@ -81,12 +61,21 @@ App({
       this.connect(res.data);
       this.getmsglistmqtt(res.data)
       //本地用openid可以设置用户的在线状态
-
+      this.getAMInfo(res.data)
         console.log("启动小程序询设置用户状态为true")
         this.setUserStatus(res.data,"true");
     
     }).catch(err=>{
-      console.llog("还没有openid",err)
+      console.log("还没有openid",err)
+    })
+  },
+  // 小程序启动获取权限列表
+  getAMInfo(openid){
+    myRequest("getAMInfo?openid="+openid,{},"GET",false).then(res=>{
+      
+      mySetStorage(storagename.AMInfo,res.data)
+    }).catch(err=>{
+      console.log("err",err)
     })
   },
   // 小程启动之后建立mqtt全局监听
@@ -105,9 +94,9 @@ App({
         clientId:myOpenID+this.globalData.num,
       });  
       this.globalData.client.on("connect", () => {
-        wx.showToast({
-          title: "连接成功",
-        });
+        // wx.showToast({
+        //   title: "连接成功",
+        // });
         console.log("------------------------>---------------")
         this.globalData.client.on("message", (topic, payload) => {
           let curMsg = JSON.parse( `${payload}`)

@@ -1,0 +1,16 @@
+<!--  -->
+<input type="text" placeholder="公司名"  class="companyName" bindinput="inputvalue" data-type="companyName" cursor-spacing="48rpx"/>
+<input type="text" placeholder="职位" data-type="position"  class="position" bindinput="inputvalue" cursor-spacing="48rpx"/>
+<input type="text" placeholder="薪资" data-type="salary" class="salary" bindinput="inputvalue" cursor-spacing="48rpx"/>
+<input type="text" placeholder="出勤(如：小时工)" data-type="workType" class="workType" bindinput="inputvalue" cursor-spacing="48rpx"/>
+<input type="text" placeholder="姓名" data-type="name" class="name" bindinput="inputvalue" cursor-spacing="48rpx"/>
+<input type="text" placeholder="电话号码" data-type="phone" class="phone" bindinput="inputvalue" cursor-spacing="48rpx"/>
+<input type="text" placeholder="微信号（选填）" data-type="wechatNumber" class="wechatNumber" bindinput="inputvalue" cursor-spacing="48rpx"/>
+<picker bindchange="bindPickerChange" value="{{index}}" range="{{typeArr}}">
+  <input type="text" placeholder="类型" data-type="type" class="type" value="{{type}}" cursor-spacing="48rpx" disabled="true"/>
+</picker>
+<input type="text" placeholder="地点" data-type="address" class="address" bindinput="inputvalue" cursor-spacing="48rpx"/>
+<input type="text" placeholder="公众号链接（选填）" data-type="articleUrl" class="articleUrl" bindinput="inputvalue" cursor-spacing="48rpx"/>
+<textarea name="" id="" cols="30" rows="10" class="content" placeholder="招聘要求信息" data-type="content" bindinput="inputvalue" cursor-spacing="248rpx"></textarea>
+
+<button class="btn" bindtap="sumbit">提交</button>

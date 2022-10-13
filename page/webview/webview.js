@@ -11,5 +11,8 @@ Page({
     this.setData({
       src:src
     })
+    wx.setNavigationBarTitle({
+      title: '详情页面',
+    })
   }
 })

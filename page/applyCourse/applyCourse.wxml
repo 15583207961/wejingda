@@ -7,17 +7,16 @@
     <view class="text-tips">上传图片</view>
   </view>
 </view>
-
 <view class="classInfo">
-  <input type="text" placeholder="课名" class="class-name-input" bindinput="inputClassName"/>
-  <input type="number" placeholder="时长" class="class-name-input" bindinput="inputClassDuration"/>
-  <input type="text" placeholder="地点" class="class-name-input" bindinput="inputClassWhere"/>
+  <input type="text" placeholder="课名" class="class-name-input" bindinput="inputClassName" value="{{ClassNameValue}}"/>
+  <input type="number" placeholder="时长" value="{{durationValue}}" class="class-name-input" bindinput="inputClassDuration"/>
+  <input type="text" placeholder="地点" value="{{classWhere}}" class="class-name-input" bindinput="inputClassWhere"/>
   <view class="class-name-input time-view">
-    <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange" class="date">
+    <picker mode="date" value="{{date}}" start="2015-09-01" bindchange="bindDateChange" class="date">
     <input type="text" placeholder="日期" disabled="true" value="{{date}}"/>
   </picker>
       
-      <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange" class="time">
+      <picker mode="time" value="{{time}}"  bindchange="bindTimeChange" class="time">
         <input type="text" placeholder="时间" disabled="true" value="{{time}}"/>
   </picker>
   </view>

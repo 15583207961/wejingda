@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "WorkStudyProgram":"../../components/work-study-program/work-study-program"
+  },
+  "navigationBarTitleText": "勤工俭学"
+}

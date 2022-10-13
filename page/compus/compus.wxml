@@ -19,7 +19,6 @@
 </view>    
 <view class="emity-view"></view>
 
-
 <!-- 数据可视区域 -->
 <view class="data_visualization">
     <view class="data_vis_item" bindtap="goDetail" data-index="{{2}}">
@@ -45,17 +44,23 @@
 
 <view class="channel">
     <!-- 社团频道 -->
+<!-- <view class="club channel-item" bindtap="gotoTyphon"> -->
 <view class="club channel-item">
-校园推文
+校园大喇叭
 </view>
 <view class="channel-item cate" bindtap="gotoPage">
-开课了
+
+<!-- <image src="{{openCourseimg}}" class="open-course" mode="widthFix"></image> -->
+<image src="https://singlestep.cn/wejinda/resource/img/index_kkl.jpg" class="open-course" mode="widthFix"></image>
+<!-- <view class="open-course-title">开课啦</view> -->
 </view>
-<view class="channel-item cate">
-校园赛
+
+<view class="channel-item cate" bindtap="gotoWorkStudyProgram">
+    <!-- <image src="{{qgjxImage}}" class="open-course" mode="widthFix"></image> -->
+    <image src="https://singlestep.cn/wejinda/resource/img/index_jgjx.jpg" class="open-course" mode="widthFix"></image>
+    <!-- <view class="open-course-title">勤工俭学</view> -->
 </view>
-<view class="channel-item cate">
+<!-- <view class="channel-item cate">
+</view> -->
 </view>
-<view class="channel-item cate">
-</view>
-</view>
+

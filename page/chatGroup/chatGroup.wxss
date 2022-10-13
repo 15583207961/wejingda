@@ -1,13 +1,50 @@
 page{
-  width: 100vw;
-  height: 100vh;
   background-color: #f5f5f5;
 }
-.item{
-  width: 100%;
+.top-bg{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  background-color: #fff;
+  box-shadow: 0px 2px 4px 0px rgba(231, 231, 231, 0.5);
+  z-index: 2;
+}
+.icon-top{
+  height: 570rpx;
+  width: 100vw;
+  background-image: url("https://singlestep.cn/wejinda/resource/img/bg_jwlogin_top.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: -1;
+
+  }
+  .backImage{
+    width: 52rpx;
+    height: 52rpx;
+    object-fit: fill;
+    margin-left: 22rpx;
+    margin-right: 223rpx; 
+  }
+  .titleTop{
+  position: fixed;
+  width: 100vw;
+  top:0;
   display: flex;
-  padding: 32rpx;
+  align-items: center;  
+  z-index: 100;
+  }
+
+.item{
+  width: 686rpx;
+  display: flex;
+  padding: 32rpx 24rpx;
+  margin-left: 32rpx;
   box-sizing: border-box;
+  background: #fff;
+  border-radius: 16rpx;
+  margin-top: 24rpx;
 }
 .headpic{
   width: 96rpx;
@@ -21,48 +58,184 @@ page{
   color: #333;
 }
 .info{
-  width: 566rpx;
+  flex: 1;
   padding-top: 12rpx;
   overflow: hidden;
   max-height: 90rpx;
 }
-.show{
-  animation: show linear 500ms;
-  animation-fill-mode: forwards;
-}
-.hide{
-  animation: hide linear 500ms;
-  animation-fill-mode: forwards;
-}
-@keyframes hide{
-  0%{
-   max-height: 800rpx;
-  }
-  100%{
-    max-height: 90rpx;
-  }
-}
-@keyframes show{
-  0%{
-    max-height: 90rpx;
-  }
-  100%{
-    max-height: 800rpx;
-  }
-}
+
+
 .name text{
   font-size: 32rpx;
   color: #333333a6;
 }
 .describe{
   margin-top: 8rpx;
-  font-size: 28rpx;
   color: #333333a6;
   width: 100%;
-}
-.row1{
   display: inline-block;
   white-space: nowrap; 
   overflow: hidden;
   text-overflow:ellipsis;
+}
+
+/* modal */
+.modal{
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+.modal-contain{
+  width: 522rpx;
+  min-height: 566rpx;
+  background-color: #fff;
+  border-radius: 16rpx;
+  position: relative;
+  animation: zoomContain 200ms linear;
+}
+.title{
+  text-align: center;
+  padding-top: 40rpx;
+  font-size: 34rpx;
+  
+}
+.base-info{
+  margin-left: 32rpx ;
+  font-size: 28rpx;
+  color: #171717;
+  padding-top: 16rpx;
+}
+.speaker,.duration,.lectureVenue,.lecture-time{
+  margin-top: 16rpx;
+}
+.modal-icon{
+  width: 178rpx;
+  height: 216rpx;
+  position: absolute;
+  top: 114rpx;
+  right: 32rpx;
+}
+.course-introduction{
+  width: 452rpx;
+  margin-left: 32rpx;
+  margin-top: 24rpx;
+  font-size: 28rpx;
+  color: #171717;
+}
+.btn-contain{
+  display: flex;
+  margin-top: 48rpx;
+}
+.cancel,.apply{
+  width: 186rpx;
+  height: 64rpx;
+
+  font-size: 28rpx;
+  border: transparent;
+  margin-bottom: 32rpx;
+}
+.cancel{
+  margin-left: 32rpx;
+  margin-right: 60rpx;
+  background-color: #F5F5F5;
+  color: #171717;
+}
+.apply{
+  background: #0099FF;
+  color: #fff;
+}
+
+.modal-show-mask{
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  opacity: 0;
+  background: rgba(0,0,0,.7);
+  animation: showmask 200ms linear;
+  animation-fill-mode:forwards;
+}
+@keyframes showmask {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 100%;
+  }
+}
+
+@keyframes zoomContain{
+  0%{
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  80%{
+    transform: scale(1.1);
+  }
+  100%{
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.modal-close-mask{
+  animation: closeMask 200ms linear;
+  animation-fill-mode: forwards;
+}
+@keyframes closeMask{
+  0%{
+    opacity: 100%;
+  }
+  100%{
+    opacity: 0%;
+  }
+}
+
+.modal-contain-close{
+  width: 522rpx;
+  min-height: 566rpx;
+  background-color: #fff;
+  border-radius: 16rpx;
+  position: relative;
+  animation: containClose 200ms linear;
+  animation-fill-mode: forwards;
+}
+@keyframes containClose{
+  0%{
+    transform: scale(1);
+    opacity: 1;
+  }
+  20%{
+    transform: scale(1.1);
+  }
+  100%{
+    transform: scale(0.6);
+    opacity: 0;
+  }
+}
+.tips{
+  display: flex;
+  font-size: 22rpx;
+  color: rgba(51, 51, 51, 0.699);
+  margin-bottom: 32rpx;
+margin-left: 32rpx;
+}
+.back{
+  width: 240rpx;
+  height: 64rpx;
+  background: #0099FF;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top:48rpx ;
+  margin-bottom: 12rpx;
+}
+.article{
+  text-indent: 2rem;
 }

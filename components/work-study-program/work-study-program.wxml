@@ -1,0 +1,43 @@
+<view class="contain">
+  <view class="item" wx:for="{{listData}}" wx:key="item">
+    <view class="top">
+      <view class="comparyName">{{item.companyName}}</view>
+      <view class="type">{{item.type}}</view>
+      <view class="more" bindtap="more" data-index="{{index}}">
+        <image class="more-image" src="https://singlestep.cn/wejinda/resource/img/icon_threePoint.png"></image>
+      </view>
+      <view class="toast " wx:if="{{index == curIndex}}">
+        <view class="mask" bindtap="cancle"></view>
+        <view class="{{clsname }}">
+          <view class="jump" bindtap="jump" data-index="{{item.articleUrl}}" wx:if="{{item.articleUrl}}">跳转连接</view>
+          <view class="connect" bindtap="connect" data-index="{{item.phone}}">联系他</view>
+          <view class="copy" wx:if="{{item.wechatNumber}}" bindtap="copy" data-value="{{item.wechatNumber}}">复制微信号</view>
+        </view>
+      </view>
+    </view>
+    <view class="content">{{item.content}}</view>
+    <view class="center">
+      <view class="position">职位 ：{{item.position}}</view>
+      <view class="salary">薪资 ：{{item.salary}}</view>
+      <view class="attendance">出勤 ：{{item.workType}}</view>
+      <view class="phone">电话 ：{{item.phone}}</view>
+      <view class="phone">地址 ：{{item.address}}</view>
+    </view>
+
+    <view class="bottom">
+      <image class="heapic" src="{{item.headPic}}"></image>
+      <view class="userName">{{item.name}}</view>
+      <view class="time">{{item.updateTime}}</view>
+    </view>
+
+    <view class="check" wx:if="{{check}}">
+      <radio-group bindchange="change">
+        <radio value="1">审核通过</radio>
+        <radio value="0">审核失败</radio>
+      </radio-group>
+      <button class="submit" bindtap="submit" data-index="{{index}}">提交</button>
+    </view>
+  </view>
+
+
+</view>

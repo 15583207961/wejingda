@@ -4,61 +4,119 @@ import {
   myRequest,
   myToast,
   mySetStorage,
-  myPreviewInfos,
-  myRemoveStorage
+  myRemoveStorage,
+  myRedirectTo,
+  myNavBarHieght
 } from "../../utils/usePackegeSysFun.js";
+import { storagename } from "../../config/storageNameconfig.js";
 Page({
   data: {
     curIndex: -1,
-    list: [{
-      headpic: "../../static/public/bg_top.png",
-      name: "单片机协会",
-      describe: "单片机协会，听着名字就很牛逼，做自己想要的电路板，开发自己的硬件设备，大佬带你开发自己的小车，感兴趣的小伙伴，快来上车，向芯片进攻。",
-      qqnumber: "187665360"
-    }, {
-      headpic: "../../static/public/bg_top.png",
-      name: "锦城日语聊吧",
-      describe: "简介：锦城日语聊群是提供给锦城学院所有喜欢日语的一个交流平台，群里高手如云，每天都在学习打卡，相互帮助共同进步，欢迎喜欢日语的小伙伴加入群聊",
-      qqnumber: "98870091"
-    }, {
-      headpic: "../../static/public/bg_top.png",
-      name: "考研上岸",
-      describe: "简介：单片机协会，听着名字就很牛逼，做自己想要的电路板，开发自己的硬件设备，大佬带你开发自己的小车，感兴趣的小伙伴，快来上车，向芯片进攻。",
-      qqnumber: "187665360"
-    }, {
-      headpic: "../../static/public/bg_top.png",
-      name: "CTF黑客群聊",
-      describe: "简介：单片机协会，听着名字就很牛逼，做自己想要的电路板，开发自己的硬件设备，大佬带你开发自己的小车，感兴趣的小伙伴，快来上车，向芯片进攻。",
-      qqnumber: "187665360"
-    }, {
-      headpic: "../../static/public/bg_top.png",
-      name: "校园英语角",
-      describe: "简介：单片机协会，听着名字就很牛逼，做自己想要的电路板，开发自己的硬件设备，大佬带你开发自己的小车，感兴趣的小伙伴，快来上车，向芯片进攻。",
-      qqnumber: "187665360"
-    }]
+    introduce:false,
+    titleTop:0,
+    titleHeight:0,
+    topHeight:0,
+    showModal:false,
+    appearcloseAnima:false,
+    list:[],
+    page:0,
+    noMore:false
   },
-  showCompleteInfo(e) {
-    console.log("e", e)
-    let index = e.currentTarget.dataset.index
-    console.log("idnex", index)
-    this.setData({
-      curIndex: this.data.curIndex == +index ? -1 : index
-    })
-  },
-  // 
-  copynum(e) {
-    console.log("点击了", e)
-    wx.setClipboardData( {
-        data: e.currentTarget.dataset.num,
-        success:res=>{
-            myToast("QQ群号复制成功")
-            console.log("成功了复制")
-        },
-        fail:err=>{
-          console.log("失败了",err)
-        }
-      }
-    )
-  }
+onLoad(){
+this.getLocalDate();
+this.getInterestedQGroup(this.data.page)
+},
+goback(){
+  wx.navigateBack({
+    delta: 1,
+  })
+},
+    // 获取本地数据
+    getLocalDate(){
+      // 获取手机系统信息
+      myGetStorger(storagename.systemInfo).then(res=>{
+        console.log("获取到的数据",res.data)
+        this.setData({
+          titleTop:res.data.menuTop,
+          titleHeight:res.data.menuHeight,
+          topHeight:res.data.menuBottom+32
+        })
+      })
+    
+    },
 
+  cancel(){
+    this.setData({
+      appearcloseAnima:true
+    })
+    setTimeout(()=>{
+      this.setData({
+        showModal:false,
+        appearcloseAnima:false
+      })
+    },190)
+  },
+  // goDetail
+  goDetail(e){
+    console.log("e",e)
+    const index  = e.currentTarget.dataset.index;
+    console.log("index--->",index)
+    this.setData({
+      showModal:true,
+      modalData:this.data.list[index],
+      modalIndex:index
+    })
+},
+
+getInterestedQGroup(page){
+    myRequest("getInterestedQGroup?page="+page).then(res=>{
+      console.log("获取到的数据",res)
+      let list = this.data.list;
+      if(!res.data?.length){
+        this.setData({
+          noMore:true
+        })
+        return ;
+      }
+      if(res.code === 200){
+        this.setData({
+          list:list.concat(res.data),
+          page:this.data.page+1
+        })
+      }
+    }).catch(err=>{
+      console.log("err",err)
+    })
+},
+// copy
+copy(e){
+  console.log("e",e)
+  const value = e.currentTarget.dataset.value
+  wx.setClipboardData( {
+    data: value,
+    success:res=>{
+        myToast(`QQ群号${value}复制成功`)
+        console.log("成功了复制")
+        setTimeout(()=>{
+          this.setData({
+            appearcloseAnima:true
+          })
+          setTimeout(()=>{
+            this.setData({
+              showModal:false,
+              appearcloseAnima:false
+            })
+          },190)
+        },2000)
+    },
+    fail:err=>{
+      console.log("失败了",err)
+    }
+  }
+)
+},
+onReachBottom(){
+  
+  !this.data.noMore&&this.getInterestedQGroup(this.data.page)
+}
 })

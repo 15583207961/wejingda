@@ -9,7 +9,7 @@ import {
   myNavBarHieght
 } from "../../utils/usePackegeSysFun.js";
 import { storagename } from "../../config/storageNameconfig.js";
-import { encodeURIComponentUrl } from "../../utils/useHandle.js";
+import { encodeURIComponentUrl,getResourceUrl } from "../../utils/useHandle.js";
 import { BaseRequestUrl } from "../../config/baseConfig.js";
 Page({
   data:{
@@ -27,7 +27,8 @@ Page({
     reportMethods:null,
     reportProcess:null,
     topHeight:0,
-    topTitle:"新生报到"
+    topTitle:"新生报到",
+    doneimage:getResourceUrl("resource/img/icon_done.png")
   },
   onLoad(e){
     console.log("e=====>",e)

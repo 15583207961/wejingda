@@ -1,5 +1,5 @@
 
-const baseUrl = getApp().globalData.BaseURL
+
 import {
   myNavigatorTo,
   myGetStorger,
@@ -18,7 +18,8 @@ Page({
         chatInfo:{},
         toolsUrl:getResourceUrl("resource/img/icon_xfjl.png"),
         msgUrl:getResourceUrl("resource/img/icon_msg.png"),
-        mySendURl:getResourceUrl("resource/img/icon_wd_fb.png")
+        mySendURl:getResourceUrl("resource/img/icon_wd_fb.png"),
+        AMInfo:null
     },
     // 页面加载
    onShow(){
@@ -35,6 +36,12 @@ Page({
         console.log("数据",res);
         this.setData({
           chatInfo :res.data
+        })
+      }),
+      myGetStorger(storagename.AMInfo).then(res=>{
+        console.log("shuju ",res)
+        this.setData({
+          AMInfo:res.data
         })
       })
     },
@@ -100,6 +107,41 @@ Page({
     // toMyCourse
     toMyCourse(){
       myNavigatorTo("/myCourse/myCourse")
+    },
+    // toMyInvite
+    toMyInvite(){
+      if(this.data.openid){
+        myNavigatorTo("/myInvite/myInvite?openid="+this.data.openid)
+      }else{
+        getUserInfos().then(res=>{
+          console.log("授权成功",res)
+          this.setData({
+            openid:res.data.openid
+          })
+          mySetStorage(storagename.openId,res.data.openid)
+          myNavigatorTo("/myInvite/myInvite?openid="+res.data.openid)
+        }).catch(err=>{
+          console.log("err",err)
+        })
+      }
+     
+    },
+    // checkMsg
+    checkMsg(){
+      if(this.data.openid){
+        myNavigatorTo("/checkMsg/checkMsg?openid="+this.data.openid)
+      }else{
+        getUserInfos().then(res=>{
+          console.log("授权成功",res)
+          this.setData({
+            openid:res.data.openid
+          })
+          mySetStorage(storagename.openId,res.data.openid)
+          myNavigatorTo("/checkMsg/checkMsg?openid="+this.data.openid)
+        }).catch(err=>{
+          console.log("err",err)
+        })
+      }
     }
     
 })

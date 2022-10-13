@@ -19,6 +19,7 @@ import { getUserInfos } from "../../utils/getUserInfo.js";
 const quitLoginFlag = getApp().globalData.quitLoginFlag;
 Page({
   data: {
+
     headThemebgc: "background-image: linear-gradient(#edf1f7,#edf1f7,#edf1f7,#edf1f7,#fafafa);", //头部背景颜色
     swiper_list: swiperList, //轮播图数据
     nav_list: navBars,
@@ -35,6 +36,8 @@ Page({
     },
     openid: null,
     swapperInfo:[],//轮播信息
+    openCourseimg:getResourceUrl("resource/img/openCourse_index.jpg"),
+    qgjxImage:getResourceUrl("resource/img/index_qgjx.jpg")
   },
   // 点击导航栏跳转到对应的详情页面
   goDetail(e) {
@@ -69,8 +72,8 @@ Page({
         myNavigatorTo(this.data.nav_list[5].path);
         break;
       case 6:
-        // myNavigatorTo(this.data.nav_list[6].path);
-        // break;
+        myNavigatorTo(this.data.nav_list[6].path);
+        break;
       case 7:
         // myNavigatorTo(this.data.nav_list[7].path);
         // break;
@@ -218,6 +221,10 @@ gotoPage(){
     })
   }
 },
+// gotoWorkStudyProgram 跳转到勤工俭学页面
+gotoWorkStudyProgram(){
+  myNavigatorTo("/workStudyProgram/workStudyProgram")
+},
   // 网络获取固定的文章
   getBaseArticles(){
     myRequest("articles",{},"GET",false).then(res=>{
@@ -319,5 +326,12 @@ gotoPage(){
     wx.navigateTo({
       url: '../../page/swiperdetail/swiperdetail?index=' + e.currentTarget.dataset.index,
     })
+  },
+  // goMicsWebview
+  gotoTyphon(e){
+    myNavigatorTo("/typhon/typhon")
+  },
+  copy(e){
+    console.log("e",e)
   }
 })

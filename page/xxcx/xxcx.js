@@ -8,7 +8,7 @@ import { storagename } from "../../config/storageNameconfig.js";
 
 Page({
   data: {
- 
+    noMsg:"暂无",
     isShowPicker: true,
     semester: [], //显示学期
     grade_list: [], //成绩list
@@ -141,9 +141,17 @@ Page({
       console.log("获取成功",res)
       const  exameinfoArrayList = res.data.exameinfoArrayList
       if(exameinfoArrayList.length){
+        var list =  exameinfoArrayList.map(item=>{
+          var time  = item.time;
+          item.time = time.substring(0,11)
+          item.openTime = time.substring(12,17)
+          item.endTime = time.substring(18,22)
+          return item;
+;        })
         this.setData({
-          exam_list: exameinfoArrayList
+          exam_list: list
         })
+        console.log(list)
         return;
       }
       myToast("暂无考试信息");
@@ -167,8 +175,16 @@ Page({
       const exameinfoArrayList = res.data.exameinfoArrayList
       console.log("获取到的参数为",res)
       if(exameinfoArrayList.length){
+
+        var list =  exameinfoArrayList.map(item=>{
+          var time  = item.time;
+          item.time = time.substring(0,11)
+          item.openTime = time.substring(12,17)
+          item.endTime = time.substring(18,22)
+          return item;
+               })
         this.setData({
-          MakeUpExamList: exameinfoArrayList
+          MakeUpExamList: list
         })
       }
       else{

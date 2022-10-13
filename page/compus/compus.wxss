@@ -148,6 +148,8 @@ page{
     border-radius: 32rpx;
     text-align: center;
     margin-left: 32rpx;
+    position: relative;
+    overflow: hidden;
 }
 .club{
     width: 686rpx;
@@ -156,4 +158,20 @@ page{
 .cate{
     width: 326rpx;
     height: 326rpx;
+}
+.open-course{
+    width: 326rpx;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.open-course-title{
+    height: 72rpx;
+position: absolute;
+width: 100%;
+text-align: center;
+
+font-size: 32rpx;
+color: #fff;
+background: linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(211,211,211,0) 100%);
 }

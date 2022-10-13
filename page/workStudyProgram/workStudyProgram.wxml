@@ -1,0 +1,3 @@
+<WorkStudyProgram listData="{{listData}}"></WorkStudyProgram>
+
+<image src="https://singlestep.cn/wejinda/resource/img/icon_menu.png" class="add" bindtap="add"></image>

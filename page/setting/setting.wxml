@@ -16,6 +16,9 @@
     <view class="setting-item " bindtap="quitLogin" data-type="ykt">
         退出一卡通
     </view> 
+    <view class="setting-item " bindtap="quitLogin" data-type="xsbd">
+        退出分班查询登录
+    </view> 
 </view>
 
 

@@ -15,4 +15,5 @@ export const storagename = {
   getmsglistmqtt:"getmsglistmqtt",//将消息列表存放到本地，
   xsbdInfo:"xsbdInfo",//新生报到登录信息
   reportMethods:"reportMethods",
+  AMInfo:"getAMInfo",//权限列表
 }

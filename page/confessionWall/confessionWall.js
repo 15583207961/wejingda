@@ -1,4 +1,4 @@
-// page/mySend/mySend.js
+// page/confessionWall/confessionWall.js
 Page({
 
   /**

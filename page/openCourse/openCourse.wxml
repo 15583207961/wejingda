@@ -6,6 +6,12 @@
 </view>
 
 <view class="container" style="padding-top: {{topHeight}}rpx;">
+    <view class="introduce" bindtap="goWebview"> 
+    <view class="introduce-image-view">
+      <image src="https://singlestep.cn/wejinda/resource/img/openCourse_index.jpg" class="introduce-image" mode="widthFix"></image>
+    </view>
+    <view class="introduce-title">关于“开课啦”频道的介绍</view>
+    </view>
     <view class="item" wx:for="{{dataList}}" wx:key="item" bindtap="goDetail" data-index="{{index}}">
      <image src="{{item.classImage}}" class="item-image" ></image>
      <view class="item-base-info">
@@ -26,7 +32,7 @@
       <view class="title">{{modalData.className}}</view>
       <view class="base-info">
         <view class="speaker">主讲人：{{modalData.speaker}}</view>
-        <view class="duration">时长：{{modalData.duration}}</view>
+        <view class="duration">时长：{{modalData.duration}}h</view>
         <view class="lectureVenue">地点：{{modalData.lectureVenue}}</view>
         <view class="lecture-time">时间：{{modalData.lectureTime}}</view>
       </view>

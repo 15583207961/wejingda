@@ -38,7 +38,7 @@
 
   <view class="item" bindtap="goDetail" data-type="chatGroup">
     <image src="{{imageUrls.chatGroup}}" class="icon"></image>
-    <view class="item_info">社团部门</view>
+    <view class="item_info">民间组织</view>
     <view class="name">兴趣Q群</view>
   </view>
 </view>

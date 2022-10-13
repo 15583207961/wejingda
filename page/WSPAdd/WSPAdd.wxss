@@ -1,0 +1,32 @@
+page{
+  background-color: #f5f5f5;
+}
+input{
+  width: 686rpx;
+  height: 112rpx;
+  border-radius: 16rpx;
+  background-color: #fff;
+  margin: 0 auto;
+  margin-top: 24rpx;
+  padding-left:24rpx ;
+  box-sizing: border-box;
+}
+textarea{
+  width: 686rpx;
+  border-radius: 24rpx;
+  background-color: #fff;
+  margin: 0 auto;
+  margin-top: 24rpx;
+  padding: 24rpx;
+  box-sizing: border-box;
+  margin-bottom: 32rpx;
+}
+.btn{
+  width: 328rpx;
+  height: 80rpx;
+  font-size:34rpx ;
+  background-color: #0099FF;
+  margin-top: 70rpx;
+  color: #fff;
+  margin-bottom: 48rpx;
+}
